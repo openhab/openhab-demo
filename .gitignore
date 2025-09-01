@@ -1,0 +1,8 @@
+.idea
+.vscode
+
+*/addons
+*/conf/automation/js/node_modules
+*/conf/automation/python/lib
+*/conf/automation/ruby/.gem
+*/userdata
