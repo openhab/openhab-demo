@@ -1,0 +1,9 @@
+version: 1
+things:
+  remoteopenhab:server:mock:
+    isBridge: true
+    label: openHAB Mock Server
+    config:
+      host: ohmock
+      token: oh.remoteOhBindingOpenhabPublic.GP6sB9L7zzKLhZS4AbKilCfgWoU82JprWmIMJgoThVxoQEdiNpCXvGlTeEpqwBFS7BRpazAqwcWTtCLmt8qA
+      authenticateAnyway: true

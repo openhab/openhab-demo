@@ -1,0 +1,10 @@
+version: 1
+things:
+  astro:sun:berlin:
+    label: Sun Berlin
+    config:
+      geolocation: "52.516283804703384,13.377661883415065"
+  astro:moon:berlin:
+    label: Moon Berlin
+    config:
+      geolocation: "52.516283804703384,13.377661883415065"

@@ -1,0 +1,26 @@
+version: 1
+things:
+  solarforecast:fs-site:local:
+    isBridge: true
+    label: ForecastSolar Brandenburger Tor
+    config:
+      location: "52.516283804703384,13.377661883415065"
+      inverterKwp: 15
+  solarforecast:fs-plane:local:east:
+    bridge: solarforecast:fs-site:local
+    label: ForecastSolar Brandenburger Tor Plane East
+    config:
+      declination: 45
+      azimuth: -90
+      kwp: 7.5
+      dampAM: 0
+      dampPM: 0
+  solarforecast:fs-plane:local:west:
+    bridge: solarforecast:fs-site:local
+    label: ForecastSolar Brandenburger Tor Plane West
+    config:
+      declination: 45
+      azimuth: 90
+      kwp: 7.5
+      dampAM: 0
+      dampPM: 0

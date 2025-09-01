@@ -1,0 +1,9 @@
+version: 1
+things:
+  dwdpollenflug:bridge:dwd:
+    isBridge: true
+  dwdpollenflug:region:dwd:berlin:
+    bridge: dwdpollenflug:bridge:dwd
+    label: DWD Pollen Count Index Berlin
+    config:
+      regionID: 50

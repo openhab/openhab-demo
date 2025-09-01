@@ -1,0 +1,6 @@
+version: 1
+things:
+  dwdunwetter:dwdwarnings:berlin:
+    label: DWD Unwetter Warnungen Berlin
+    config:
+      cellId: 111000000
