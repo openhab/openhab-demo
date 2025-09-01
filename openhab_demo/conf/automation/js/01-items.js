@@ -1,4 +1,4 @@
-const { items } = require('openhab');
+const { items } = require('openhab')
 
 const REMOTE_OH_THING_UID = 'remoteopenhab:server:mock'
 
@@ -17,6 +17,11 @@ const windows = items.addItem({
   type: 'Group',
   name: 'gWindows',
   label: 'Windows'
+})
+const temperatures = items.addItem({
+  type: 'Group',
+  name: 'gTemperatures',
+  label: 'Temperatures'
 })
 const doors = items.addItem({
   type: 'Group',
@@ -65,10 +70,16 @@ function provideHvac (room, withAc = false) {
     name: baseName + '_Temperature',
     label: 'Current Temperature',
     category: 'temperature',
-    groups: [hvac.name],
+    groups: [hvac.name, temperatures.name],
     tags: ['Measurement', 'Temperature'],
     metadata: {
-      unit: '°C'
+      unit: '°C',
+      stateDescription: {
+        value: '',
+        config: {
+          pattern: '%.1f %unit%'
+        }
+      }
     }
   })
   const setpoint = items.addItem({
