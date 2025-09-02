@@ -8,3 +8,99 @@ things:
     label: Moon Berlin
     config:
       geolocation: "52.516283804703384,13.377661883415065"
+
+items:
+  # Group Items:
+  gSun:
+    type: Group
+    label: Sun Berlin
+    icon: sun
+    tags:
+      - Application
+  gMoon:
+    type: Group
+    label: Moon Berlin
+    icon: moon
+    tags:
+      - Application
+  # Sun Items:
+  Sun_Azimuth:
+    type: Number
+    dimension: Angle
+    label: Sun Azimuth
+    icon: sun
+    format: '%.2f %unit%'
+    unit: °
+    groups:
+      - gSun
+    tags:
+      - Calculation
+    channel: astro:sun:berlin:position#azimuth
+  Sun_Elevation:
+    type: Number
+    dimension: Angle
+    label: Sun Elevation
+    icon: sun
+    format: '%.2f %unit%'
+    unit: °
+    groups:
+      - gSun
+    tags:
+      - Calculation
+    channel: astro:sun:berlin:position#elevation
+  Sunset_Time:
+    type: DateTime
+    label: Sunset Time
+    icon: sunset
+    format: '%1$tF %1$tR'
+    groups:
+      - gSun
+    tags:
+      - Calculation
+      - Timestamp
+    channel: astro:sun:berlin:set#start
+  Sunrise_Time:
+    type: DateTime
+    label: Sunrise Time
+    icon: sunrise
+    format: '%1$tF %1$tR'
+    groups:
+      - gSun
+    tags:
+      - Calculation
+      - Timestamp
+    channel: astro:sun:berlin:rise#start
+  # Moon Items:
+  Moon_Azimuth:
+    type: Number
+    dimension: Angle
+    label: Moon Azimuth
+    icon: moon
+    format: '%.2f %unit%'
+    unit: °
+    groups:
+      - gMoon
+    tags:
+      - Calculation
+    channel: astro:moon:berlin:position#azimuth
+  Moon_Elevation:
+    type: Number
+    dimension: Angle
+    label: Moon Elevation
+    icon: moon
+    format: '%.2f %unit%'
+    unit: °
+    groups:
+      - gMoon
+    tags:
+      - Calculation
+    channel: astro:moon:berlin:position#elevation
+  Moon_Phase:
+    type: String
+    label: Moon Phase
+    icon: moon
+    groups:
+      - gMoon
+    tags:
+      - Point
+    channel: astro:moon:berlin:phase#name
