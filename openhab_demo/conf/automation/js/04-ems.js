@@ -39,7 +39,7 @@ rules.when()
   .system().startLevel(100)
   .or().cron(`*/${STEP_SECONDS} */1 * ? * * *`)
   .then(() => {
-    const base = Math.random() < 0.2 ? 2000 : 400
+    const base = Math.random() < 0.2 ? -2000 : -400
     const random = base + (150 - Math.random() * 300)
     loadPower.postUpdate(Quantity(random + ' W'))
   })
@@ -53,11 +53,11 @@ rules.when()
   .or().cron(`*/${STEP_SECONDS} * * ? * * *`) // every STEP_SECOND seconds
   .then(() => {
     const solar = solarPower.quantityState ?? Quantity('0 W')
-    const load = loadPower.quantityState ?? Quantity('0 W')
+    const load = loadPower.quantityState.multiply('-1') ?? Quantity('0 W')
     let socPercent = batterySoC.numericState ?? 50                    // integer %
     let socEnergy = BATTERY_CAPACITY.multiply(socPercent / 100) // kWh
 
-    console.info(`Battery Simulation - SoC = ${batterySoC.numericState} %, Stored Energy = ${socEnergy}`)
+    console.info(`Battery Simulation - SoC = ${socPercent} %, Stored Energy = ${socEnergy}`)
 
     const deltaP = solar.subtract(load) // Quantity (W): solar - load
     let battP = Quantity('0 W')   // +W discharging, -W charging
@@ -109,10 +109,14 @@ rules.when()
 /**
  * Calculates the daily amount of energy from the power value using the Riemann Sum.
  * @param {items.Item} power the Item providing the power value
- * @param {items.Item} plusDay the Item to send the energy value to, if energy >= 0 kWh
- * @param {items.Item} [minusDay] the optional Item to send the energy value to, if energy < 0 kWh
+ * @param {items.Item} [plusDay] the Item to send the energy value to, if energy >= 0 kWh
+ * @param {items.Item} [minusDay] the Item to send the energy value to, if energy < 0 kWh
  */
 function createDailyEnergyCalculationRule (power, plusDay, minusDay) {
+  let label = 'Calculate '
+  if (plusDay) label += plusDay.label
+  if (plusDay && minusDay) label += ' and '
+  if (minusDay) label += minusDay.label
   rules.when()
     .system().startLevel(100)
     .or().cron('0 */15 * * * ? *')
@@ -124,13 +128,13 @@ function createDailyEnergyCalculationRule (power, plusDay, minusDay) {
       const energy = power.persistence.riemannSumBetween(begin, end, items.RiemannType.MIDPOINT)?.quantityState
       if (!energy) return
       if (energy.greaterThanOrEqual('0 kWh')) {
-        plusDay.postUpdate(energy)
+        if (plusDay) plusDay.postUpdate(energy)
         if (minusDay && minusDay.isUninitialized) minusDay.postUpdate('0 kWh')
       } else if (minusDay) {
-        if (plusDay.isUninitialized) plusDay.postUpdate('0 kWh')
+        if (plusDay && plusDay.isUninitialized) plusDay.postUpdate('0 kWh')
         minusDay.postUpdate(energy.multiply('-1'))
       }
-    }).build(`Calculate ${plusDay.label}${minusDay ? ' and ' + minusDay.label : ''}`, '', ['EMS'])
+    }).build(label, '', ['EMS'])
 }
 
 /**
@@ -150,12 +154,12 @@ function createMonthlyEnergyCalculationRule (daily, monthly) {
       let total = daily.persistence.sumBetween(begin, end)?.quantityState
       if (!total) return
       if (!daily.quantityState) return
-      monthly.postUpdate(total.add(consumptionDay.quantityState))
+      monthly.postUpdate(total.add(daily.quantityState))
     })
     .build(`Calculate ${monthly.label}`, '', ['EMS'])
 }
 
-createDailyEnergyCalculationRule(loadPower, consumptionDay)
+createDailyEnergyCalculationRule(loadPower, undefined, consumptionDay)
 createDailyEnergyCalculationRule(gridPower, gridConsumptionDay, feedInDay)
 
 rules.when()
