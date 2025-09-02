@@ -1,0 +1,36 @@
+services:
+  openhab_demo:
+    image: openhab/openhab:5.0.1-debian
+    container_name: openhab_demo
+    hostname: ohdemo
+    restart: unless-stopped
+    environment:
+      USER_ID: 1000
+      GROUP_ID: 1000
+      CRYPTO_POLICY: "unlimited"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./openhab_demo/conf:/openhab/conf
+      - ./openhab_demo/userdata:/openhab/userdata
+      - ./openhab_demo/addons:/openhab/addons
+    ports:
+      - 8080:8080
+
+  openhab_private:
+    image: openhab/openhab:5.0.1-debian
+    container_name: openhab_private
+    hostname: ohmock
+    restart: unless-stopped
+    environment:
+      USER_ID: 1000
+      GROUP_ID: 1000
+      CRYPTO_POLICY: "unlimited"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./openhab_private/conf:/openhab/conf
+      - ./openhab_private/userdata:/openhab/userdata
+      - ./openhab_private/addons:/openhab/addons
+    ports:
+      - 18080:8080
