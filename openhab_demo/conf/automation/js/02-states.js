@@ -11,6 +11,25 @@ rules.when()
   })
   .build('Set random window states')
 
+rules.when()
+  .system().startLevel(100)
+  .or().cron('0 0/5 * ? * * *')
+  .then(() => {
+    items.getItem('gLocks').members.forEach(lock => {
+      const random = Math.random() < 0.75
+      lock.postUpdate(random ? 'OFF' : 'ON')
+    })
+    items.getItem('gDoors').members.forEach(door => {
+      const baseName = door.name.substring(0, door.name.lastIndexOf('_'))
+      const lock = items.getItem(`${baseName}_Lock`)
+      if (lock.state === 'OFF') {
+        const random = Math.random() < 0.5
+        door.postUpdate(random ? 'OPEN' : 'CLOSED')
+      }
+    })
+  })
+  .build('Set random door & lock states')
+
 /**
  * Get the seasonal base temperatur for the fake temperature measurements.
  *
