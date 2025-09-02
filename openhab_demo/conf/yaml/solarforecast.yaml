@@ -24,3 +24,63 @@ things:
       kwp: 7.5
       dampAM: 0
       dampPM: 0
+
+items:
+  # Forecast Items:
+  gSolar_Forecast:
+    type: Group
+    label: ForecastSolar Berlin
+    tags:
+      - WebService
+  Solar_Forecast_Power_Total:
+    type: Number
+    dimension: Power
+    label: Total Power Forecast
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar_Forecast
+    tags:
+      - Forecast
+      - Power
+    channel: solarforecast:fs-site:local:power-estimate
+  Solar_Forecast_Power_East:
+    type: Number
+    dimension: Power
+    label: Plane East Power Forecast
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar_Forecast
+    tags:
+      - Forecast
+      - Power
+    channel: solarforecast:fs-plane:local:east:power-estimate
+  Solar_Forecast_Power_West:
+    type: Number
+    dimension: Power
+    label: Plane West Power Forecast
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar_Forecast
+    tags:
+      - Forecast
+      - Power
+    channel: solarforecast:fs-plane:local:west:power-estimate
+  Solar_Forecast_Energy_Today:
+    type: Number
+    dimension: Energy
+    label: Todays Energy Forecast
+    icon: solarplant
+    format: '%.3f %unit%'
+    unit: kWh
+    groups:
+      - gSolar_Forecast
+    tags:
+      - Forecast
+      - Energy
+    channel: solarforecast:fs-site:local:energy-today

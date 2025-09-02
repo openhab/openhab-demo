@@ -1,0 +1,7 @@
+Strategies {
+  everyMinute: "0 * * * * ? *"
+}
+
+Items {
+  gSolar_Forecast* : strategy = forecast
+}

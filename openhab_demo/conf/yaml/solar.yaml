@@ -1,0 +1,57 @@
+version: 1
+items:
+  gSolar:
+    type: Group
+    label: Solar Inverter
+    tags:
+      - Inverter
+  # Use actual values from ForecastSolar along with some randomness to fake power values:
+  Solar_Power_Total:
+    type: Group
+    group:
+      type: Number
+      dimension: Power
+      function: SUM
+    label: Total Power
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar
+    tags:
+      - Measurement
+      - Power
+  Solar_Power_East:
+    type: Number
+    dimension: Power
+    label: Plane East Power
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar
+      - Solar_Power_Total
+    tags:
+      - Forecast
+      - Power
+    channels:
+      solarforecast:fs-plane:local:east:power-actual:
+        profile: transform:JS
+        toItemScript: randomness.js?scale=0.2
+  Solar_Power_West:
+    type: Number
+    dimension: Power
+    label: Plane West Power
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar
+      - Solar_Power_Total
+    tags:
+      - Forecast
+      - Power
+    channels:
+      solarforecast:fs-plane:local:west:power-actual:
+        profile: transform:JS
+        toItemScript: randomness.js?scale=0.2
