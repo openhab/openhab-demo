@@ -92,7 +92,9 @@ rules.when()
     gridP = deltaP.add(battP)
 
     // Convert SoC back to %
-    socPercent = Math.round(socEnergy.divide(BATTERY_CAPACITY).float * 100)
+    socPercent = socEnergy.divide(BATTERY_CAPACITY).float * 100
+
+    console.info(`Battery Simulation - New SoC ${socPercent}`)
 
     // Update Items
     batterySoC.postUpdate(socPercent) // integer %
