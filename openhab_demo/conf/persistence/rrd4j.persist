@@ -11,5 +11,7 @@ Items {
   Solar_Power_Total, Solar_Power_East, Solar_Power_West : strategy = everyChange, everyMinute
   Solar_Production_Day : strategy = endOfDay
   Solar_Production_Month : strategy = endOfMonth
-  EMS_Solar_Power, EMS_Load_Power, EMS_Battery_Power, EMS_Grid_Power : strategy = everyChange, everyMinute
+  EMS_Load_Power, EMS_Battery_Power, EMS_Grid_Power, EMS_Battery_SoC : strategy = everyChange, everyMinute
+  EMS_Consumption_Day, EMS_SelfConsumption_Day, EMS_GridConsumption_Day, EMS_FeedIn_Day : strategy = endOfDay
+  EMS_Consumption_Month, EMS_SelfConsumption_Month, EMS_GridConsumption_Month, EMS_FeedIn_Month: strategy = endOfMonth
 }

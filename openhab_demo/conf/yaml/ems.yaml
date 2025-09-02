@@ -14,7 +14,7 @@ items:
     icon: energy
     tags:
       - EnergyManagementSystem
-  # Random value:
+  # Random power values:
   EMS_Load_Power:
     type: Number
     dimension: Power
@@ -26,7 +26,7 @@ items:
     tags:
       - Measurement
       - Power
-  # Calculated values:
+  # Calculated power values:
   EMS_Battery_Power:
     type: Number
     dimension: Power
@@ -49,3 +49,104 @@ items:
     tags:
       - Measurement
       - Power
+  # Calculated SoC values:
+  EMS_Battery_SoC:
+    type: Number
+    dimension: Dimensionless
+    label: Battery SoC
+    format: '%d %unit%'
+    unit: '%'
+    groups:
+      - gEMS
+    tags:
+      - Status
+      - Energy
+  # Calculated energy values:
+  EMS_TotalConsumption_Day:
+    type: Number
+    dimension: Energy
+    label: Daily Consumption
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Energy
+  EMS_TotalConsumption_Month:
+    type: Number
+    dimension: Energy
+    label: Monthly Consumption
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Energy
+  EMS_SelfConsumption_Day:
+    type: Number
+    dimension: Energy
+    label: Daily Self-Consumption
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Energy
+  EMS_SelfConsumption_Month:
+    type: Number
+    dimension: Energy
+    label: Monthly Self-Consumption
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Energy
+  EMS_GridConsumption_Day:
+    type: Number
+    dimension: Energy
+    label: Daily Grid Consumption
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Energy
+  EMS_GridConsumption_Month:
+    type: Number
+    dimension: Energy
+    label: Monthly Grid Consumption
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Energy
+  EMS_FeedIn_Day:
+    type: Number
+    dimension: Energy
+    label: Daily Grid Feed-In
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Energy
+  EMS_FeedIn_Month:
+    type: Number
+    dimension: Energy
+    label: Monthly Grid Feed-In
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Energy
