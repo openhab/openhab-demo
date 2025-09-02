@@ -176,10 +176,7 @@ function provideSpeaker (room, withPlaybackControl = false) {
       label: 'Playback',
       category: 'mediacontrol',
       groups: [speaker.name],
-      tags: ['Control', 'MediaControl'],
-      channels: {
-        [`${REMOTE_OH_THING_UID}:${baseName}_Playback`]: {}
-      }
+      tags: ['Control', 'MediaControl']
     })
     items.addItem({
       type: 'String',
@@ -187,10 +184,7 @@ function provideSpeaker (room, withPlaybackControl = false) {
       label: 'Artist',
       category: 'mediacontrol',
       groups: [speaker.name],
-      tags: ['Status', 'MediaControl'],
-      channels: {
-        [`${REMOTE_OH_THING_UID}:${baseName}_Artist`]: {}
-      }
+      tags: ['Status', 'MediaControl']
     })
     items.addItem({
       type: 'String',
@@ -198,10 +192,7 @@ function provideSpeaker (room, withPlaybackControl = false) {
       label: 'Album',
       category: 'mediacontrol',
       groups: [speaker.name],
-      tags: ['Status', 'MediaControl'],
-      channels: {
-        [`${REMOTE_OH_THING_UID}:${baseName}_Album`]: {}
-      }
+      tags: ['Status', 'MediaControl']
     })
     items.addItem({
       type: 'String',
@@ -209,10 +200,15 @@ function provideSpeaker (room, withPlaybackControl = false) {
       label: 'Song',
       category: 'mediacontrol',
       groups: [speaker.name],
-      tags: ['Status', 'MediaControl'],
-      channels: {
-        [`${REMOTE_OH_THING_UID}:${baseName}_Song`]: {}
-      }
+      tags: ['Status', 'MediaControl']
+    })
+    items.addItem({
+      type: 'Image',
+      name: baseName + '_Cover',
+      label: 'Cover',
+      category: 'mediacontrol',
+      groups: [speaker.name],
+      tags: ['Status', 'MediaControl']
     })
   }
 }
