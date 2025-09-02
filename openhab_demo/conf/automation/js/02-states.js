@@ -13,7 +13,7 @@ rules.when()
 
 rules.when()
   .system().startLevel(100)
-  .or().cron('0 0/5 * ? * * *')
+  .or().cron('0 1/5 * ? * * *')
   .then(() => {
     items.getItem('gLocks').members.forEach(lock => {
       const random = Math.random() < 0.75
@@ -61,7 +61,7 @@ function getSeasonalBaseTemperature (date = new Date()) {
 
 rules.when()
   .system().startLevel(100)
-  .or().cron('0 0/5 * ? * * *')
+  .or().cron('0 2/5 * ? * * *')
   .then(() => {
     const baseTemperature = getSeasonalBaseTemperature()
     items.getItem('gTemperatures').members.forEach(temperature => {
