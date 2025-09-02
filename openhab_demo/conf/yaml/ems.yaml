@@ -14,22 +14,7 @@ items:
     icon: energy
     tags:
       - EnergyManagementSystem
-  EMS_Solar_Power:
-    type: Group
-    group:
-      type: Number
-      dimension: Power
-      function: SUM
-    label: Solar Power
-    icon: solarplant
-    format: '%.0f W'
-    unit: kW
-    groups:
-      - gEMS
-    tags:
-      - Measurement
-      - Power
-  # Calculated/Faked values
+  # Random value:
   EMS_Load_Power:
     type: Number
     dimension: Power
@@ -41,6 +26,7 @@ items:
     tags:
       - Measurement
       - Power
+  # Calculated values:
   EMS_Battery_Power:
     type: Number
     dimension: Power

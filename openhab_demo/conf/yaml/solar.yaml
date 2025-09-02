@@ -31,7 +31,6 @@ items:
     groups:
       - gSolar
       - Solar_Power_Total
-      - EMS_Solar_Power
     tags:
       - Measurement
       - Power
@@ -49,7 +48,6 @@ items:
     groups:
       - gSolar
       - Solar_Power_Total
-      - EMS_Solar_Power
     tags:
       - Measurement
       - Power
