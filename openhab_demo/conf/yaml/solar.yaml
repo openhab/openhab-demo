@@ -37,7 +37,7 @@ items:
     channels:
       solarforecast:fs-plane:local:east:power-actual:
         profile: transform:JS
-        toItemScript: randomness.js?scale=0.2
+        toItemScript: randomness.js?scale=0.2&min=0
   Solar_Power_West:
     type: Number
     dimension: Power
@@ -54,7 +54,7 @@ items:
     channels:
       solarforecast:fs-plane:local:west:power-actual:
         profile: transform:JS
-        toItemScript: randomness.js?scale=0.2
+        toItemScript: randomness.js?scale=0.2&min=0
   # Calculated values:
   Solar_Production_Day:
     type: Number
