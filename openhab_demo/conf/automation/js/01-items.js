@@ -298,7 +298,7 @@ function provideLight (room, type, name, label, itemType = 'Dimmer') {
     type: itemType,
     name: name ?? baseName + '_Light',
     label: label ?? room.label + ' Light',
-    category: itemType === 'Color' ? 'colorwheel' : 'slider',
+    category: itemType === 'Color' ? 'colorwheel' : (itemType === 'Dimmer' ? 'slider' : 'light'),
     groups: [room.name, lights.name],
     tags: [type],
     metadata: {
@@ -387,7 +387,7 @@ provideHvac(kitchen)
 provideSpeaker(kitchen, true)
 provideWindow(kitchen)
 provideLight(kitchen, 'LightStripe', 'Kitchen_CeilingLight', 'Kitchen Ceiling Light')
-provideLight(kitchen, 'LightStripe', 'Kitchen_ShelfLight', 'Kitchen Shelf Light')
+provideLight(kitchen, 'LightStripe', 'Kitchen_ShelfLight', 'Kitchen Shelf Light', 'Switch')
 
 const toilet = items.addItem({
   type: 'Group',
@@ -398,7 +398,8 @@ const toilet = items.addItem({
   tags: ['Bathroom']
 })
 provideHvac(toilet)
-provideLight(toilet, 'Downlight')
+provideLight(toilet, 'Downlight', 'Toilet_CeilingLight', 'Toilet Ceiling Light')
+provideLight(toilet, 'LightStripe', 'Toilet_MirrorLight', 'Toilet Mirror Light', 'Switch')
 
 // First Floor ---------------------------------------------------------------------------------------------------------
 const firstFloor = items.addItem({
@@ -433,7 +434,8 @@ const office = items.addItem({
 provideHvac(office, true)
 provideSpeaker(office, true)
 provideWindow(office)
-provideLight(office, 'Downlight')
+provideLight(office, 'Downlight', 'Office_CeilingLight', 'Office Ceiling Light')
+provideLight(office, 'Chandelier', 'Office_DeskLight', 'Office Desk Light', 'Switch')
 
 const bathroom = items.addItem({
   type: 'Group',
