@@ -99,7 +99,7 @@ items:
     dimension: Energy
     label: Monthly Consumption
     icon: iconify:lucide:house
-    format: '%.2f %unit%'
+    format: '%.0f %unit%'
     unit: kWh
     groups:
       - gEMS
@@ -123,7 +123,7 @@ items:
     dimension: Energy
     label: Monthly Self-Consumption
     icon: iconify:lucide:house
-    format: '%.2f %unit%'
+    format: '%.0f %unit%'
     unit: kWh
     groups:
       - gEMS
@@ -147,7 +147,7 @@ items:
     dimension: Energy
     label: Monthly Grid Consumption
     icon: iconify:lucide:utility-pole
-    format: '%.2f %unit%'
+    format: '%.0f %unit%'
     unit: kWh
     groups:
       - gEMS
@@ -171,7 +171,7 @@ items:
     dimension: Energy
     label: Monthly Grid Feed-In
     icon: iconify:lucide:utility-pole
-    format: '%.2f %unit%'
+    format: '%.0f %unit%'
     unit: kWh
     groups:
       - gEMS
