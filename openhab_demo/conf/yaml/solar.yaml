@@ -32,7 +32,7 @@ items:
       - gSolar
       - Solar_Power_Total
     tags:
-      - Forecast
+      - Measurement
       - Power
     channels:
       solarforecast:fs-plane:local:east:power-actual:
@@ -49,7 +49,7 @@ items:
       - gSolar
       - Solar_Power_Total
     tags:
-      - Forecast
+      - Measurement
       - Power
     channels:
       solarforecast:fs-plane:local:west:power-actual:
