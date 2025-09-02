@@ -6,7 +6,7 @@ const { items, rules, Quantity, time } = require('openhab')
 
 // Give the rules 60 seconds to update all states by triggering 60 seconds before persistence stores the states
 const CRON_BEFORE_EOD_PERSIST = '0 58 23 ? * * *'
-const CRON_BEFORE_EOM_PERSIST = '0 58 23 L * * *'
+const CRON_BEFORE_EOM_PERSIST = '0 57 23 L * * *' // run before EOD to make sure today's value not counted twice
 
 const BATTERY_CAPACITY = Quantity('10 kWh')
 const STEP_SECONDS = 15
@@ -43,39 +43,7 @@ rules.when()
     const random = base + (150 - Math.random() * 300)
     loadPower.postUpdate(Quantity(random + ' W'))
   })
-  .build('Set random load power', '', ['EMS'])
-
-// ---------------------------------------------------------------------------------------------------------------------
-// Consumption Calculation Rules
-// ---------------------------------------------------------------------------------------------------------------------
-rules.when()
-  .system().startLevel(100)
-  .or().cron('0 */15 * * * ? *')
-  .or().cron(CRON_BEFORE_EOD_PERSIST)
-  .then(() => {
-    const begin = time.toZDT().withHour(0).withMinute(0).withSecond(0)
-    const end = time.toZDT()
-    // Use RiemannType.MIDPOINT approximation, see https://github.com/openhab/openhab-core/pull/4461#issue-2682710626
-    const consumption = loadPower.persistence.riemannSumBetween(begin, end, items.RiemannType.MIDPOINT)?.quantityState
-    if (!consumption) return
-    consumptionDay.postUpdate(consumption)
-  })
-  .build('Calculate daily consumption', '', ['EMS'])
-
-rules.when()
-  .system().startLevel(100)
-  .or().cron('0 */15 * * * ? *')
-  .or().cron(CRON_BEFORE_EOM_PERSIST)
-  .then(() => {
-    const begin = time.toZDT().withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0)
-    const end = time.toZDT()
-    // Use RiemannType.MIDPOINT approximation, see https://github.com/openhab/openhab-core/pull/4461#issue-2682710626
-    const consumption = consumptionDay.persistence.sumBetween(begin, end)?.quantityState
-    if (!consumption) return
-    if (!consumptionDay.quantityState) return
-    consumptionMonth.postUpdate(consumption.add(consumptionDay.quantityState))
-  })
-  .build('Calculate monthly consumption', '', ['EMS'])
+  .build('Load Simulation', '', ['EMS'])
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Battery Simulation Rule
@@ -132,3 +100,74 @@ rules.when()
     gridPower.postUpdate(gridP)       // +W import, -W export
   })
   .build('Battery Simulation', '', ['EMS'])
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Energy Calculation Rules
+// ---------------------------------------------------------------------------------------------------------------------
+/**
+ * Calculates the daily amount of energy from the power value using the Riemann Sum.
+ * @param {items.Item} power the Item providing the power value
+ * @param {items.Item} plusDay the Item to send the energy value to, if energy >= 0 kWh
+ * @param {items.Item} [minusDay] the optional Item to send the energy value to, if energy < 0 kWh
+ */
+function createDailyEnergyCalculationRule (power, plusDay, minusDay) {
+  rules.when()
+    .system().startLevel(100)
+    .or().cron('0 */15 * * * ? *')
+    .or().cron(CRON_BEFORE_EOD_PERSIST)
+    .then(() => {
+      const begin = time.toZDT().withHour(0).withMinute(0).withSecond(0)
+      const end = time.toZDT()
+      // Use RiemannType.MIDPOINT approximation, see https://github.com/openhab/openhab-core/pull/4461#issue-2682710626
+      const energy = power.persistence.riemannSumBetween(begin, end, items.RiemannType.MIDPOINT)?.quantityState
+      if (!energy) return
+      if (energy.greaterThanOrEqual('0 kWh')) {
+        plusDay.postUpdate(energy)
+        if (minusDay && minusDay.isUninitialized) minusDay.postUpdate('0 kWh')
+      } else if (minusDay) {
+        if (plusDay.isUninitialized) plusDay.postUpdate('0 kWh')
+        minusDay.postUpdate(energy.multiply('-1'))
+      }
+    }).build(`Calculate ${plusDay.label}${minusDay ? ' and ' + minusDay.label : ''}`, '', ['EMS'])
+}
+
+/**
+ * Calculates the monthly amount of energy by summarizing all persisted daily values of this month and today's value.
+ * @param {items.Item} daily the Item of the daily energy values
+ * @param {items.Item} monthly the Item for the monthly energy values
+ */
+function createMonthlyEnergyCalculationRule (daily, monthly) {
+  rules.when()
+    .system().startLevel(100)
+    .or().cron('0 */15 * * * ? *')
+    .or().cron(CRON_BEFORE_EOM_PERSIST)
+    .then(() => {
+      const begin = time.toZDT().withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0)
+      const end = time.toZDT()
+      // Use RiemannType.MIDPOINT approximation, see https://github.com/openhab/openhab-core/pull/4461#issue-2682710626
+      let total = daily.persistence.sumBetween(begin, end)?.quantityState
+      if (!total) return
+      if (!daily.quantityState) return
+      monthly.postUpdate(total.add(consumptionDay.quantityState))
+    })
+    .build(`Calculate ${monthly.label}`, '', ['EMS'])
+}
+
+createDailyEnergyCalculationRule(loadPower, consumptionDay)
+createDailyEnergyCalculationRule(gridPower, gridConsumptionDay, feedInDay)
+
+rules.when()
+  .system().startLevel(100)
+  .or().cron('0 */15 * * * ? *')
+  .or().cron(CRON_BEFORE_EOD_PERSIST)
+  .then(() => {
+    const production = solarProductionDay.quantityState
+    const feedIn = feedInDay.quantityState
+    const selfConsumption = production.subtract(feedIn)
+    selfConsumptionDay.postUpdate(selfConsumption)
+  }).build('Calculate daily self-consumption', '', ['EMS'])
+
+createMonthlyEnergyCalculationRule(consumptionDay, consumptionMonth)
+createMonthlyEnergyCalculationRule(selfConsumptionDay, selfConsumptionMonth)
+createMonthlyEnergyCalculationRule(gridConsumptionDay, gridConsumptionMonth)
+createMonthlyEnergyCalculationRule(feedInDay, feedInMonth)
