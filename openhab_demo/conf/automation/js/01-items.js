@@ -516,20 +516,3 @@ const garden = items.addItem({
   category: 'garden',
   tags: ['Garden']
 })
-
-// Miscellaneous -------------------------------------------------------------------------------------------------------
-const owm = items.addItem({
-  type: 'Group',
-  name: 'gOWM',
-  label: 'Open Weather Map Berlin',
-  category: 'sun_clouds',
-  tags: ['WeatherService']
-})
-items.addItem({
-  type: 'String',
-  name: 'OWM_OneCall_JSON',
-  groups: [owm.name],
-  channels: {
-    [`${REMOTE_OH_THING_UID}:OneCall_JSON`]: {}
-  }
-})

@@ -1,0 +1,64 @@
+version: 1
+items:
+  # Group Items:
+  gOWM:
+    type: Group
+    label: Open Weather Map Berlin
+    icon: sun_clouds
+    tags:
+      - WeatherService
+  # JSON Item:
+  OWM_OneCall_JSON:
+    type: String
+    groups:
+      - gOWM
+    channel: remoteopenhab:server:mock:OneCall_JSON
+  # Current Items
+  OneCall_Current_Temperature:
+    type: Number
+    dimension: Temperature
+    label: Temperatur
+    icon: temperature
+    tags:
+      - Measurement
+      - Temperature
+    format: '%.1f °C'
+    unit: °C
+    groups:
+      - gOWM
+    channel: remoteopenhab:server:mock:OneCall_Current_Temperature
+  OneCall_Current_Windspeed:
+    type: Number
+    dimension: Speed
+    label: Windgeschwindigkeit
+    icon: wind
+    tags:
+      - Measurement
+      - Wind
+    format: '%.1f m/s'
+    unit: km/h
+    groups:
+      - gOWM
+    channel: remoteopenhab:server:mock:OneCall_Current_Windspeed
+  OneCall_Current_Humidity:
+    type: Number
+    dimension: Dimensionless
+    label: Luftfeuchtigkeit
+    icon: humidity
+    tags:
+      - Measurement
+      - Humidity
+    format: '%d %%'
+    unit: '%'
+    groups:
+      - gOWM
+    channel: remoteopenhab:server:mock:OneCall_Current_Humidity
+  OneCall_Current_Condition:
+    type: String
+    label: Wolken
+    icon: sun_clouds
+    tags:
+      - Measurement
+    groups:
+      - gOWM
+    channel: remoteopenhab:server:mock:OneCall_Current_Condition
