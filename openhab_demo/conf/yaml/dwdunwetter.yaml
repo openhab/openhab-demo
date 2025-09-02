@@ -4,3 +4,54 @@ things:
     label: DWD Unwetter Warnungen Berlin
     config:
       cellId: 111000000
+
+items:
+  gWeather_Warning1:
+    type: Group
+    label: DWD Weather Warning
+    tags:
+      - WeatherService
+  Weather_Warning1_Active:
+    type: Switch
+    label: Warning
+    icon: alarm
+    groups:
+      - gWeather_Warning1
+    tags:
+      - Alarm
+    channel: dwdunwetter:dwdwarnings:berlin:warning1
+    metadata:
+      stateDescription:
+        value: ''
+        config:
+          options: 'ON=warning,OFF=no warning'
+  Weather_Warning1_Headline:
+    type: String
+    label: Headline
+    icon: text
+    groups:
+      - gWeather_Warning1
+    tags:
+      - Alarm
+      - Info
+    channel: dwdunwetter:dwdwarnings:berlin:headline1
+  Weather_Warning1_Description:
+    type: String
+    label: Description
+    icon: text
+    groups:
+      - gWeather_Warning1
+    tags:
+      - Alarm
+      - Info
+    channel: dwdunwetter:dwdwarnings:berlin:description1
+  Weather_Warning1_Severity:
+    type: String
+    label: Severity
+    icon: text
+    groups:
+      - gWeather_Warning1
+    tags:
+      - Point
+    channel: dwdunwetter:dwdwarnings:berlin:severity1
+

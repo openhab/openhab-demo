@@ -1,0 +1,9 @@
+0=no pollen pollution
+0-1=no to low pollen count
+1=low pollen count
+1-2=low to medium pollen count
+2=medium pollen count
+2-3=medium to high pollen count
+3=high pollen count
+-1=not specified
+=unknown

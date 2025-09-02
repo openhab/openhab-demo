@@ -7,3 +7,38 @@ things:
     label: DWD Pollen Count Index Berlin
     config:
       regionID: 50
+
+items:
+  gPollen_Count:
+    type: Group
+    label: DWD Pollen Count
+    tags:
+      - WeatherService
+  Pollen_Count_Birch:
+    type: String
+    label: Birch Pollen
+    icon: garden
+    groups:
+      - gPollen_Count
+    tags:
+      - Measurement
+    channel: dwdpollenflug:region:dwd:berlin:birch#today
+    metadata:
+      stateDescription:
+        value: ''
+        config:
+          pattern: MAP(pollencount.map):%s
+  Pollen_Count_Grasses:
+    type: String
+    label: Grasses Pollen
+    icon: lawnmower
+    groups:
+      - gPollen_Count
+    tags:
+      - Measurement
+    channel: dwdpollenflug:region:dwd:berlin:grasses#today
+    metadata:
+      stateDescription:
+        value: ''
+        config:
+          pattern: MAP(pollencount.map):%s
