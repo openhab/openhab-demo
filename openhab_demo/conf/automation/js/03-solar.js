@@ -1,13 +1,23 @@
 const { items, rules, time } = require('openhab')
 
+// ---------------------------------------------------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------------------------------------------------
+
 // Give the rules 60 seconds to update all states by triggering 60 seconds before persistence stores the states
 const CRON_BEFORE_EOD_PERSIST = '0 58 23 ? * * *'
 const CRON_BEFORE_EOM_PERSIST = '0 58 23 L * * *'
 
+// ---------------------------------------------------------------------------------------------------------------------
+// Items
+// ---------------------------------------------------------------------------------------------------------------------
 const power = items.getItem('Solar_Power_Total')
 const energyDay = items.getItem('Solar_Production_Day')
 const energyMonth = items.getItem('Solar_Production_Month')
 
+// ---------------------------------------------------------------------------------------------------------------------
+// Production Calculation Rules
+// ---------------------------------------------------------------------------------------------------------------------
 rules.when()
   .system().startLevel(100)
   .or().item(power.name).changed()

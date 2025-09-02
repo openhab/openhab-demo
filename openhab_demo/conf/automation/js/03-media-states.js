@@ -1,6 +1,9 @@
 const { actions, items, rules } = require('openhab')
 const HttpUtil = Java.type('org.openhab.core.io.net.http.HttpUtil')
 
+// ---------------------------------------------------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------------------------------------------------
 const MOCK_DATA = [
   { artist: 'Eminem', album: 'Curtain Call: The Hits', song: 'Mockingbird', coverUrl: '/static/cover/CurtainCall.jpg' },
   { artist: 'Macklemore & Ryan Lewis', album: 'The Heist', song: 'Can\' Hold Us (feat. Ray Dalton)', coverUrl: '/static/cover/TheHeist.png' },
@@ -10,7 +13,15 @@ const MOCK_DATA = [
   { artist: 'Phil Collins', album: 'Face Value', song: 'In the Air Tonight', coverUrl: '/static/cover/ForceValue.webp' }
 ]
 
-function mockSpeakerPlayback (prefix, initialIndex = 0) {
+// ---------------------------------------------------------------------------------------------------------------------
+// Speaker Playback Simulation Rules
+// ---------------------------------------------------------------------------------------------------------------------
+/**
+ * Creates a playback simulation.
+ * @param {string} prefix the prefix of the playback Items
+ * @param {number} [initialIndex=0] initial index for selecting a dataset from {@link #MOCK_DATA}
+ */
+function createSpeakerPlaybackSimulation (prefix, initialIndex = 0) {
   const powerItem = items.getItem(prefix + '_Power')
   const playbackItem = items.getItem(prefix + '_Playback')
   const artistItem = items.getItem(prefix + '_Artist')
@@ -70,12 +81,12 @@ function mockSpeakerPlayback (prefix, initialIndex = 0) {
             break
         }
       }
-    }).build(`Mock playback for ${prefix}`)
+    }).build(`Playback Simulation for ${prefix}`)
 
   // Automatically switch song regularly
   interval = createUpdateItemsInterval()
 }
 
-mockSpeakerPlayback('LivingRoom_Speaker')
-mockSpeakerPlayback('Kitchen_Speaker', 1)
-mockSpeakerPlayback('Office_Speaker', 2)
+createSpeakerPlaybackSimulation('LivingRoom_Speaker')
+createSpeakerPlaybackSimulation('Kitchen_Speaker', 1)
+createSpeakerPlaybackSimulation('Office_Speaker', 2)
