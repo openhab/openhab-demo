@@ -1,0 +1,190 @@
+version: 1
+things:
+  # Bridge is defined through the UI to keep out the API key from the repository
+  openweathermap:onecall:bridge:local:
+    bridge: openweathermap:weather-api:bridge
+    label: OWM Local Weather and Forecast
+    config:
+      location: "52.516283804703384,13.377661883415065"
+      forecastHours: 24
+      forcastDays: 6
+
+items:
+  # Group Item:
+  gOWM_TimeSeries:
+    type: Group
+    groups:
+      - gOWM
+  # JSON String:
+  OneCall_JSON:
+    type: String
+  # Current Values:
+  OneCall_Current_ApparentTemperature:
+    type: Number
+    dimension: Temperature
+    label: Gefühlte Temperatur
+    icon: temperature
+    format: '%.1f °C'
+    unit: °C
+    groups:
+      - gOWM
+    channel: openweathermap:onecall:bridge:local:current#apparent-temperature
+  OneCall_Current_Humidity:
+    type: Number
+    dimension: Dimensionless
+    label: Luftfeuchtigkeit
+    icon: humidity
+    format: '%d %%'
+    unit: '%'
+    groups:
+      - gOWM
+    channel: openweathermap:onecall:bridge:local:current#humidity
+  OneCall_Current_IconId:
+    type: String
+    groups:
+      - gOWM
+    channel: openweathermap:onecall:bridge:local:current#icon-id
+  gOWM:
+    type: Group
+    label: OpenWeatherMap Current Weather & Forecast
+  OneCall_Current_Sunrise:
+    type: DateTime
+    label: Sonnenaufgang
+    icon: time
+    format: '%1$tH:%1$tM'
+    groups:
+      - gOWM
+    channel: openweathermap:onecall:bridge:local:current#sunrise
+  OneCall_Current_Sunset:
+    type: DateTime
+    label: Sonnenuntergang
+    icon: time
+    format: '%1$tH:%1$tM'
+    groups:
+      - gOWM
+    channel: openweathermap:onecall:bridge:local:current#sunset
+  OneCall_Current_Temperature:
+    type: Number
+    dimension: Temperature
+    label: Temperatur
+    icon: temperature
+    format: '%.1f °C'
+    unit: °C
+    groups:
+      - gOWM
+    channel: openweathermap:onecall:bridge:local:current#temperature
+  OneCall_Current_Windspeed:
+    type: Number
+    dimension: Speed
+    label: Windgeschwindigkeit
+    icon: wind
+    format: '%.1f m/s'
+    unit: km/h
+    groups:
+      - gOWM
+    channel: openweathermap:onecall:bridge:local:current#wind-speed
+  OneCall_Current_Condition:
+    type: String
+    label: Wolken
+    icon: sun_clouds
+    groups:
+      - gOWM
+    channel: openweathermap:onecall:bridge:local:current#condition
+  # Hourly Forecast:
+  OneCall_Forecast_Hourly_Cloudiness:
+    type: Number
+    dimension: Dimensionless
+    label: Bewölkung
+    icon: sun_clouds
+    format: '%d %%'
+    unit: '%'
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastHourly#cloudiness
+  OneCall_Forecast_Hourly_PrecipitationProbability:
+    type: Number
+    dimension: Dimensionless
+    label: Niederschlagswahrscheinlichkeit
+    icon: rain
+    format: '%d %%'
+    unit: '%'
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastHourly#precip-probability
+  OneCall_Forecast_Hourly_IconId:
+    type: String
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastHourly#icon-id
+  OneCall_Forecast_Hourly_Temperature:
+    type: Number
+    dimension: Temperature
+    label: Temperatur
+    icon: temperature
+    format: '%.1f °C'
+    unit: °C
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastHourly#temperature
+  # Daily Forecast:
+  OneCall_Forecast_Daily_Cloudiness:
+    type: Number
+    dimension: Dimensionless
+    label: Bewölkung
+    icon: sun_clouds
+    format: '%d %%'
+    unit: '%'
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastDaily#cloudiness
+  OneCall_Forecast_Daily_MaxTemperature:
+    type: Number
+    dimension: Temperature
+    label: Max. Temperatur
+    icon: temperature
+    format: '%.1f °C'
+    unit: °C
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastDaily#max-temperature
+  OneCall_Forecast_Daily_MinTemperature:
+    type: Number
+    dimension: Temperature
+    label: Min. Temperatur
+    icon: temperature
+    format: '%.1f °C'
+    unit: °C
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastDaily#min-temperature
+  OneCall_Forecast_Daily_PrecipitationProbability:
+    type: Number
+    dimension: Dimensionless
+    label: Niederschlagswahrscheinlichkeit
+    icon: rain
+    format: '%d %%'
+    unit: '%'
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastDaily#precip-probability
+  OneCall_Forecast_Daily_IconId:
+    type: String
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastDaily#icon-id
+  OneCall_Forecast_Daily_Sunrise:
+    type: DateTime
+    label: Sonnenaufgang
+    icon: time
+    format: '%1$tH:%1$tM'
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastDaily#sunrise
+  OneCall_Forecast_Daily_Sunset:
+    type: DateTime
+    label: Sonnenuntergang
+    icon: time
+    format: '%1$tH:%1$tM'
+    groups:
+      - gOWM_TimeSeries
+    channel: openweathermap:onecall:bridge:local:forecastDaily#sunset
