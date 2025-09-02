@@ -1,7 +1,5 @@
 const { items } = require('openhab')
 
-const REMOTE_OH_THING_UID = 'remoteopenhab:server:mock'
-
 // Non-semantic Function Groups ----------------------------------------------------------------------------------------
 const lights = items.addItem({
   type: 'Group',
@@ -323,9 +321,10 @@ function provideLight (room, type, name, label, itemType = 'Dimmer') {
  * <p>A corridor contains a down-light and HVAC Items.
  *
  * @param {items.Item} floor the floor to add the corridor to
+ * @param {boolean} [withHvac=true] whether to include HVAC
  * @returns {items.Item} the corridor Item
  */
-function provideCorridor (floor) {
+function provideCorridor (floor, withHvac = true) {
   const corridor = items.addItem({
     type: 'Group',
     name: floor.name + '_Corridor',
@@ -336,19 +335,50 @@ function provideCorridor (floor) {
   })
   const baseName = floor.name.substring(1) + '_Corridor'
   provideLight(corridor, 'Downlight', baseName + '_Light', undefined, 'Switch')
-  provideHvac(corridor)
+  if (withHvac) provideHvac(corridor)
   return corridor
 }
 
-// Cellar --------------------------------------------------------------------------------------------------------------
+// Basement ------------------------------------------------------------------------------------------------------------
+const basement = items.addItem({
+  type: 'Group',
+  name: 'gBasement',
+  label: 'Basement',
+  category: 'cellar',
+  tags: ['Basement']
+})
+provideCorridor(basement, false)
+
+const laundryRoom = items.addItem({
+  type: 'Group',
+  name: 'gLaundryRoom',
+  label: 'Laundry Room',
+  category: 'washingmachine',
+  groups: [basement.name],
+  tags: ['LaundryRoom']
+})
+provideLight(laundryRoom, 'Lightbulb', undefined, undefined, 'Switch')
+
+const utilityRoom = items.addItem({
+  type: 'Group',
+  name: 'gUtilityRoom',
+  label: 'Utility Room',
+  category: 'softener',
+  groups: [basement.name],
+  tags: ['Room']
+})
+provideLight(utilityRoom, 'Lightbulb', undefined, undefined, 'Switch')
+
 const cellar = items.addItem({
   type: 'Group',
   name: 'gCellar',
   label: 'Cellar',
   category: 'cellar',
-  tags: ['Basement']
+  groups: [basement.name],
+  tags: ['Cellar']
 })
-provideCorridor(cellar)
+provideHvac(cellar)
+provideLight(cellar, 'Downlight', undefined, undefined, 'Switch')
 
 // Ground Floor --------------------------------------------------------------------------------------------------------
 const groundFloor = items.addItem({
