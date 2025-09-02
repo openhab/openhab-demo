@@ -76,7 +76,7 @@ items:
     dimension: Energy
     label: Todays Energy Forecast
     icon: solarplant
-    format: '%.3f %unit%'
+    format: '%.2f %unit%'
     unit: kWh
     groups:
       - gSolar_Forecast

@@ -55,3 +55,28 @@ items:
       solarforecast:fs-plane:local:west:power-actual:
         profile: transform:JS
         toItemScript: randomness.js?scale=0.2
+  # Calculated values:
+  Solar_Production_Day:
+    type: Number
+    dimension: Energy
+    label: Daily Production
+    icon: solarplant
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gSolar
+    tags:
+      - Measurement
+      - Energy
+  Solar_Production_Month:
+    type: Number
+    dimension: Energy
+    label: Monthly Production
+    icon: solarplant
+    format: '%.2f %unit%'
+    unit: kWh
+    groups:
+      - gSolar
+    tags:
+      - Measurement
+      - Energy
