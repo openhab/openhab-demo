@@ -6,10 +6,10 @@ const lights = items.addItem({
   name: 'gLights',
   label: 'Lights'
 })
-const rollerShutters = items.addItem({
+const shutters = items.addItem({
   type: 'Group',
-  name: 'gRollershutters',
-  label: 'Rollershutters'
+  name: 'gShutters',
+  label: 'Shutters'
 })
 const windows = items.addItem({
   type: 'Group',
@@ -52,6 +52,7 @@ function getBaseNameFromGroup (group) {
  * Provides HVAC Items.
  * @param {items.Item} room the room to provide for
  * @param {boolean} [withAc=false] whether to include AC Items
+ * @returns {items.Item} the HVAC group Item
  */
 function provideHvac (room, withAc = false) {
   const hvac = items.addItem({
@@ -112,12 +113,14 @@ function provideHvac (room, withAc = false) {
     })
     cooling.postUpdate('OFF')
   }
+  return hvac
 }
 
 /**
  * Provides speaker Items.
  * @param {items.Item} room the room to provide for
  * @param {boolean} [withPlaybackControl=false] whether to include playback control Items, requires mock data from the remote openHAB server
+ * @returns {items.Item} the speaker group Item
  */
 function provideSpeaker (room, withPlaybackControl = false) {
   const speaker = items.addItem({
@@ -209,12 +212,13 @@ function provideSpeaker (room, withPlaybackControl = false) {
       tags: ['Status', 'MediaControl']
     })
   }
+  return speaker
 }
 
 /**
  * Provides a window Item.
  * @param {items.Item} room the room to provide for
- * @returns {items.Item} the window Item
+ * @returns {items.Item} the window group Item
  */
 function provideWindow (room) {
   const baseName = getBaseNameFromGroup(room)
@@ -243,6 +247,7 @@ function provideWindow (room) {
  * @param {items.Item} room the room to provide for
  * @param {string} type the type of the door, e.g. `FrontDoor` or `BackDoor`
  * @param {string} label the label for the door
+ * @return {items.Item} the door group Item
  */
 function provideDoor (room, type, label) {
   const door = items.addItem({
@@ -289,6 +294,7 @@ function provideDoor (room, type, label) {
  * @param {string} [name] optional name override
  * @param {string} [label] optional label override
  * @param {string} [itemType=Dimmer] the type of the Item
+ * @returns {items.Item} the light Item
  */
 function provideLight (room, type, name, label, itemType = 'Dimmer') {
   const baseName = getBaseNameFromGroup(room)
@@ -313,6 +319,27 @@ function provideLight (room, type, name, label, itemType = 'Dimmer') {
   } else {
     light.postUpdate('OFF')
   }
+  return light
+}
+
+/**
+ * Provide a shutter Item.
+ * @param {items.Item} room the room to provide for
+ * @param {string} [name] optional name override
+ * @param {string} [label] optional label override
+ * @returns {items.Item} the shutter Item
+ */
+function provideShutter (room, name, label) {
+  const shutter = items.addItem({
+    type: 'Rollershutter',
+    name: getBaseNameFromGroup(room) + '_Shutter',
+    label: label ?? room.label + ' Shutter',
+    category: 'rollershutter',
+    groups: [room.name, shutters.name],
+    tags: ['Blinds']
+  })
+  shutter.postUpdate('0')
+  return shutter
 }
 
 /**
@@ -402,6 +429,7 @@ const livingRoom = items.addItem({
 provideHvac(livingRoom, true)
 provideSpeaker(livingRoom, true)
 provideWindow(livingRoom)
+provideShutter(livingRoom)
 provideLight(livingRoom, 'LightStripe', 'LivingRoom_CeilingLight', 'Living Room Ceiling Light')
 provideLight(livingRoom, 'AccentLight', 'LivingRoom_FloorLamp', 'Living Room Floor Lamp', 'Color')
 
@@ -416,6 +444,7 @@ const kitchen = items.addItem({
 provideHvac(kitchen)
 provideSpeaker(kitchen, true)
 provideWindow(kitchen)
+provideShutter(kitchen)
 provideLight(kitchen, 'LightStripe', 'Kitchen_CeilingLight', 'Kitchen Ceiling Light')
 provideLight(kitchen, 'LightStripe', 'Kitchen_ShelfLight', 'Kitchen Shelf Light', 'Switch')
 
@@ -451,6 +480,7 @@ const bedroom = items.addItem({
 })
 provideHvac(bedroom, true)
 provideWindow(bedroom)
+provideShutter(bedroom)
 provideLight(bedroom, 'Downlight')
 
 const office = items.addItem({
@@ -464,6 +494,7 @@ const office = items.addItem({
 provideHvac(office, true)
 provideSpeaker(office, true)
 provideWindow(office)
+provideShutter(office)
 provideLight(office, 'Downlight', 'Office_CeilingLight', 'Office Ceiling Light')
 provideLight(office, 'Chandelier', 'Office_DeskLight', 'Office Desk Light', 'Switch')
 
@@ -477,6 +508,7 @@ const bathroom = items.addItem({
 })
 provideHvac(bathroom)
 provideWindow(bathroom)
+provideShutter(bathroom)
 provideLight(bathroom, 'Downlight')
 
 const guests = items.addItem({
@@ -489,6 +521,7 @@ const guests = items.addItem({
 })
 provideHvac(guests, true)
 provideWindow(guests)
+provideShutter(guests)
 provideLight(guests, 'Downlight')
 
 // Second Floor --------------------------------------------------------------------------------------------------------
@@ -511,6 +544,7 @@ const child1 = items.addItem({
 })
 provideHvac(child1, true)
 provideWindow(child1)
+provideShutter(child1)
 provideLight(child1, 'Downlight', 'Child1_CeilingLight', 'Oliver Ceiling Light')
 provideLight(child1, 'LightStripe', 'Child1_LightStripe', 'Oliver Light Stripe', 'Color')
 
@@ -524,6 +558,7 @@ const child2 = items.addItem({
 })
 provideHvac(child2, true)
 provideWindow(child2)
+provideShutter(child2)
 provideLight(child2, 'Downlight', 'Child2_CeilingLight', 'Amelia Ceiling Light')
 provideLight(child2, 'LightStripe', 'Child2_LightStripe', 'Amelia Light Stripe', 'Color')
 
