@@ -1,0 +1,6 @@
+Strategies {
+  everyMinute: "0 * * * * ? *"
+}
+
+Items {
+}
