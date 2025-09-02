@@ -10,7 +10,10 @@ things:
       forcastDays: 6
 
 items:
-  # Group Item:
+  # Group Items:
+  gOWM:
+    type: Group
+    label: OpenWeatherMap Current Weather & Forecast
   gOWM_TimeSeries:
     type: Group
     groups:
@@ -44,9 +47,6 @@ items:
     groups:
       - gOWM
     channel: openweathermap:onecall:bridge:local:current#icon-id
-  gOWM:
-    type: Group
-    label: OpenWeatherMap Current Weather & Forecast
   OneCall_Current_Sunrise:
     type: DateTime
     label: Sonnenaufgang
