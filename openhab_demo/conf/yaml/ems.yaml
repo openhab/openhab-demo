@@ -1,0 +1,65 @@
+version: 1
+
+tags:
+  Equipment_EnergyManagementSystem:
+    label: EMS
+    description: The equipment representing an energy management system.
+    synonyms:
+      - Energy Management System
+
+items:
+  gEMS:
+    type: group
+    label: Energy Management System
+    icon: energy
+    tags:
+      - EnergyManagementSystem
+  EMS_Solar_Power:
+    type: Group
+    group:
+      type: Number
+      dimension: Power
+      function: SUM
+    label: Solar Power
+    icon: solarplant
+    format: '%.0f W'
+    unit: kW
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Power
+  # Calculated/Faked values
+  EMS_Load_Power:
+    type: Number
+    dimension: Power
+    label: Load Power
+    format: '%.0f W'
+    unit: kW
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Power
+  EMS_Battery_Power:
+    type: Number
+    dimension: Power
+    label: Battery Power
+    format: '%.0f W'
+    unit: kW
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Power
+  EMS_Grid_Power:
+    type: Number
+    dimension: Power
+    label: Grid Power
+    format: '%.0f W'
+    unit: kW
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Power
