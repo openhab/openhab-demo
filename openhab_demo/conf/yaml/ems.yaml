@@ -19,6 +19,7 @@ items:
     type: Number
     dimension: Power
     label: Load Power
+    icon: iconify:lucide:house
     format: '%.0f W'
     unit: kW
     groups:
@@ -34,6 +35,7 @@ items:
       dimension: Power
       function: SUM
     label: Solar Power
+    icon: iconify:material-symbols-light:solar-power-rounded
     format: '%.0f W'
     unit: kW
     groups:
@@ -42,10 +44,11 @@ items:
       - Measurement
       - Power
   # Calculated power values:
-  EMS_Battery_Power:
+  EMS_Grid_Power:
     type: Number
     dimension: Power
-    label: Battery Power
+    label: Grid Power
+    icon: iconify:lucide:utility-pole
     format: '%.0f W'
     unit: kW
     groups:
@@ -53,10 +56,11 @@ items:
     tags:
       - Measurement
       - Power
-  EMS_Grid_Power:
+  EMS_Battery_Power:
     type: Number
     dimension: Power
-    label: Grid Power
+    label: Battery Power
+    icon: iconify:lucide:battery-charging
     format: '%.0f W'
     unit: kW
     groups:
@@ -69,6 +73,7 @@ items:
     type: Number
     dimension: Dimensionless
     label: Battery SoC
+    icon: iconify:lucide:battery-charging
     format: '%d %unit%'
     unit: '%'
     groups:
@@ -81,6 +86,7 @@ items:
     type: Number
     dimension: Energy
     label: Daily Consumption
+    icon: iconify:lucide:house
     format: '%.2f %unit%'
     unit: kWh
     groups:
@@ -92,6 +98,7 @@ items:
     type: Number
     dimension: Energy
     label: Monthly Consumption
+    icon: iconify:lucide:house
     format: '%.2f %unit%'
     unit: kWh
     groups:
@@ -103,6 +110,7 @@ items:
     type: Number
     dimension: Energy
     label: Daily Self-Consumption
+    icon: iconify:lucide:house
     format: '%.2f %unit%'
     unit: kWh
     groups:
@@ -114,6 +122,7 @@ items:
     type: Number
     dimension: Energy
     label: Monthly Self-Consumption
+    icon: iconify:lucide:house
     format: '%.2f %unit%'
     unit: kWh
     groups:
@@ -125,6 +134,7 @@ items:
     type: Number
     dimension: Energy
     label: Daily Grid Consumption
+    icon: iconify:lucide:utility-pole
     format: '%.2f %unit%'
     unit: kWh
     groups:
@@ -136,6 +146,7 @@ items:
     type: Number
     dimension: Energy
     label: Monthly Grid Consumption
+    icon: iconify:lucide:utility-pole
     format: '%.2f %unit%'
     unit: kWh
     groups:
@@ -147,6 +158,7 @@ items:
     type: Number
     dimension: Energy
     label: Daily Grid Feed-In
+    icon: iconify:lucide:utility-pole
     format: '%.2f %unit%'
     unit: kWh
     groups:
@@ -158,6 +170,7 @@ items:
     type: Number
     dimension: Energy
     label: Monthly Grid Feed-In
+    icon: iconify:lucide:utility-pole
     format: '%.2f %unit%'
     unit: kWh
     groups:
