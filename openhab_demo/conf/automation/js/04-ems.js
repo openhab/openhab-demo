@@ -14,7 +14,7 @@ const STEP_SECONDS = 15
 // ---------------------------------------------------------------------------------------------------------------------
 // Items
 // ---------------------------------------------------------------------------------------------------------------------
-const solarPower = items.getItem('Solar_Power_Total')
+const solarPower = items.getItem('EMS_Solar_Power')
 const solarProductionDay = items.getItem('Solar_Production_Day')
 
 const loadPower = items.getItem('EMS_Load_Power')

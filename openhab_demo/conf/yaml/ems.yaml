@@ -26,6 +26,21 @@ items:
     tags:
       - Measurement
       - Power
+  # Summarised from solar plants:
+  EMS_Solar_Power:
+    type: Group
+    group:
+      type: Number
+      dimension: Power
+      function: SUM
+    label: Solar Power
+    format: '%.0f W'
+    unit: kW
+    groups:
+      - gEMS
+    tags:
+      - Measurement
+      - Power
   # Calculated power values:
   EMS_Battery_Power:
     type: Number
