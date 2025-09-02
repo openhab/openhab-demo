@@ -58,13 +58,13 @@ function getBaseNameFromGroup (group) {
 function provideHvac (room, withAc = false) {
   const hvac = items.addItem({
     type: 'Group',
-    name: room.name + 'HVAC',
+    name: room.name + '_HVAC',
     label: room.label + ' HVAC',
     category: 'heating',
     groups: [room.name],
     tags: ['HVAC']
   })
-  const baseName = getBaseNameFromGroup(room)
+  const baseName = getBaseNameFromGroup(hvac)
   items.addItem({
     type: 'Number:Temperature',
     name: baseName + '_Temperature',
@@ -106,11 +106,11 @@ function provideHvac (room, withAc = false) {
   if (withAc) {
     const cooling = items.addItem({
       type: 'Switch',
-      name: baseName + '_Cooling',
-      label: 'Cooling',
+      name: baseName + '_AC',
+      label: 'AC',
       category: 'temperature_cold',
       groups: [hvac.name],
-      tags: ['Switch', 'Airconditioning']
+      tags: ['Control', 'Power']
     })
     cooling.postUpdate('OFF')
   }
@@ -124,20 +124,20 @@ function provideHvac (room, withAc = false) {
 function provideSpeaker (room, withPlaybackControl = false) {
   const speaker = items.addItem({
     type: 'Group',
-    name: room.name + 'Speaker',
+    name: room.name + '_Speaker',
     label: room.label + ' Speaker',
     category: 'soundvolume',
     groups: [room.name, speakers.name],
     tags: ['Speaker']
   })
-  const baseName = getBaseNameFromGroup(room) + '_Speaker'
+  const baseName = getBaseNameFromGroup(speaker)
   const power = items.addItem({
     type: 'Switch',
     name: baseName + '_Power',
     label: 'Power',
     category: 'switch',
     groups: [speaker.name],
-    tags: ['Switch', 'MediaControl']
+    tags: ['Control', 'Power']
   })
   power.postUpdate('OFF')
   const volume = items.addItem({
@@ -222,7 +222,7 @@ function provideWindow (room) {
   const baseName = getBaseNameFromGroup(room)
   const window = items.addItem({
     type: 'Group',
-    name: room.name + 'Window',
+    name: room.name + '_Window',
     label: room.label + ' Window',
     category: 'window',
     groups: [room.name],
@@ -247,27 +247,26 @@ function provideWindow (room) {
  * @param {string} label the label for the door
  */
 function provideDoor (room, type, label) {
-  const baseName = getBaseNameFromGroup(room) + '_' + type
   const door = items.addItem({
     type: 'Group',
-    name: room.name + type,
+    name: room.name + '_' + type,
     label,
     category: type === 'FrontDoor' ? 'frontdoor' : 'door',
     groups: [room.name],
     tags: [type]
   })
-  const state = items.addItem({
+  const contact = items.addItem({
     type: 'Contact',
-    name: baseName + '_Contact',
+    name: getBaseNameFromGroup(door) + '_Contact',
     label: door.label,
     category: type === 'FrontDoor' ? 'frontdoor' : 'door',
     groups: [door.name, doors.name],
     tags: ['OpenState']
   })
-  state.postUpdate('CLOSED')
+  contact.postUpdate('CLOSED')
   const lock = items.addItem({
     type: 'Switch',
-    name: baseName + '_Lock',
+    name: getBaseNameFromGroup(door) + '_Lock',
     label: door.label + ' Lock',
     category: 'lock',
     groups: [door.name, locks.name],
@@ -329,7 +328,7 @@ function provideLight (room, type, name, label, itemType = 'Dimmer') {
 function provideCorridor (floor) {
   const corridor = items.addItem({
     type: 'Group',
-    name: floor.name + 'Corridor',
+    name: floor.name + '_Corridor',
     label: floor.label + ' Corridor',
     category: 'corridor',
     groups: [floor.name],
