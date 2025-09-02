@@ -17,7 +17,7 @@ items:
   OneCall_Current_Temperature:
     type: Number
     dimension: Temperature
-    label: Temperatur
+    label: Temperature
     icon: temperature
     tags:
       - Measurement
@@ -30,7 +30,7 @@ items:
   OneCall_Current_Windspeed:
     type: Number
     dimension: Speed
-    label: Windgeschwindigkeit
+    label: Windspeed
     icon: wind
     tags:
       - Measurement
@@ -43,7 +43,7 @@ items:
   OneCall_Current_Humidity:
     type: Number
     dimension: Dimensionless
-    label: Luftfeuchtigkeit
+    label: Humidity
     icon: humidity
     tags:
       - Measurement
@@ -55,7 +55,7 @@ items:
     channel: remoteopenhab:server:mock:OneCall_Current_Humidity
   OneCall_Current_Condition:
     type: String
-    label: Wolken
+    label: Condition
     icon: sun_clouds
     tags:
       - Measurement
