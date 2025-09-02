@@ -236,7 +236,15 @@ function provideWindow (room) {
     label: room.label + ' Window',
     category: 'window',
     groups: [window.name, windows.name],
-    tags: ['OpenState']
+    tags: ['OpenState'],
+    metadata: {
+      stateDescription: {
+        value: '',
+        config: {
+          options: 'OPEN=open,CLOSED=closed,NULL=undefined,UNDEF=unknown'
+        }
+      }
+    }
   })
   contact.postUpdate('CLOSED')
   return window
