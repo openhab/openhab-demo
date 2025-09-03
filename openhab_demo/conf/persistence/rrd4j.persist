@@ -1,17 +1,9 @@
 Strategies {
   everyMinute: "0 * * * * ? *"
-  everyHour: "0 0 * * * ? *"
-  everyDay: "0 0 0 * * ?"
-  endOfDay: "0 59 23 * * ? *"
-  endOfMonth: "0 59 23 L * ? *"
 }
 
 Items {
   gTemperatures* : strategy = everyChange, everyMinute
   Solar_Power_Total, Solar_Power_East, Solar_Power_West : strategy = everyChange, everyMinute
-  Solar_Production_Day : strategy = endOfDay
-  Solar_Production_Month : strategy = endOfMonth
   EMS_Load_Power, EMS_Battery_Power, EMS_Grid_Power, EMS_Battery_SoC : strategy = everyChange, everyMinute
-  EMS_Consumption_Day, EMS_SelfConsumption_Day, EMS_GridConsumption_Day, EMS_FeedIn_Day : strategy = endOfDay
-  EMS_Consumption_Month, EMS_SelfConsumption_Month, EMS_GridConsumption_Month, EMS_FeedIn_Month: strategy = endOfMonth
 }

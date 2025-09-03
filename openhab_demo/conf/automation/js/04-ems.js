@@ -4,9 +4,9 @@ const { items, rules, Quantity, time } = require('openhab')
 // Constants
 // ---------------------------------------------------------------------------------------------------------------------
 
-// Give the rules 60 seconds to update all states by triggering 60 seconds before persistence stores the states
-const CRON_BEFORE_EOD_PERSIST = '0 58 23 ? * * *'
-const CRON_BEFORE_EOM_PERSIST = '0 57 23 L * * *' // run before EOD to make sure today's value not counted twice
+// Give the rules 55 seconds to update all states by triggering 55 seconds before persistence stores the states
+const CRON_BEFORE_EOD_PERSIST = '0 59 23 ? * * *'
+const CRON_BEFORE_EOM_PERSIST = '0 58 23 L * * *' // run before EOD to make sure today's value not counted twice
 
 const BATTERY_CAPACITY = Quantity('10 kWh')
 const STEP_SECONDS = 15

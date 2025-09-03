@@ -1,0 +1,14 @@
+Strategies {
+  everyMinute: "0 * * * * ? *"
+  everyHour: "0 0 * * * ? *"
+  everyDay: "0 0 0 * * ?"
+  endOfDay: "55 59 23 * * ? *"
+  endOfMonth: "55 59 23 L * ? *"
+}
+
+Items {
+  Solar_Production_Day : strategy = endOfDay
+  Solar_Production_Month : strategy = endOfMonth
+  EMS_Consumption_Day, EMS_SelfConsumption_Day, EMS_GridConsumption_Day, EMS_FeedIn_Day : strategy = endOfDay
+  EMS_Consumption_Month, EMS_SelfConsumption_Month, EMS_GridConsumption_Month, EMS_FeedIn_Month: strategy = endOfMonth
+}
