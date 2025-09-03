@@ -1,6 +1,13 @@
 .idea
 .vscode
 
+# Docker Environment Variables:
+.env*
+
+# InfluxDB:
+influxb/
+
+# openHAB:
 */addons
 */conf/automation/js/node_modules
 */conf/automation/python/lib
