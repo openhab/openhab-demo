@@ -278,7 +278,15 @@ function provideDoor (room, type, label) {
     label: door.label,
     category: type === 'FrontDoor' ? 'frontdoor' : 'door',
     groups: [door.name, doors.name],
-    tags: ['OpenState']
+    tags: ['OpenState'],
+    metadata: {
+      stateDescription: {
+        value: '',
+        config: {
+          options: 'OPEN=open,CLOSED=closed,NULL=undefined,UNDEF=unknown'
+        }
+      }
+    }
   })
   contact.postUpdate('CLOSED')
   const lock = items.addItem({
