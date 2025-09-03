@@ -93,7 +93,7 @@ items:
   Solar_Forecast_Power_Actual_East:
     type: Number
     dimension: Power
-    label: Plane East Power Estimation
+    label: Plane East Power Actual
     icon: solarplant
     format: '%.2f kW'
     unit: kW
@@ -106,7 +106,7 @@ items:
   Solar_Forecast_Power_Actual_West:
     type: Number
     dimension: Power
-    label: Plane West Power Estimation
+    label: Plane West Power Actual
     icon: solarplant
     format: '%.2f kW'
     unit: kW
