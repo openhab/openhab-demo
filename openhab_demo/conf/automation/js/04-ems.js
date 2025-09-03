@@ -156,10 +156,10 @@ function createMonthlyEnergyCalculationRule (daily, monthly) {
       const begin = time.toZDT().withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0)
       const end = time.toZDT()
       // Use RiemannType.MIDPOINT approximation, see https://github.com/openhab/openhab-core/pull/4461#issue-2682710626
-      let total = daily.persistence.sumBetween(begin, end)?.quantityState
-      if (!total) return
-      if (!daily.quantityState) return
-      monthly.postUpdate(total.add(daily.quantityState))
+      const total = daily.persistence.sumBetween(begin, end, 'influxdb')?.quantityState
+      const today = daily.quantityState
+      if (!total && today) monthly.postUpdate(today)
+      if (total && today) monthly.postUpdate(total.add(today))
     })
     .build(`Calculate ${monthly.label}`, '', ['EMS'])
 }
@@ -176,7 +176,7 @@ rules.when()
     const feedIn = feedInDay.quantityState
     const selfConsumption = production.subtract(feedIn)
     selfConsumptionDay.postUpdate(selfConsumption)
-  }).build('Calculate daily self-consumption', '', ['EMS'])
+  }).build('Calculate Daily Self-Consumption', '', ['EMS'])
 
 createMonthlyEnergyCalculationRule(consumptionDay, consumptionMonth)
 createMonthlyEnergyCalculationRule(selfConsumptionDay, selfConsumptionMonth)

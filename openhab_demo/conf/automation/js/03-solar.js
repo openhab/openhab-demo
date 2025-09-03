@@ -40,9 +40,9 @@ rules.when()
     const begin = time.toZDT().withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0)
     const end = time.toZDT()
     // Use RiemannType.MIDPOINT approximation, see https://github.com/openhab/openhab-core/pull/4461#issue-2682710626
-    const production = energyDay.persistence.sumBetween(begin, end)?.quantityState
-    if (!production) return
-    if (!energyDay.quantityState) return
-    energyMonth.postUpdate(production.add(energyDay.quantityState))
+    const total = energyDay.persistence.sumBetween(begin, end, 'influxdb')?.quantityState
+    const today = energyDay.quantityState
+    if (!total && today) energyMonth.postUpdate(today)
+    if (total && today) energyMonth.postUpdate(total.add(today))
   })
   .build('Calculate monthly solar production', '', ['Solar'])
