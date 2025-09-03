@@ -53,12 +53,16 @@ rules.when()
   .system().startLevel(100)
   .or().cron(`*/${STEP_SECONDS} * * ? * * *`) // every STEP_SECOND seconds
   .then(() => {
+    function roundToUnit (qty, unit, decimals = 0) {
+      return Math.round(qty.toUnit(unit).float).toFixed(decimals)
+    }
+
     const solar = solarPower.quantityState ?? Quantity('0 W')
     const load = loadPower.quantityState.multiply('-1') ?? Quantity('0 W')
     let socPercent = batterySoC.numericState ?? 50                    // integer %
     let socEnergy = BATTERY_CAPACITY.multiply(socPercent / 100) // kWh
 
-    console.info(`Battery Simulation - SoC = ${socPercent} %, Stored Energy = ${socEnergy}`)
+    console.info(`Battery Simulation - Current: SoC = ${socPercent} %, Stored Energy = ${socEnergy}`)
 
     const deltaP = solar.subtract(load) // Quantity (W): solar - load
     let battP = Quantity('0 W')   // +W discharging, -W charging
@@ -66,11 +70,11 @@ rules.when()
 
     if (deltaP.greaterThan('0 W')) {
       // Surplus -> Charge battery
-      console.info(`Battery Simulation - Surplus Power ${deltaP}`)
+      console.info(`Battery Simulation - Surplus, deltaP = ${roundToUnit(deltaP, 'W')} W`)
       const potentialCharge = deltaP.multiply(Quantity(STEP_SECONDS + ' s')).toUnit('Wh')
       const availableCap = BATTERY_CAPACITY.subtract(socEnergy)
       const actualCharge = potentialCharge.lessThan(availableCap) ? potentialCharge : availableCap
-      console.info(`Battery Simulation - Charging ${actualCharge} -> Battery`)
+      console.info(`Battery Simulation - Charging ${roundToUnit(actualCharge, 'Wh', 3)} Wh -> Battery`)
 
       if (!actualCharge.equal('0 kWh')) {
         socEnergy = socEnergy.add(actualCharge)
@@ -78,10 +82,10 @@ rules.when()
       }
     } else if (deltaP.lessThan('0 W')) {
       // Deficit -> Discharge battery
-      console.info(`Battery Simulation - Deficit Power ${deltaP.multiply('-1')}`)
+      console.info(`Battery Simulation - Deficit, deltaP = ${roundToUnit(deltaP, 'W')} W`)
       const needed = deltaP.multiply('-1').multiply(Quantity(STEP_SECONDS + ' s')).toUnit('Wh')
       const actualDischarge = needed.lessThan(socEnergy) ? needed : socEnergy
-      console.info(`Battery Simulation - Discharging ${actualDischarge} <- Battery`)
+      console.info(`Battery Simulation - Discharging ${roundToUnit(actualDischarge, 'Wh', 3)} Wh <- Battery`)
 
       if (!actualDischarge.equal('0 kWh')) {
         socEnergy = socEnergy.subtract(actualDischarge)
@@ -90,12 +94,12 @@ rules.when()
     }
 
     // Calculate grid power
-    gridP = deltaP.add(battP)
+    gridP = deltaP.multiply('-1').subtract(battP)
 
     // Convert SoC back to %
     socPercent = socEnergy.divide(BATTERY_CAPACITY).float * 100
 
-    console.info(`Battery Simulation - New SoC ${socPercent}`)
+    console.info(`Battery Simulation - New: SoC = ${socPercent} %, Battery Power = ${roundToUnit(battP, 'W')} W, Grid Power = ${roundToUnit(gridP, 'W')} W`)
 
     // Update Items
     batterySoC.postUpdate(socPercent) // integer %
