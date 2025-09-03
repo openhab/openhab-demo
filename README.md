@@ -34,5 +34,7 @@ docker compose up -d
 The openHAB servers used for the demo are configured through configuration files only.
 This allows easily tracking config files in Git, and even makes it possible to automatically deploy the demo from the GitHub repository.
 
-There is only one exception allowed from that rule:
-UI widgets and pages can only be configured from the UI and therefore their configuration through the UI is allowed.
+There are only a few exceptions to that rule:
+
+- UI Pages & Widgets
+- Rules, Scripts & Scenes for demonstration purposes
