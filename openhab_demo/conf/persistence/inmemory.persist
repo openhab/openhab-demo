@@ -3,5 +3,5 @@ Strategies {
 }
 
 Items {
-  gSolar_Forecast* : strategy = forecast
+  gSolar_Forecast_TimeSeries* : strategy = forecast
 }

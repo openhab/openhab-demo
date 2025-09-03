@@ -26,42 +26,61 @@ things:
       dampPM: 0
 
 items:
-  # Forecast Items:
   gSolar_Forecast:
     type: Group
     label: ForecastSolar Berlin
     tags:
       - WebService
-  Solar_Forecast_Power_Total:
+  gSolar_Forecast_TimeSeries:
+    type: Group
+  # Future Value Forecast:
+  Solar_Forecast_Power_Estimate_Total:
     type: Number
     dimension: Power
-    label: Total Power Forecast
+    label: Total Power Estimation
     icon: solarplant
     format: '%.2f kW'
     unit: kW
     groups:
       - gSolar_Forecast
+      - gSolar_Forecast_TimeSeries
     tags:
       - Forecast
       - Power
     channel: solarforecast:fs-site:local:power-estimate
-  Solar_Forecast_Power_East:
+  Solar_Forecast_Power_Estimate_East:
     type: Number
     dimension: Power
-    label: Plane East Power Forecast
+    label: Plane East Power Estimation
     icon: solarplant
     format: '%.2f kW'
     unit: kW
     groups:
       - gSolar_Forecast
+      - gSolar_Forecast_TimeSeries
     tags:
       - Forecast
       - Power
     channel: solarforecast:fs-plane:local:east:power-estimate
-  Solar_Forecast_Power_West:
+  Solar_Forecast_Power_Estimate_West:
     type: Number
     dimension: Power
-    label: Plane West Power Forecast
+    label: Plane West Power Estimation
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar_Forecast
+      - gSolar_Forecast_TimeSeries
+    tags:
+      - Forecast
+      - Power
+    channel: solarforecast:fs-plane:local:west:power-estimate
+  # Actual Value Prediction:
+  Solar_Forecast_Power_Actual_Total:
+    type: Number
+    dimension: Power
+    label: Total Power Actual
     icon: solarplant
     format: '%.2f kW'
     unit: kW
@@ -70,7 +89,34 @@ items:
     tags:
       - Forecast
       - Power
-    channel: solarforecast:fs-plane:local:west:power-estimate
+    channel: solarforecast:fs-site:local:power-actual
+  Solar_Forecast_Power_Actual_East:
+    type: Number
+    dimension: Power
+    label: Plane East Power Estimation
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar_Forecast
+    tags:
+      - Forecast
+      - Power
+    channel: solarforecast:fs-plane:local:east:power-actual
+  Solar_Forecast_Power_Actual_West:
+    type: Number
+    dimension: Power
+    label: Plane West Power Estimation
+    icon: solarplant
+    format: '%.2f kW'
+    unit: kW
+    groups:
+      - gSolar_Forecast
+    tags:
+      - Forecast
+      - Power
+    channel: solarforecast:fs-plane:local:west:power-actual
+  # Energy value prediction:
   Solar_Forecast_Energy_Today:
     type: Number
     dimension: Energy
