@@ -39,7 +39,8 @@ rules.when()
   .system().startLevel(100)
   .or().cron(`*/${STEP_SECONDS} */1 * ? * * *`)
   .then(() => {
-    const base = Math.random() < 0.2 ? -2000 : -400
+    const isDay = time.toZDT().isBetweenTimes(time.toZDT('07:00'), time.toZDT('22:00'))
+    const base = isDay && Math.random() < 0.15 ? -2000 : -400
     const random = base + (150 - Math.random() * 300)
     loadPower.postUpdate(Quantity(random + ' W'))
   })
