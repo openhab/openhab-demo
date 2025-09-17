@@ -6,32 +6,83 @@ const { items } = require('openhab')
 const lights = items.addItem({
   type: 'Group',
   name: 'gLights',
-  label: 'Lights'
+  label: 'Lights',
+  group: {
+    type: 'Switch',
+    function: 'AND',
+    parameters: ['ON', 'OFF']
+  }
 })
 const shutters = items.addItem({
   type: 'Group',
   name: 'gShutters',
-  label: 'Shutters'
+  label: 'Shutters',
+  group: {
+    type: 'Rollershutter',
+  }
 })
 const windows = items.addItem({
   type: 'Group',
   name: 'gWindows',
-  label: 'Windows'
+  label: 'Windows',
+  group: {
+    type: 'Number',
+    function: 'COUNT',
+    parameters: ['OPEN']
+  },
+  metadata: {
+    stateDescription: {
+      value: '',
+      configuration: {
+        pattern: '%d open'
+      }
+    }
+  }
 })
 const temperatures = items.addItem({
   type: 'Group',
   name: 'gTemperatures',
-  label: 'Temperatures'
+  label: 'Temperatures',
+  group: {
+    type: 'Number:Temperature',
+    function: 'AVG'
+  }
 })
 const doors = items.addItem({
   type: 'Group',
   name: 'gDoors',
-  label: 'Doors'
+  label: 'Doors',
+  group: {
+    type: 'Number',
+    function: 'COUNT',
+    parameters: ['OPEN']
+  },
+  metadata: {
+    stateDescription: {
+      value: '',
+      configuration: {
+        pattern: '%d open'
+      }
+    }
+  }
 })
 const locks = items.addItem({
   type: 'Group',
   name: 'gLocks',
-  label: 'Locks'
+  label: 'Locks',
+  group: {
+    type: 'Number',
+    function: 'COUNT',
+    parameters: ['OFF']
+  },
+  metadata: {
+    stateDescription: {
+      value: '',
+      configuration: {
+        pattern: '%d unlocked'
+      }
+    }
+  }
 })
 const speakers = items.addItem({
   type: 'Group',
