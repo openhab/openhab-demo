@@ -30,14 +30,7 @@ const windows = items.addItem({
     function: 'COUNT',
     parameters: ['OPEN']
   },
-  metadata: {
-    stateDescription: {
-      value: '',
-      configuration: {
-        pattern: '%d open'
-      }
-    }
-  }
+  format: '%d open'
 })
 const temperatures = items.addItem({
   type: 'Group',
@@ -57,14 +50,7 @@ const doors = items.addItem({
     function: 'COUNT',
     parameters: ['OPEN']
   },
-  metadata: {
-    stateDescription: {
-      value: '',
-      configuration: {
-        pattern: '%d open'
-      }
-    }
-  }
+  format: '%d open'
 })
 const locks = items.addItem({
   type: 'Group',
@@ -75,14 +61,7 @@ const locks = items.addItem({
     function: 'COUNT',
     parameters: ['OFF']
   },
-  metadata: {
-    stateDescription: {
-      value: '',
-      configuration: {
-        pattern: '%d unlocked'
-      }
-    }
-  }
+  format: '%d unlocked'
 })
 const speakers = items.addItem({
   type: 'Group',
@@ -128,15 +107,8 @@ function provideHvac (room, withAc = false) {
     category: 'temperature',
     groups: [hvac.name, temperatures.name],
     tags: ['Measurement', 'Temperature'],
-    metadata: {
-      unit: '°C',
-      stateDescription: {
-        value: '',
-        config: {
-          pattern: '%.1f %unit%'
-        }
-      }
-    }
+    unit: '°C',
+    format: '%.1f %unit%'
   })
   const setpoint = items.addItem({
     type: 'Number:Temperature',
@@ -145,9 +117,7 @@ function provideHvac (room, withAc = false) {
     category: 'temperature',
     groups: [hvac.name],
     tags: ['Setpoint', 'Temperature'],
-    metadata: {
-      unit: '°C'
-    }
+    unit: '°C'
   })
   setpoint.postUpdate('22 °C')
   const heating = items.addItem({
@@ -205,9 +175,7 @@ function provideSpeaker (room, withPlaybackControl = false) {
     category: 'soundvolume',
     groups: [speaker.name],
     tags: ['Setpoint', 'SoundVolume'],
-    metadata: {
-      unit: '%',
-    }
+    unit: '%'
   })
   volume.postUpdate('25 %')
   const input = items.addItem({
