@@ -22,23 +22,24 @@ const MOCK_DATA = [
  * @param {number} [initialIndex=0] initial index for selecting a dataset from {@link #MOCK_DATA}
  */
 function createSpeakerPlaybackSimulation (prefix, initialIndex = 0) {
-  const powerItem = items.getItem(prefix + '_Power')
-  const playbackItem = items.getItem(prefix + '_Playback')
-  const artistItem = items.getItem(prefix + '_Artist')
-  const albumItem = items.getItem(prefix + '_Album')
-  const songItem = items.getItem(prefix + '_Song')
-  const coverItem = items.getItem(prefix + '_Cover')
+  // don't define Items as constants, because the script will stop working if Items are recreated and this script is not reloaded afterwards
+  const powerItem = () => items.getItem(prefix + '_Power')
+  const playbackItem = () => items.getItem(prefix + '_Playback')
+  const artistItem = () => items.getItem(prefix + '_Artist')
+  const albumItem = () => items.getItem(prefix + '_Album')
+  const songItem = () => items.getItem(prefix + '_Song')
+  const coverItem = () => items.getItem(prefix + '_Cover')
 
   let i = initialIndex
   let interval = null
 
   function updateItems (index) {
     index = index % MOCK_DATA.length
-    artistItem.postUpdate(MOCK_DATA[index].artist)
-    albumItem.postUpdate(MOCK_DATA[index].album)
-    songItem.postUpdate(MOCK_DATA[index].song)
+    artistItem().postUpdate(MOCK_DATA[index].artist)
+    albumItem().postUpdate(MOCK_DATA[index].album)
+    songItem().postUpdate(MOCK_DATA[index].song)
     const raw = HttpUtil.downloadImage('http://localhost:8080' + MOCK_DATA[index].coverUrl)
-    if (raw != null) actions.BusEvent.postUpdate(coverItem.rawItem, raw)
+    if (raw != null) actions.BusEvent.postUpdate(coverItem().rawItem, raw)
   }
 
   function createUpdateItemsInterval () {
@@ -49,17 +50,17 @@ function createSpeakerPlaybackSimulation (prefix, initialIndex = 0) {
   }
 
   // Initialize
-  powerItem.postUpdate('ON')
-  playbackItem.postUpdate('PLAY')
+  powerItem().postUpdate('ON')
+  playbackItem().postUpdate('PLAY')
   updateItems(i)
 
   // Handle playback PLAY and power ON commands
   rules.when()
-    .item(powerItem.name).receivedCommand()
-    .or().item(playbackItem.name).receivedCommand()
+    .item(powerItem().name).receivedCommand()
+    .or().item(playbackItem().name).receivedCommand()
     .then((event) => {
-      const power = (event.itemName === powerItem.name) ? event.receivedCommand : powerItem.state
-      const playback = (event.itemName === playbackItem.name) ? event.receivedCommand : playbackItem.state
+      const power = (event.itemName === powerItem().name) ? event.receivedCommand : powerItem().state
+      const playback = (event.itemName === playbackItem().name) ? event.receivedCommand : playbackItem().state
       if (power === 'OFF' || playback === 'PAUSE') {
         if (interval !== null) {
           clearInterval(interval)
