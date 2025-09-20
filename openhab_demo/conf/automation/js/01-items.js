@@ -582,30 +582,30 @@ provideCorridor(secondFloor)
 const child1 = items.addItem({
   type: 'Group',
   name: 'gChild1',
-  label: 'Oliver\'s Room',
-  category: 'boy_3',
+  label: 'Amelias\'s Room',
+  category: 'girl_3',
   groups: [secondFloor.name],
   tags: ['FamilyRoom']
 })
 provideHvac(child1, true)
 provideWindow(child1)
 provideShutter(child1)
-provideLight(child1, 'Downlight', 'Child1_CeilingLight', 'Oliver Ceiling Light')
-provideLight(child1, 'LightStripe', 'Child1_LightStripe', 'Oliver Light Stripe', 'Color')
+provideLight(child1, 'Downlight', 'Child2_CeilingLight', 'Amelia Ceiling Light')
+provideLight(child1, 'LightStripe', 'Child2_LightStripe', 'Amelia Light Stripe', 'Color')
 
 const child2 = items.addItem({
   type: 'Group',
   name: 'gChild2',
-  label: 'Amelias\'s Room',
-  category: 'girl_3',
+  label: 'Oliver\'s Room',
+  category: 'boy_3',
   groups: [secondFloor.name],
   tags: ['FamilyRoom']
 })
 provideHvac(child2, true)
 provideWindow(child2)
 provideShutter(child2)
-provideLight(child2, 'Downlight', 'Child2_CeilingLight', 'Amelia Ceiling Light')
-provideLight(child2, 'LightStripe', 'Child2_LightStripe', 'Amelia Light Stripe', 'Color')
+provideLight(child2, 'Downlight', 'Child1_CeilingLight', 'Oliver Ceiling Light')
+provideLight(child2, 'LightStripe', 'Child1_LightStripe', 'Oliver Light Stripe', 'Color')
 
 // Garage --------------------------------------------------------------------------------------------------------------
 const garage = items.addItem({
