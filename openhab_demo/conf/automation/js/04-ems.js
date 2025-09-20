@@ -35,6 +35,8 @@ const feedInMonth = () => items.getItem('EMS_FeedIn_Month')
 const batteryPower = () => items.getItem('EMS_Battery_Power')
 const batterySoC = () => items.getItem('EMS_Battery_SoC')
 
+const lights = () => items.getItem('gLights').members
+
 // ---------------------------------------------------------------------------------------------------------------------
 // Load Simulation Rule
 // ---------------------------------------------------------------------------------------------------------------------
@@ -44,8 +46,10 @@ rules.when()
   .then(() => {
     const isDay = time.toZDT().isBetweenTimes(time.toZDT('07:00'), time.toZDT('22:00'))
     const base = isDay && Math.random() < 0.15 ? -2000 : -400
-    const random = base + (150 - Math.random() * 300)
-    loadPower().postUpdate(Quantity(random + ' W'))
+    const random = (150 - Math.random() * 300)
+    const lightsPower = lights().filter(m => m.state === 'ON' || m.numericState > 0).length * 25;
+    const sum = base + lightsPower + random
+    loadPower().postUpdate(Quantity(sum + ' W'))
   })
   .build('Load Simulation', '', ['EMS'])
 
