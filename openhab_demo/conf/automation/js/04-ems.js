@@ -51,7 +51,7 @@ rules.when()
     const sum = base + lightsPower + random
     loadPower().postUpdate(Quantity(sum + ' W'))
   })
-  .build('Load Simulation', '', ['EMS'])
+  .build('Simulation load power consumption', '', ['EMS'])
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Battery Simulation Rule

@@ -82,7 +82,7 @@ function createSpeakerPlaybackSimulation (prefix, initialIndex = 0) {
             break
         }
       }
-    }).build(`Playback Simulation for ${prefix}`)
+    }).build(`Simulate playback (control) for ${prefix}`)
 
   // Automatically switch song regularly
   interval = createUpdateItemsInterval()
