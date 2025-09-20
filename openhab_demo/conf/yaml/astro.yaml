@@ -52,7 +52,7 @@ items:
     type: DateTime
     label: Sunset Time
     icon: sunset
-    format: '%1$tF %1$tR'
+    format: '%1$tH:%1$tM'
     groups:
       - gSun
     tags:
@@ -63,7 +63,7 @@ items:
     type: DateTime
     label: Sunrise Time
     icon: sunrise
-    format: '%1$tF %1$tR'
+    format: '%1$tH:%1$tM'
     groups:
       - gSun
     tags:
