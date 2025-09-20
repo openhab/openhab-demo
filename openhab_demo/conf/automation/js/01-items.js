@@ -136,7 +136,7 @@ function provideHvac (room, withAc = false) {
       label: 'AC',
       category: 'temperature_cold',
       groups: [hvac.name],
-      tags: ['Control', 'Power']
+      tags: ['Switch', 'Airconditioning']
     })
     cooling.postUpdate('OFF')
   }
@@ -261,7 +261,7 @@ function provideWindow (room) {
     label: room.label + ' Window',
     category: 'window',
     groups: [window.name, windows.name],
-    tags: ['OpenState'],
+    tags: ['Status', 'OpenState'],
     metadata: {
       stateDescription: {
         value: '',
@@ -297,7 +297,7 @@ function provideDoor (room, type, label) {
     label: door.label,
     category: type === 'FrontDoor' ? 'frontdoor' : 'door',
     groups: [door.name, doors.name],
-    tags: ['OpenState'],
+    tags: ['Status', 'OpenState'],
     metadata: {
       stateDescription: {
         value: '',
@@ -429,7 +429,7 @@ const laundryRoom = items.addItem({
   groups: [basement.name],
   tags: ['LaundryRoom']
 })
-provideLight(laundryRoom, 'Lightbulb', undefined, undefined, 'Switch')
+provideLight(laundryRoom, 'Downlight', undefined, undefined, 'Switch')
 
 const utilityRoom = items.addItem({
   type: 'Group',
@@ -439,7 +439,7 @@ const utilityRoom = items.addItem({
   groups: [basement.name],
   tags: ['Room']
 })
-provideLight(utilityRoom, 'Lightbulb', undefined, undefined, 'Switch')
+provideLight(utilityRoom, 'Downlight', undefined, undefined, 'Switch')
 
 const cellar = items.addItem({
   type: 'Group',
