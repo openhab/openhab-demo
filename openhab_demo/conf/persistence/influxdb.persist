@@ -11,4 +11,5 @@ Items {
   Solar_Production_Month : strategy = endOfMonth
   EMS_Consumption_Day, EMS_SelfConsumption_Day, EMS_GridConsumption_Day, EMS_FeedIn_Day : strategy = endOfDay
   EMS_Consumption_Month, EMS_SelfConsumption_Month, EMS_GridConsumption_Month, EMS_FeedIn_Month: strategy = endOfMonth
+  EMS_ElectricityCost_Month, EMS_ElectricityCostSavings_Month, EMS_FeedInCompensation_Month : strategy = endOfMonth
 }

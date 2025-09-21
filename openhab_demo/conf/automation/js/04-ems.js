@@ -35,6 +35,13 @@ const feedInMonth = () => items.getItem('EMS_FeedIn_Month')
 const batteryPower = () => items.getItem('EMS_Battery_Power')
 const batterySoC = () => items.getItem('EMS_Battery_SoC')
 
+const electricityTariff = () => items.getItem('EMS_Electricity_Tariff')
+const feedInTariff = () => items.getItem('EMS_FeedIn_Tariff')
+
+const electricityCostMonth = () => items.getItem('EMS_ElectricityCost_Month')
+const electricityCostSavingsMonth = () => items.getItem('EMS_ElectricityCostSavings_Month')
+const feedInCompensationMonth = () => items.getItem('EMS_FeedInCompensation_Month')
+
 const lights = () => items.getItem('gLights').members
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -214,3 +221,39 @@ createMonthlyEnergyCalculationRule(consumptionDay, consumptionMonth)
 createMonthlyEnergyCalculationRule(selfConsumptionDay, selfConsumptionMonth)
 createMonthlyEnergyCalculationRule(gridConsumptionDay, gridConsumptionMonth)
 createMonthlyEnergyCalculationRule(feedInDay, feedInMonth)
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Cost Calculation Rules
+// ---------------------------------------------------------------------------------------------------------------------
+rules.when()
+  .item(gridConsumptionMonth().name).receivedUpdate()
+  .then(() => {
+    const tariff = electricityTariff().quantityState
+    const consumption = gridConsumptionMonth().quantityState
+    if (!tariff || !consumption) return
+    electricityCostMonth().postUpdate(tariff.multiply(consumption))
+  })
+  .build('Calculate Monthly Electricty Cost', '', ['EMS'])
+
+rules.when()
+  .item(selfConsumptionMonth().name).receivedUpdate()
+  .then(() => {
+    const supplyTariff = electricityTariff().quantityState
+    const fiTariff = feedInTariff().quantityState
+    if (!supplyTariff || ! fiTariff) return
+    const savingsTariff = supplyTariff.subtract(fiTariff)
+    const selfConsumption = selfConsumptionMonth().quantityState
+    if (!selfConsumption) return
+    electricityCostSavingsMonth().postUpdate(savingsTariff.multiply(selfConsumption))
+  })
+  .build('Calculate Monthly Electricity Cost Savings', '', ['EMS'])
+
+rules.when()
+  .item(feedInMonth().name).receivedUpdate()
+  .then(() => {
+    const tariff = feedInTariff().quantityState
+    const feedIn = feedInMonth().quantityState
+    if (!tariff || !feedIn) return
+    feedInCompensationMonth().postUpdate(tariff.multiply(feedIn))
+  })
+  .build('Calculate Monthly Feed-In Compensation', '', ['EMS'])

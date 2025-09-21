@@ -178,3 +178,66 @@ items:
     tags:
       - Measurement
       - Energy
+  # Configured tariffs:
+  EMS_Electricity_Tariff:
+    type: Number
+    dimension: EnergyPrice
+    label: Electricity Tariff
+    icon: iconify:lucide:euro
+    format: '%.4f EUR/kWh'
+    unit: EUR/kWh
+    groups:
+      - gEMS
+    metadata:
+      widget:
+        value: oh-input-card
+        config:
+          sendButton: true
+          required: true
+          type: number
+          placeholder: 0.35 EUR/kWh
+  EMS_FeedIn_Tariff:
+    type: Number
+    dimension: EnergyPrice
+    label: Feed-In Tariff
+    icon: iconify:lucide:euro
+    format: '%.4f EUR/kWh'
+    unit: EUR/kWh
+    groups:
+      - gEMS
+    metadata:
+      widget:
+        value: oh-input-card
+        config:
+          sendButton: true
+          required: true
+          type: number
+          placeholder: 0.072 EUR/kWh
+  # Calculated energy cost:
+  EMS_ElectricityCost_Month:
+    type: Number
+    dimension: Currency
+    label: Monthly Electricity Cost
+    icon: iconify:lucide:euro
+    format: '%.2f EUR'
+    unit: EUR
+    groups:
+      - gEMS
+  EMS_ElectricityCostSavings_Month:
+    type: Number
+    dimension: Currency
+    label: Monthly Electricity Cost Savings
+    icon: iconify:lucide:euro
+    format: '%.2f EUR'
+    unit: EUR
+    groups:
+      - gEMS
+  EMS_FeedInCompensation_Month:
+    type: Number
+    dimension: Currency
+    label: Monthly Grid Feed-In Compensation
+    icon: iconify:lucide:euro
+    format: '%.2f EUR'
+    unit: EUR
+    groups:
+      - gEMS

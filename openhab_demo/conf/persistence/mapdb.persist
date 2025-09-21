@@ -3,4 +3,6 @@ Strategies {
 }
 
 Items {
+  EMS_Battery_SoC : strategy = everyChange, everyMinute, restoreOnStartup
+  EMS_Electricity_Tariff, EMS_FeedIn_Tariff : strategy = everyChange, everyMinute, restoreOnStartup
 }
