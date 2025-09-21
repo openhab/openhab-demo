@@ -88,6 +88,6 @@ function createSpeakerPlaybackSimulation (prefix, initialIndex = 0) {
   interval = createUpdateItemsInterval()
 }
 
-createSpeakerPlaybackSimulation('LivingRoom_Speaker')
+createSpeakerPlaybackSimulation('LivingRoom_Receiver')
 createSpeakerPlaybackSimulation('Kitchen_Speaker', 1)
 createSpeakerPlaybackSimulation('Office_Speaker', 2)

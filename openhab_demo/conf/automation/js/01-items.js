@@ -147,16 +147,17 @@ function provideHvac (room, withAc = false) {
  * Provides speaker Items.
  * @param {items.Item} room the room to provide for
  * @param {boolean} [withPlaybackControl=false] whether to include playback control Items, requires mock data from the remote openHAB server
+ * @param {string} [type=Speaker] the type of the speaker, e.g. `Speaker` or `Receiver`
  * @returns {items.Item} the speaker group Item
  */
-function provideSpeaker (room, withPlaybackControl = false) {
+function provideSpeaker (room, withPlaybackControl = false, type = 'Speaker') {
   const speaker = items.addItem({
     type: 'Group',
-    name: room.name + '_Speaker',
-    label: room.label + ' Speaker',
+    name: room.name + '_' + type,
+    label: room.label + ' ' + type,
     category: 'soundvolume',
     groups: [room.name, speakers.name],
-    tags: ['Speaker']
+    tags: [type]
   })
   const baseName = getBaseNameFromGroup(speaker)
   const power = items.addItem({
@@ -472,7 +473,7 @@ const livingRoom = items.addItem({
   tags: ['LivingRoom']
 })
 provideHvac(livingRoom, true)
-provideSpeaker(livingRoom, true)
+provideSpeaker(livingRoom, true, 'Receiver')
 provideWindow(livingRoom)
 provideShutter(livingRoom)
 provideLight(livingRoom, 'LightStripe', 'LivingRoom_CeilingLight', 'Living Room Ceiling Light')
