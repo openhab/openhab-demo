@@ -32,10 +32,19 @@ const windows = items.addItem({
   },
   format: '%d open'
 })
-const temperatures = items.addItem({
+const temperatureMeasurements = items.addItem({
   type: 'Group',
   name: 'gTemperatures',
   label: 'Temperatures',
+  group: {
+    type: 'Number:Temperature',
+    function: 'AVG'
+  }
+})
+const temperatureSetpoints = items.addItem({
+  type: 'Group',
+  name: 'gTemperature_Setpoints',
+  label: 'Temperature Setpoints',
   group: {
     type: 'Number:Temperature',
     function: 'AVG'
@@ -105,7 +114,7 @@ function provideHvac (room, withAc = false) {
     name: baseName + '_Temperature',
     label: 'Current Temperature',
     category: 'temperature',
-    groups: [hvac.name, temperatures.name],
+    groups: [hvac.name, temperatureMeasurements.name],
     tags: ['Measurement', 'Temperature'],
     unit: '°C',
     format: '%.1f %unit%'
@@ -115,7 +124,7 @@ function provideHvac (room, withAc = false) {
     name: baseName + '_TemperatureSet',
     label: 'Temperature Setpoint',
     category: 'temperature',
-    groups: [hvac.name],
+    groups: [hvac.name, temperatureSetpoints.name],
     tags: ['Setpoint', 'Temperature'],
     unit: '°C'
   })
@@ -190,7 +199,7 @@ function provideSpeaker (room, withPlaybackControl = false, type = 'Speaker') {
       stateDescription: {
         value: '',
         config: {
-          options: 'FM=Radio,Server=Media Server'
+          options: 'FM=Radio,Server=Media Server' + (type === 'Receiver' ? ',TV=TV' : '')
         }
       }
     }
