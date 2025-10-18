@@ -7,6 +7,7 @@ const lights = items.addItem({
   type: 'Group',
   name: 'gLights',
   label: 'Lights',
+  category: 'light',
   group: {
     type: 'Switch',
     function: 'AND',
@@ -17,6 +18,7 @@ const shutters = items.addItem({
   type: 'Group',
   name: 'gShutters',
   label: 'Shutters',
+  category: 'rollershutter',
   group: {
     type: 'Rollershutter',
   }
@@ -25,6 +27,7 @@ const windows = items.addItem({
   type: 'Group',
   name: 'gWindows',
   label: 'Windows',
+  category: 'window',
   group: {
     type: 'Number',
     function: 'COUNT',
@@ -36,6 +39,7 @@ const temperatureMeasurements = items.addItem({
   type: 'Group',
   name: 'gTemperatures',
   label: 'Temperatures',
+  category: 'temperature',
   group: {
     type: 'Number:Temperature',
     function: 'AVG'
@@ -45,15 +49,28 @@ const temperatureSetpoints = items.addItem({
   type: 'Group',
   name: 'gTemperature_Setpoints',
   label: 'Temperature Setpoints',
+  category: 'temperature',
   group: {
     type: 'Number:Temperature',
     function: 'AVG'
+  }
+})
+const heating = items.addItem({
+  type: 'Group',
+  name: 'gHeating',
+  label: 'Heating',
+  category: 'temperature_hot',
+  group: {
+    type: 'Switch',
+    function: 'AND',
+    parameters: ['ON', 'OFF']
   }
 })
 const doors = items.addItem({
   type: 'Group',
   name: 'gDoors',
   label: 'Doors',
+  category: 'door',
   group: {
     type: 'Number',
     function: 'COUNT',
@@ -65,6 +82,7 @@ const locks = items.addItem({
   type: 'Group',
   name: 'gLocks',
   label: 'Locks',
+  category: 'lock',
   group: {
     type: 'Number',
     function: 'COUNT',
@@ -75,7 +93,8 @@ const locks = items.addItem({
 const speakers = items.addItem({
   type: 'Group',
   name: 'gSpeakers',
-  label: 'Speakers'
+  label: 'Speakers',
+  category: 'soundvolume'
 })
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -129,15 +148,15 @@ function provideHvac (room, withAc = false) {
     unit: '°C'
   })
   setpoint.postUpdate('22 °C')
-  const heating = items.addItem({
+  const localHeating = items.addItem({
     type: 'Switch',
     name: baseName + '_Heating',
     label: 'Heating',
     category: 'temperature_hot',
-    groups: [hvac.name],
+    groups: [hvac.name, heating.name],
     tags: ['Switch', 'Heating']
   })
-  heating.postUpdate('OFF')
+  localHeating.postUpdate('OFF')
   if (withAc) {
     const cooling = items.addItem({
       type: 'Switch',
@@ -164,7 +183,7 @@ function provideSpeaker (room, withPlaybackControl = false, type = 'Speaker') {
     type: 'Group',
     name: room.name + '_' + type,
     label: room.label + ' ' + type,
-    category: 'soundvolume',
+    category: type === 'Speaker' ? 'soundvolume' : 'receiver',
     groups: [room.name, speakers.name],
     tags: [type]
   })
