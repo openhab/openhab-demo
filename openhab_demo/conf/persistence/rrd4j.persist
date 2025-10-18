@@ -3,7 +3,9 @@ Strategies {
 }
 
 Items {
+  gTemperatures : strategy = everyChange, everyMinute
   gTemperatures* : strategy = everyChange, everyMinute
+  gHeating* : strategy = everyChange, everyMinute
   Solar_Power_Total, Solar_Power_East, Solar_Power_West : strategy = everyChange, everyMinute
   EMS_Solar_Power, EMS_Load_Power, EMS_Battery_Power, EMS_Grid_Power, EMS_Battery_SoC : strategy = everyChange, everyMinute
 }
