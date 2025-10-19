@@ -62,7 +62,18 @@ const heating = items.addItem({
   category: 'temperature_hot',
   group: {
     type: 'Switch',
-    function: 'AND',
+    function: 'OR',
+    parameters: ['ON', 'OFF']
+  }
+})
+const airConditioning = items.addItem({
+  type: 'Group',
+  name: 'gAC',
+  label: 'Air Conditioning',
+  category: 'temperature_cold',
+  group: {
+    type: 'Switch',
+    function: 'OR',
     parameters: ['ON', 'OFF']
   }
 })
@@ -163,7 +174,7 @@ function provideHvac (room, withAc = false) {
       name: baseName + '_AC',
       label: 'AC',
       category: 'temperature_cold',
-      groups: [hvac.name],
+      groups: [hvac.name, airConditioning.name],
       tags: ['Switch', 'Airconditioning']
     })
     cooling.postUpdate('OFF')
