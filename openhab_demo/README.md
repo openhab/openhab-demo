@@ -22,7 +22,9 @@ which allows to keep Things and Items of the same binding in a single file.
 See:
 
 - [`conf/automation/js/01-items.js`](conf/automation/js/01-items.js)
+- [`conf/items`](conf/items)
 - [`conf/yaml`](conf/yaml)
+- `.js` files may specify provide Items they need
 
 ### Rules
 
@@ -47,7 +49,10 @@ As you would expect for file-based openHAB configuration.
 **Contact, door & door lock states** are random.
 See [`conf/automation/js/02-states.js`](conf/automation/js/02-states.js).
 
-**Playback control and information such as artist & song** are based on a predefined track list, see [`conf/automation/js/03-media-states.js`](conf/automation/js/03-media-states.js).
+**Playback control and information such as artist & song** are based on a predefined track list, see [`conf/automation/js/02-media-states.js`](conf/automation/js/02-media-states.js).
+
+**Positions** are random, but limited to a rectangular area around Berlin, see [`conf/automation/js/02-position-states.js`](conf/automation/js/02-position-states.js).
+
 
 ### How can I get IntelliSense for the JavaScript code?
 
