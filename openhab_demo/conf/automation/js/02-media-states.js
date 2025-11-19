@@ -69,7 +69,7 @@ function createSpeakerPlaybackSimulation (prefix, initialIndex = 0) {
       } else { // power is ON
         switch (playback) {
           case 'PLAY':
-            interval = createUpdateItemsInterval()
+            if (interval === null) interval = createUpdateItemsInterval()
             break
           case 'NEXT':
             i++
