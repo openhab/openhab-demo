@@ -126,6 +126,14 @@ rules.when()
 // Reset Values Rules
 // ---------------------------------------------------------------------------------------------------------------------
 rules.when()
+  .cron('0 0 * * * ? *')
+  .then(() => {
+    electricityTariff().postUpdate('0.35 EUR/kWh')
+    feedInTariff().postUpdate('0.072 EUR/kWh')
+  })
+  .build('Reset electricity & feed-in tariffs to defaults', '', ['EMS'])
+
+rules.when()
   .cron(CRON_AFTER_BOD)
   .then(() => {
     const cmd = '0 kWh'
