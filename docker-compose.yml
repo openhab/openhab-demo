@@ -3,7 +3,7 @@ services:
     image: openhab/openhab:5.0.1-debian
     container_name: openhab_demo
     hostname: ohdemo
-    restart: unless-stopped
+    restart: always
     environment:
       USER_ID: 1000
       GROUP_ID: 1000
@@ -21,7 +21,7 @@ services:
     image: openhab/openhab:5.0.1-debian
     container_name: openhab_private
     hostname: ohmock
-    restart: unless-stopped
+    restart: always
     environment:
       USER_ID: 1000
       GROUP_ID: 1000
@@ -38,7 +38,7 @@ services:
   influxdb:
     image: influxdb:2.7
     container_name: influxdb
-    restart: unless-stopped
+    restart: always
     environment:
       DOCKER_INFLUXDB_INIT_MODE: setup
       DOCKER_INFLUXDB_INIT_USERNAME_FILE: /run/secrets/influxdb2-admin-username
