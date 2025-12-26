@@ -1,0 +1,40 @@
+sitemap watch label="Watch" {
+    Frame label="Status" {
+        Text item=OneCall_Current_Temperature label="Outside [%.1f°C]"
+        Text item=gTemperatures label="Inside [%.1f°C]"
+        Text item=gWindows label="Windows [%d open]"
+        Text item=gDoors label="Doors [%d open]"
+    }
+
+    Frame label="Lights" {
+        Switch item=LivingRoom_CeilingLight label="Living Room"
+        Switch item=Kitchen_CeilingLight label="Kitchen"
+        Switch item=Bedroom_Light label="Bedroom"
+        Switch item=Office_CeilingLight label="Office"
+        Switch item=Child1_CeilingLight label="Oliver"
+        Switch item=Child2_CeilingLight label="Amelia"
+    }
+
+    Frame label="Shutters" {
+        Slider item=LivingRoom_Shutter label="Living Room"
+        Slider item=Kitchen_Shutter label="Kitchen"
+        Slider item=Bedroom_Shutter label="Bedroom"
+    }
+
+    Frame label="Climate" {
+        Switch item=gHeating label="All Heating"
+        Switch item=gAC label="All AC"
+    }
+
+    Frame label="Security" {
+        Switch item=GroundFloor_Corridor_FrontDoor_Lock label="Front Door"
+        Switch item=Garage_BackDoor_Lock label="Garage"
+        Switch item=Presence label="Presence"
+    }
+
+    Frame label="Energy" {
+        Text item=EMS_Solar_Power label="Solar [%.0f W]"
+        Text item=EMS_Load_Power label="Load [%.0f W]"
+        Text item=EMS_Battery_SoC label="Battery [%d%%]"
+    }
+}

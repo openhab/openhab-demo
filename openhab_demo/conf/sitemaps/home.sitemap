@@ -1,0 +1,420 @@
+sitemap home label="Smart Home" {
+    Frame label="Overview" {
+        Text item=OneCall_Current_Temperature label="Outside [%.1f °C]" icon="temperature"
+        Text item=OneCall_Current_Condition label="Weather [%s]" icon="sun_clouds"
+        Text item=gTemperatures label="Avg. Indoor Temp [%.1f °C]" icon="temperature"
+        Text item=gWindows label="Windows [%d open]" icon="window"
+        Text item=gDoors label="Doors [%d open]" icon="door"
+        Text item=gLocks label="Locks [%d unlocked]" icon="lock"
+        Switch item=Presence label="Presence"
+    }
+
+    Frame label="Ground Floor" {
+        Text label="Living Room" icon="sofa" {
+            Frame label="Lights" {
+                Slider item=LivingRoom_CeilingLight label="Ceiling Light [%d %%]"
+                Colorpicker item=LivingRoom_FloorLamp label="Floor Lamp"
+            }
+            Frame label="Shutter" {
+                Slider item=LivingRoom_Shutter label="Shutter [%d %%]"
+            }
+            Frame label="Climate" {
+                Text item=LivingRoom_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=LivingRoom_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=LivingRoom_HVAC_Heating label="Heating"
+                Switch item=LivingRoom_HVAC_AC label="AC"
+            }
+            Frame label="Window" {
+                Text item=LivingRoom_Window_Contact label="Window [%s]"
+            }
+            Frame label="Media" {
+                Switch item=LivingRoom_Receiver_Power label="Receiver Power"
+                Selection item=LivingRoom_Receiver_Input label="Input [%s]"
+                Default item=LivingRoom_Receiver_Playback label="Playback"
+                Slider item=LivingRoom_Receiver_Volume label="Volume [%d %%]"
+                Text item=LivingRoom_Receiver_Artist label="Artist [%s]"
+                Text item=LivingRoom_Receiver_Song label="Song [%s]"
+                Text item=LivingRoom_Receiver_Album label="Album [%s]"
+                Image item=LivingRoom_Receiver_Cover label="Cover"
+            }
+        }
+
+        Text label="Kitchen" icon="kitchen" {
+            Frame label="Lights" {
+                Slider item=Kitchen_CeilingLight label="Ceiling Light [%d %%]"
+                Switch item=Kitchen_ShelfLight label="Shelf Light"
+            }
+            Frame label="Shutter" {
+                Slider item=Kitchen_Shutter label="Shutter [%d %%]"
+            }
+            Frame label="Climate" {
+                Text item=Kitchen_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Kitchen_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Kitchen_HVAC_Heating label="Heating"
+            }
+            Frame label="Window" {
+                Text item=Kitchen_Window_Contact label="Window [%s]"
+            }
+            Frame label="Media" {
+                Switch item=Kitchen_Speaker_Power label="Speaker Power"
+                Selection item=Kitchen_Speaker_Input label="Input [%s]"
+                Default item=Kitchen_Speaker_Playback label="Playback"
+                Slider item=Kitchen_Speaker_Volume label="Volume [%d %%]"
+                Text item=Kitchen_Speaker_Artist label="Artist [%s]"
+                Text item=Kitchen_Speaker_Song label="Song [%s]"
+                Text item=Kitchen_Speaker_Album label="Album [%s]"
+                Image item=Kitchen_Speaker_Cover label="Cover"
+            }
+        }
+
+        Text label="Toilet" icon="toilet" {
+            Frame label="Lights" {
+                Slider item=Toilet_CeilingLight label="Ceiling Light [%d %%]"
+                Switch item=Toilet_MirrorLight label="Mirror Light"
+            }
+            Frame label="Climate" {
+                Text item=Toilet_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Toilet_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Toilet_HVAC_Heating label="Heating"
+            }
+        }
+
+        Text label="Ground Floor Corridor" icon="corridor" {
+            Frame label="Light" {
+                Switch item=GroundFloor_Corridor_Light label="Corridor Light"
+            }
+            Frame label="Climate" {
+                Text item=GroundFloor_Corridor_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=GroundFloor_Corridor_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=GroundFloor_Corridor_HVAC_Heating label="Heating"
+            }
+            Frame label="Front Door" {
+                Text item=GroundFloor_Corridor_FrontDoor_Contact label="Door [%s]"
+                Switch item=GroundFloor_Corridor_FrontDoor_Lock label="Lock"
+            }
+        }
+    }
+
+    Frame label="First Floor" {
+        Text label="Master Bedroom" icon="bedroom" {
+            Frame label="Light" {
+                Slider item=Bedroom_Light label="Bedroom Light [%d %%]"
+            }
+            Frame label="Shutter" {
+                Slider item=Bedroom_Shutter label="Shutter [%d %%]"
+            }
+            Frame label="Climate" {
+                Text item=Bedroom_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Bedroom_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Bedroom_HVAC_Heating label="Heating"
+                Switch item=Bedroom_HVAC_AC label="AC"
+            }
+            Frame label="Window" {
+                Text item=Bedroom_Window_Contact label="Window [%s]"
+            }
+        }
+
+        Text label="Office" icon="office" {
+            Frame label="Lights" {
+                Slider item=Office_CeilingLight label="Ceiling Light [%d %%]"
+                Switch item=Office_DeskLight label="Desk Light"
+            }
+            Frame label="Shutter" {
+                Slider item=Office_Shutter label="Shutter [%d %%]"
+            }
+            Frame label="Climate" {
+                Text item=Office_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Office_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Office_HVAC_Heating label="Heating"
+                Switch item=Office_HVAC_AC label="AC"
+            }
+            Frame label="Window" {
+                Text item=Office_Window_Contact label="Window [%s]"
+            }
+            Frame label="Media" {
+                Switch item=Office_Speaker_Power label="Speaker Power"
+                Selection item=Office_Speaker_Input label="Input [%s]"
+                Default item=Office_Speaker_Playback label="Playback"
+                Slider item=Office_Speaker_Volume label="Volume [%d %%]"
+                Text item=Office_Speaker_Artist label="Artist [%s]"
+                Text item=Office_Speaker_Song label="Song [%s]"
+                Text item=Office_Speaker_Album label="Album [%s]"
+                Image item=Office_Speaker_Cover label="Cover"
+            }
+        }
+
+        Text label="Guestroom" icon="bedroom_blue" {
+            Frame label="Light" {
+                Slider item=Guestroom_Light label="Guestroom Light [%d %%]"
+            }
+            Frame label="Shutter" {
+                Slider item=Guestroom_Shutter label="Shutter [%d %%]"
+            }
+            Frame label="Climate" {
+                Text item=Guestroom_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Guestroom_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Guestroom_HVAC_Heating label="Heating"
+                Switch item=Guestroom_HVAC_AC label="AC"
+            }
+            Frame label="Window" {
+                Text item=Guestroom_Window_Contact label="Window [%s]"
+            }
+        }
+
+        Text label="Bathroom" icon="bath" {
+            Frame label="Light" {
+                Slider item=Bathroom_Light label="Bathroom Light [%d %%]"
+            }
+            Frame label="Shutter" {
+                Slider item=Bathroom_Shutter label="Shutter [%d %%]"
+            }
+            Frame label="Climate" {
+                Text item=Bathroom_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Bathroom_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Bathroom_HVAC_Heating label="Heating"
+            }
+            Frame label="Window" {
+                Text item=Bathroom_Window_Contact label="Window [%s]"
+            }
+        }
+
+        Text label="First Floor Corridor" icon="corridor" {
+            Frame label="Light" {
+                Switch item=FirstFloor_Corridor_Light label="Corridor Light"
+            }
+            Frame label="Climate" {
+                Text item=FirstFloor_Corridor_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=FirstFloor_Corridor_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=FirstFloor_Corridor_HVAC_Heating label="Heating"
+            }
+        }
+    }
+
+    Frame label="Second Floor" {
+        Text label="Amelia's Room" icon="girl_3" {
+            Frame label="Lights" {
+                Slider item=Child2_CeilingLight label="Ceiling Light [%d %%]"
+                Colorpicker item=Child2_LightStripe label="Light Stripe"
+            }
+            Frame label="Shutter" {
+                Slider item=Child1_Shutter label="Shutter [%d %%]"
+            }
+            Frame label="Climate" {
+                Text item=Child1_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Child1_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Child1_HVAC_Heating label="Heating"
+                Switch item=Child1_HVAC_AC label="AC"
+            }
+            Frame label="Window" {
+                Text item=Child1_Window_Contact label="Window [%s]"
+            }
+            Frame label="Location" {
+                Mapview item=Amelia_Position label="Amelia's Location"
+            }
+        }
+
+        Text label="Oliver's Room" icon="boy_3" {
+            Frame label="Lights" {
+                Slider item=Child1_CeilingLight label="Ceiling Light [%d %%]"
+                Colorpicker item=Child1_LightStripe label="Light Stripe"
+            }
+            Frame label="Shutter" {
+                Slider item=Child2_Shutter label="Shutter [%d %%]"
+            }
+            Frame label="Climate" {
+                Text item=Child2_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Child2_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Child2_HVAC_Heating label="Heating"
+                Switch item=Child2_HVAC_AC label="AC"
+            }
+            Frame label="Window" {
+                Text item=Child2_Window_Contact label="Window [%s]"
+            }
+            Frame label="Location" {
+                Mapview item=Oliver_Position label="Oliver's Location"
+            }
+        }
+
+        Text label="Second Floor Corridor" icon="corridor" {
+            Frame label="Light" {
+                Switch item=SecondFloor_Corridor_Light label="Corridor Light"
+            }
+            Frame label="Climate" {
+                Text item=SecondFloor_Corridor_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=SecondFloor_Corridor_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=SecondFloor_Corridor_HVAC_Heating label="Heating"
+            }
+        }
+    }
+
+    Frame label="Basement" {
+        Text label="Cellar" icon="cellar" {
+            Frame label="Light" {
+                Switch item=Cellar_Light label="Cellar Light"
+            }
+            Frame label="Climate" {
+                Text item=Cellar_HVAC_Temperature label="Temperature [%.1f °C]"
+                Setpoint item=Cellar_HVAC_TemperatureSet label="Setpoint [%.1f °C]" minValue=16 maxValue=28 step=0.5
+                Switch item=Cellar_HVAC_Heating label="Heating"
+            }
+        }
+
+        Text label="Laundry Room" icon="washingmachine" {
+            Switch item=LaundryRoom_Light label="Laundry Room Light"
+        }
+
+        Text label="Utility Room" icon="softener" {
+            Switch item=UtilityRoom_Light label="Utility Room Light"
+        }
+
+        Text label="Basement Corridor" icon="corridor" {
+            Switch item=Basement_Corridor_Light label="Corridor Light"
+        }
+    }
+
+    Frame label="Outdoor" {
+        Text label="Garage" icon="garage" {
+            Frame label="Light" {
+                Switch item=Garage_Light label="Garage Light"
+            }
+            Frame label="Door" {
+                Text item=Garage_BackDoor_Contact label="Garage Door [%s]"
+                Switch item=Garage_BackDoor_Lock label="Door Lock"
+            }
+        }
+    }
+
+    Frame label="Energy" {
+        Text label="Energy Management" icon="energy" {
+            Frame label="Current Power" {
+                Text item=EMS_Solar_Power label="Solar Production [%.0f W]" icon="solarplant"
+                Text item=EMS_Load_Power label="Home Consumption [%.0f W]" icon="house"
+                Text item=EMS_Grid_Power label="Grid Power [%.0f W]" icon="poweroutlet"
+                Text item=EMS_Battery_Power label="Battery Power [%.0f W]" icon="battery"
+                Text item=EMS_Battery_SoC label="Battery State [%d %%]" icon="battery"
+            }
+            Frame label="Daily Statistics" {
+                Text item=Solar_Production_Day label="Solar Production [%.2f kWh]"
+                Text item=EMS_TotalConsumption_Day label="Total Consumption [%.2f kWh]"
+                Text item=EMS_SelfConsumption_Day label="Self-Consumption [%.2f kWh]"
+                Text item=EMS_GridConsumption_Day label="Grid Consumption [%.2f kWh]"
+                Text item=EMS_FeedIn_Day label="Grid Feed-In [%.2f kWh]"
+            }
+            Frame label="Monthly Statistics" {
+                Text item=Solar_Production_Month label="Solar Production [%.2f kWh]"
+                Text item=EMS_TotalConsumption_Month label="Total Consumption [%.2f kWh]"
+                Text item=EMS_SelfConsumption_Month label="Self-Consumption [%.2f kWh]"
+                Text item=EMS_GridConsumption_Month label="Grid Consumption [%.2f kWh]"
+                Text item=EMS_FeedIn_Month label="Grid Feed-In [%.2f kWh]"
+            }
+            Frame label="Costs & Savings" {
+                Text item=EMS_ElectricityCost_Month label="Monthly Electricity Cost [%.2f EUR]"
+                Text item=EMS_ElectricityCostSavings_Month label="Monthly Savings [%.2f EUR]"
+                Text item=EMS_FeedInCompensation_Month label="Feed-In Compensation [%.2f EUR]"
+            }
+            Frame label="Tariffs" {
+                Input item=EMS_Electricity_Tariff label="Electricity Tariff [%.4f EUR/kWh]"
+                Input item=EMS_FeedIn_Tariff label="Feed-In Tariff [%.4f EUR/kWh]"
+            }
+        }
+
+        Text label="Solar System" icon="solarplant" {
+            Frame label="Current Production" {
+                Text item=Solar_Power_Total label="Total Power [%.2f kW]"
+                Text item=Solar_Power_East label="East Plane [%.2f kW]"
+                Text item=Solar_Power_West label="West Plane [%.2f kW]"
+            }
+            Frame label="Forecast" {
+                Text item=Solar_Forecast_Energy_Today label="Today's Forecast [%.2f kWh]"
+                Text item=Solar_Forecast_Power_Estimate_Total label="Current Estimate [%.2f kW]"
+                Text item=Solar_Forecast_Power_Actual_Total label="Actual Power [%.2f kW]"
+            }
+            Frame label="Plane Details" {
+                Text item=Solar_Forecast_Power_Estimate_East label="East Estimate [%.2f kW]"
+                Text item=Solar_Forecast_Power_Actual_East label="East Actual [%.2f kW]"
+                Text item=Solar_Forecast_Power_Estimate_West label="West Estimate [%.2f kW]"
+                Text item=Solar_Forecast_Power_Actual_West label="West Actual [%.2f kW]"
+            }
+        }
+    }
+
+    Frame label="Weather" {
+        Text label="Current Weather" icon="sun_clouds" {
+            Frame label="Conditions" {
+                Text item=OneCall_Current_Temperature label="Temperature [%.1f °C]"
+                Text item=OneCall_Current_Condition label="Condition [%s]"
+                Text item=OneCall_Current_Humidity label="Humidity [%d %%]"
+                Text item=OneCall_Current_Windspeed label="Wind Speed [%.1f m/s]"
+            }
+        }
+
+        Text label="Sun & Moon" icon="sun" {
+            Frame label="Sun" {
+                Text item=Sunrise_Time label="Sunrise [%1$tH:%1$tM]"
+                Text item=Sunset_Time label="Sunset [%1$tH:%1$tM]"
+                Text item=Sun_Azimuth label="Sun Azimuth [%.2f °]"
+                Text item=Sun_Elevation label="Sun Elevation [%.2f °]"
+            }
+            Frame label="Moon" {
+                Text item=Moon_Phase label="Moon Phase [%s]"
+                Text item=Moon_Azimuth label="Moon Azimuth [%.2f °]"
+                Text item=Moon_Elevation label="Moon Elevation [%.2f °]"
+            }
+        }
+
+        Text label="Pollen Count" icon="garden" {
+            Text item=Pollen_Count_Birch label="Birch [%s]"
+            Text item=Pollen_Count_Grasses label="Grasses [%s]"
+        }
+
+        Text label="Weather Warnings" icon="alarm" {
+            Switch item=Weather_Warning1_Active label="Warning Active"
+            Text item=Weather_Warning1_Severity label="Severity [%s]"
+            Text item=Weather_Warning1_Headline label="Headline [%s]"
+            Text item=Weather_Warning1_Description label="Description [%s]"
+        }
+    }
+
+    Frame label="System" {
+        Text label="All Temperatures" icon="temperature" {
+            Text item=gTemperatures label="Average [%.1f °C]"
+            Text item=LivingRoom_HVAC_Temperature label="Living Room [%.1f °C]"
+            Text item=Kitchen_HVAC_Temperature label="Kitchen [%.1f °C]"
+            Text item=Bedroom_HVAC_Temperature label="Master Bedroom [%.1f °C]"
+            Text item=Office_HVAC_Temperature label="Office [%.1f °C]"
+            Text item=Guestroom_HVAC_Temperature label="Guestroom [%.1f °C]"
+            Text item=Bathroom_HVAC_Temperature label="Bathroom [%.1f °C]"
+            Text item=Child1_HVAC_Temperature label="Amelia's Room [%.1f °C]"
+            Text item=Child2_HVAC_Temperature label="Oliver's Room [%.1f °C]"
+            Text item=Cellar_HVAC_Temperature label="Cellar [%.1f °C]"
+            Text item=Toilet_HVAC_Temperature label="Toilet [%.1f °C]"
+            Text item=GroundFloor_Corridor_HVAC_Temperature label="Ground Floor Corridor [%.1f °C]"
+            Text item=FirstFloor_Corridor_HVAC_Temperature label="First Floor Corridor [%.1f °C]"
+            Text item=SecondFloor_Corridor_HVAC_Temperature label="Second Floor Corridor [%.1f °C]"
+        }
+
+        Text label="All Windows" icon="window" {
+            Text item=gWindows label="Open Windows [%d]"
+            Text item=LivingRoom_Window_Contact label="Living Room [%s]"
+            Text item=Kitchen_Window_Contact label="Kitchen [%s]"
+            Text item=Bedroom_Window_Contact label="Master Bedroom [%s]"
+            Text item=Office_Window_Contact label="Office [%s]"
+            Text item=Guestroom_Window_Contact label="Guestroom [%s]"
+            Text item=Bathroom_Window_Contact label="Bathroom [%s]"
+            Text item=Child1_Window_Contact label="Amelia's Room [%s]"
+            Text item=Child2_Window_Contact label="Oliver's Room [%s]"
+        }
+
+        Text label="All Doors" icon="door" {
+            Text item=gDoors label="Open Doors [%d]"
+            Text item=GroundFloor_Corridor_FrontDoor_Contact label="Front Door [%s]"
+            Text item=Garage_BackDoor_Contact label="Garage Door [%s]"
+        }
+
+        Text label="All Locks" icon="lock" {
+            Text item=gLocks label="Unlocked [%d]"
+            Switch item=GroundFloor_Corridor_FrontDoor_Lock label="Front Door Lock"
+            Switch item=Garage_BackDoor_Lock label="Garage Door Lock"
+        }
+    }
+}
