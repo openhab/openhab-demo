@@ -43,7 +43,8 @@ const temperatureMeasurements = items.addItem({
   group: {
     type: 'Number:Temperature',
     function: 'AVG'
-  }
+  },
+  format: '%.1f %unit%'
 })
 const temperatureSetpoints = items.addItem({
   type: 'Group',
@@ -53,7 +54,8 @@ const temperatureSetpoints = items.addItem({
   group: {
     type: 'Number:Temperature',
     function: 'AVG'
-  }
+  },
+  format: '%.1f %unit%'
 })
 const heating = items.addItem({
   type: 'Group',
