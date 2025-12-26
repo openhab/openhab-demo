@@ -684,7 +684,7 @@
         "parameters": [],
         "parameterGroups": []
       },
-      "timestamp": "Oct 19, 2025, 10:03:55 PM",
+      "timestamp": "Dec 26, 2025, 3:23:26 PM",
       "component": "oh-chart-page",
       "config": {
         "chartType": "isoWeek",
@@ -695,7 +695,7 @@
           {
             "component": "oh-chart-grid",
             "config": {
-              "top": "120"
+              "top": 80.0
             }
           }
         ],
@@ -781,7 +781,7 @@
         "parameters": [],
         "parameterGroups": []
       },
-      "timestamp": "Dec 26, 2025, 12:29:12 PM",
+      "timestamp": "Dec 26, 2025, 3:24:04 PM",
       "component": "oh-chart-page",
       "config": {
         "label": "Living Room HVAC"
@@ -791,15 +791,15 @@
           {
             "component": "oh-chart-grid",
             "config": {
-              "height": "60%",
-              "top": "60px"
+              "height": "55%",
+              "top": 80.0
             }
           },
           {
             "component": "oh-chart-grid",
             "config": {
-              "bottom": "30px",
-              "height": "25%"
+              "bottom": 30.0,
+              "height": "20%"
             }
           }
         ],
@@ -843,6 +843,17 @@
               "xAxisIndex": 1.0,
               "yAxisIndex": 1.0,
               "yValue": 0.0
+            }
+          }
+        ],
+        "title": [
+          {
+            "component": "oh-chart-title",
+            "config": {
+              "left": "center",
+              "show": "\u003dscreen.appWidth \u003e\u003d 568 ? true : false",
+              "text": "Living Room HVAC",
+              "top": 15.0
             }
           }
         ],
@@ -903,7 +914,7 @@
         "parameters": [],
         "parameterGroups": []
       },
-      "timestamp": "Oct 19, 2025, 10:03:23 PM",
+      "timestamp": "Dec 26, 2025, 3:23:09 PM",
       "component": "oh-chart-page",
       "config": {
         "chartType": "day",
@@ -917,7 +928,7 @@
             "component": "oh-chart-grid",
             "config": {
               "bottom": 80.0,
-              "top": 180.0
+              "top": 80.0
             }
           }
         ],
