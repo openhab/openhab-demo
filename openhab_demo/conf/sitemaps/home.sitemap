@@ -1,12 +1,12 @@
 sitemap home label="Smart Home" {
     Frame label="Overview" {
-        Text item=OneCall_Current_Temperature label="Outside [%.1f °C]" icon="temperature"
-        Text item=OneCall_Current_Condition label="Weather [%s]" icon="sun_clouds"
-        Text item=gTemperatures label="Avg. Indoor Temp [%.1f °C]" icon="temperature"
-        Text item=gWindows label="Windows [%d open]" icon="window"
-        Text item=gDoors label="Doors [%d open]" icon="door"
-        Text item=gLocks label="Locks [%d unlocked]" icon="lock"
-        Switch item=Presence label="Presence"
+        Text item=OneCall_Current_Temperature label="Outside [%.1f °C]"
+        Text item=OneCall_Current_Condition label="Weather [%s]"
+        Text item=gTemperatures label="Avg. Indoor Temp [%.1f °C]"
+        Text item=gWindows label="Windows [%d open]" icon=[gWindows == 0 = window-closed, window-open]
+        Text item=gDoors label="Doors [%d open]" icon=[gDoors == 0 = door-closed, door-open]
+        Text item=gLocks label="Locks [%d unlocked]" icon=[gLocks == 0 = lock-closed, lock-open]
+        Switch item=Presence label="Presence" mappings=[ON=home, OFF=away]
     }
 
     Frame label="Ground Floor" {
@@ -287,11 +287,11 @@ sitemap home label="Smart Home" {
     Frame label="Energy" {
         Text label="Energy Management" icon="energy" {
             Frame label="Current Power" {
-                Text item=EMS_Solar_Power label="Solar Production [%.0f W]" icon="solarplant"
-                Text item=EMS_Load_Power label="Home Consumption [%.0f W]" icon="house"
-                Text item=EMS_Grid_Power label="Grid Power [%.0f W]" icon="poweroutlet"
-                Text item=EMS_Battery_Power label="Battery Power [%.0f W]" icon="battery"
-                Text item=EMS_Battery_SoC label="Battery State [%d %%]" icon="battery"
+                Text item=EMS_Solar_Power label="Solar Production [%.0f W]"
+                Text item=EMS_Load_Power label="Home Consumption [%.0f W]"
+                Text item=EMS_Grid_Power label="Grid Power [%.0f W]"
+                Text item=EMS_Battery_Power label="Battery Power [%.0f W]"
+                Text item=EMS_Battery_SoC label="Battery State [%d %%]"
             }
             Frame label="Daily Statistics" {
                 Text item=Solar_Production_Day label="Solar Production [%.2f kWh]"
@@ -363,38 +363,37 @@ sitemap home label="Smart Home" {
         }
 
         Text label="Pollen Count" icon="garden" {
-            Text item=Pollen_Count_Birch label="Birch [%s]"
-            Text item=Pollen_Count_Grasses label="Grasses [%s]"
+            Text item=Pollen_Count_Birch
+            Text item=Pollen_Count_Grasses
         }
 
-        Text label="Weather Warnings" icon="alarm" {
-            Switch item=Weather_Warning1_Active label="Warning Active"
-            Text item=Weather_Warning1_Severity label="Severity [%s]"
+        Text item=Weather_Warning1_Headline label="Weather Warning" icon="alarm" visibility=[Weather_Warning1_Active==ON] {
             Text item=Weather_Warning1_Headline label="Headline [%s]"
             Text item=Weather_Warning1_Description label="Description [%s]"
+            Text item=Weather_Warning1_Severity label="Severity [%s]"
         }
     }
 
     Frame label="System" {
-        Text label="All Temperatures" icon="temperature" {
+        Text item=gTemperatures label="All Temperatures" {
             Text item=gTemperatures label="Average [%.1f °C]"
+            Text item=GroundFloor_Corridor_HVAC_Temperature label="Ground Floor Corridor [%.1f °C]"
             Text item=LivingRoom_HVAC_Temperature label="Living Room [%.1f °C]"
             Text item=Kitchen_HVAC_Temperature label="Kitchen [%.1f °C]"
-            Text item=Bedroom_HVAC_Temperature label="Master Bedroom [%.1f °C]"
-            Text item=Office_HVAC_Temperature label="Office [%.1f °C]"
-            Text item=Guestroom_HVAC_Temperature label="Guestroom [%.1f °C]"
+            Text item=Toilet_HVAC_Temperature label="Toilet [%.1f °C]"
+            Text item=FirstFloor_Corridor_HVAC_Temperature label="First Floor Corridor [%.1f °C]"
             Text item=Bathroom_HVAC_Temperature label="Bathroom [%.1f °C]"
+            Text item=Bedroom_HVAC_Temperature label="Master Bedroom [%.1f °C]"
+            Text item=Guestroom_HVAC_Temperature label="Guestroom [%.1f °C]"
+            Text item=Office_HVAC_Temperature label="Office [%.1f °C]"
+            Text item=SecondFloor_Corridor_HVAC_Temperature label="Second Floor Corridor [%.1f °C]"
             Text item=Child1_HVAC_Temperature label="Amelia's Room [%.1f °C]"
             Text item=Child2_HVAC_Temperature label="Oliver's Room [%.1f °C]"
             Text item=Cellar_HVAC_Temperature label="Cellar [%.1f °C]"
-            Text item=Toilet_HVAC_Temperature label="Toilet [%.1f °C]"
-            Text item=GroundFloor_Corridor_HVAC_Temperature label="Ground Floor Corridor [%.1f °C]"
-            Text item=FirstFloor_Corridor_HVAC_Temperature label="First Floor Corridor [%.1f °C]"
-            Text item=SecondFloor_Corridor_HVAC_Temperature label="Second Floor Corridor [%.1f °C]"
         }
 
-        Text label="All Windows" icon="window" {
-            Text item=gWindows label="Open Windows [%d]"
+        Text item=gWindows label="All Windows" icon=[gWindows == 0 = window-closed, window-open] {
+            Text item=gWindows label="Open Windows [%d]" icon=[gWindows == 0 = window-closed, window-open]
             Text item=LivingRoom_Window_Contact label="Living Room [%s]"
             Text item=Kitchen_Window_Contact label="Kitchen [%s]"
             Text item=Bedroom_Window_Contact label="Master Bedroom [%s]"
@@ -405,14 +404,14 @@ sitemap home label="Smart Home" {
             Text item=Child2_Window_Contact label="Oliver's Room [%s]"
         }
 
-        Text label="All Doors" icon="door" {
-            Text item=gDoors label="Open Doors [%d]"
+        Text item=gDoors label="All Doors" icon=[gDoors == 0 = door-closed, door-open] {
+            Text item=gDoors label="Open Doors [%d]" icon=[gDoors == 0 = door-closed, door-open]
             Text item=GroundFloor_Corridor_FrontDoor_Contact label="Front Door [%s]"
             Text item=Garage_BackDoor_Contact label="Garage Door [%s]"
         }
 
-        Text label="All Locks" icon="lock" {
-            Text item=gLocks label="Unlocked [%d]"
+        Text item=gLocks label="All Locks" icon=[gLocks == 0 = lock-closed, lock-open] {
+            Text item=gLocks label="Unlocked [%d]" icon=[gLocks == 0 = lock-closed, lock-open]
             Switch item=GroundFloor_Corridor_FrontDoor_Lock label="Front Door Lock"
             Switch item=Garage_BackDoor_Lock label="Garage Door Lock"
         }

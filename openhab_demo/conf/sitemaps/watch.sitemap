@@ -2,8 +2,8 @@ sitemap watch label="Watch" {
     Frame label="Status" {
         Text item=OneCall_Current_Temperature label="Outside [%.1f°C]"
         Text item=gTemperatures label="Inside [%.1f°C]"
-        Text item=gWindows label="Windows [%d open]"
-        Text item=gDoors label="Doors [%d open]"
+        Text item=gWindows label="Windows [%d open]" icon=[gWindows == 0 = window-closed, window-open]
+        Text item=gDoors label="Doors [%d open]" icon=[gDoors == 0 = door-closed, door-open]
     }
 
     Frame label="Lights" {
@@ -34,7 +34,9 @@ sitemap watch label="Watch" {
 
     Frame label="Energy" {
         Text item=EMS_Solar_Power label="Solar [%.0f W]"
-        Text item=EMS_Load_Power label="Load [%.0f W]"
+        Text item=EMS_Grid_Power label="Grid [%.0f W]"
+        Text item=EMS_Battery_Power label="Battery [%.0f W]"
         Text item=EMS_Battery_SoC label="Battery [%d%%]"
+        Text item=EMS_Load_Power label="Load [%.0f W]"
     }
 }
