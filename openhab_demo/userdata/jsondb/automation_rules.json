@@ -1,0 +1,536 @@
+{
+  "Diner": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "1",
+          "configuration": {
+            "command": "30",
+            "itemName": "LivingRoom_CeilingLight"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "command": "60,0,100",
+            "itemName": "LivingRoom_FloorLamp"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "6",
+          "configuration": {
+            "command": "21 °C",
+            "itemName": "LivingRoom_HVAC_TemperatureSet"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "3",
+          "configuration": {
+            "command": "ON",
+            "itemName": "LivingRoom_Receiver_Power"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "4",
+          "configuration": {
+            "command": "Server",
+            "itemName": "LivingRoom_Receiver_Input"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "5",
+          "configuration": {
+            "command": "25 %",
+            "itemName": "LivingRoom_Receiver_Volume"
+          },
+          "type": "core.ItemCommandAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "Diner",
+      "name": "Diner at Living Room",
+      "tags": [
+        "Scene"
+      ],
+      "visibility": "VISIBLE",
+      "description": "Setup lights, increase temperature, turn on AV receiver, set input \u0026 volume"
+    }
+  },
+  "Morning": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "1",
+          "configuration": {
+            "command": "UP",
+            "itemName": "gShutters"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "7",
+          "configuration": {
+            "command": "20.5 °C",
+            "itemName": "gTemperature_Setpoints"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "5",
+          "configuration": {
+            "command": "30",
+            "itemName": "Kitchen_CeilingLight"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "6",
+          "configuration": {
+            "command": "ON",
+            "itemName": "Kitchen_ShelfLight"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "command": "ON",
+            "itemName": "Kitchen_Speaker_Power"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "3",
+          "configuration": {
+            "command": "FM",
+            "itemName": "Kitchen_Speaker_Input"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "4",
+          "configuration": {
+            "command": "25 %",
+            "itemName": "Kitchen_Speaker_Volume"
+          },
+          "type": "core.ItemCommandAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "Morning",
+      "name": "Morning",
+      "tags": [
+        "Scene"
+      ],
+      "visibility": "VISIBLE",
+      "description": "Open the shutters, increase temperature setpoints, turn on Kitchen lights \u0026 speaker"
+    }
+  },
+  "Night": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "1",
+          "configuration": {
+            "command": "DOWN",
+            "itemName": "gShutters"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "command": "OFF",
+            "itemName": "gLights"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "3",
+          "configuration": {
+            "command": "19 °C",
+            "itemName": "gTemperature_Setpoints"
+          },
+          "type": "core.ItemCommandAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "Night",
+      "name": "Night",
+      "tags": [
+        "Scene"
+      ],
+      "visibility": "VISIBLE",
+      "description": "Close the shutters, turn off lights, lower temperature setpoints"
+    }
+  },
+  "TV": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "1",
+          "configuration": {
+            "command": "0",
+            "itemName": "LivingRoom_CeilingLight"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "command": "60,23,100",
+            "itemName": "LivingRoom_FloorLamp"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "6",
+          "configuration": {
+            "command": "21 °C",
+            "itemName": "LivingRoom_HVAC_TemperatureSet"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "3",
+          "configuration": {
+            "command": "ON",
+            "itemName": "LivingRoom_Receiver_Power"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "4",
+          "configuration": {
+            "command": "TV",
+            "itemName": "LivingRoom_Receiver_Input"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "5",
+          "configuration": {
+            "command": "35 %",
+            "itemName": "LivingRoom_Receiver_Volume"
+          },
+          "type": "core.ItemCommandAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "TV",
+      "name": "TV at Living Room",
+      "tags": [
+        "Scene"
+      ],
+      "visibility": "VISIBLE",
+      "description": "Setup lights, increase temperature, turn on AV receiver, set input \u0026 volume"
+    }
+  },
+  "Work": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "1",
+          "configuration": {
+            "command": "ON",
+            "itemName": "Office_DeskLight"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "4",
+          "configuration": {
+            "command": "21 °C",
+            "itemName": "Office_HVAC_TemperatureSet"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "command": "ON",
+            "itemName": "Office_Speaker_Power"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "3",
+          "configuration": {
+            "command": "FM",
+            "itemName": "Office_Speaker_Input"
+          },
+          "type": "core.ItemCommandAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "Work",
+      "name": "Work at Office",
+      "tags": [
+        "Scene"
+      ],
+      "visibility": "VISIBLE",
+      "description": "Turn on desk light, increase temperature, turn on speaker"
+    }
+  },
+  "blockly_example": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "script",
+          "configuration": {
+            "blockSource": "\u003cxml xmlns\u003d\"https://developers.google.com/blockly/xml\"\u003e\u003cvariables\u003e\u003cvariable type\u003d\"Number\" id\u003d\"8tr}7pyfVV[mU*KQ]iXD\"\u003eopenWindows\u003c/variable\u003e\u003cvariable type\u003d\"oh_itemtype\" id\u003d\")Mxc|$TpeU$Wf,M^-\u003du\u003d\"\u003ewindow\u003c/variable\u003e\u003c/variables\u003e\u003cblock type\u003d\"variables_set_dynamic\" id\u003d\"!IiUMe!S_*JGHZE4K7NG\" x\u003d\"48\" y\u003d\"66\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"8tr}7pyfVV[mU*KQ]iXD\" variabletype\u003d\"Number\"\u003eopenWindows\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"math_number\" id\u003d\"JR/2_KHX6!`s4JYk09lk\"\u003e\u003cfield name\u003d\"NUM\"\u003e0\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"controls_forEach\" id\u003d\"Kdp/mdNolfu,qN0Yr_sB\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\")Mxc|$TpeU$Wf,M^-\u003du\u003d\" variabletype\u003d\"oh_itemtype\"\u003ewindow\u003c/field\u003e\u003cvalue name\u003d\"LIST\"\u003e\u003cblock type\u003d\"oh_groupmembers\" id\u003d\"ro$mU7CTzoaI42u:N7gN\"\u003e\u003cvalue name\u003d\"groupName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"?X3nvOoP/7tL)i83Uw)8\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_item\" id\u003d\"4\u003dS-!;O/4ijd-u4xX|s%\"\u003e\u003cmutation itemName\u003d\"gWindows\" itemLabel\u003d\"Windows\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003egWindows\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"eYzsF2V)rR@sRnPJ|[[]\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"NYo{d,q~Hf`oONSt60xj\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"K;4a?!esNEIvFo2lK|Bu\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\",P))/*4]Q1kSutKOa-{}\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"2%s4g6b)toMzFdU%$8^h\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"f$?5I*iSQq.c\u003d-:p:|6u\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\")Mxc|$TpeU$Wf,M^-\u003du\u003d\" variabletype\u003d\"oh_itemtype\"\u003ewindow\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"|B6:2OS9N%92cNc%V7]L\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOPEN\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"variables_set_dynamic\" id\u003d\"{*M-UlkwqUakQ7y-h@!(\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"8tr}7pyfVV[mU*KQ]iXD\" variabletype\u003d\"Number\"\u003eopenWindows\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"math_arithmetic\" id\u003d\"sfV%J+[f!Z7;ol-J6WqX\"\u003e\u003cfield name\u003d\"OP\"\u003eADD\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cshadow type\u003d\"math_number\" id\u003d\"Rn^oFoVtzxuG8S)D?22+\"\u003e\u003cfield name\u003d\"NUM\"\u003e1\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"91sL9a;eoc[op{28)bkq\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"8tr}7pyfVV[mU*KQ]iXD\" variabletype\u003d\"Number\"\u003eopenWindows\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cshadow type\u003d\"math_number\" id\u003d\"pPXWOWqJUcr4u{U#+uRb\"\u003e\u003cfield name\u003d\"NUM\"\u003e1\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/statement\u003e\u003cnext\u003e\u003cblock type\u003d\"oh_event\" id\u003d\"]`ggI6byhHNfPgo?Sm:F\"\u003e\u003cfield name\u003d\"eventType\"\u003epostUpdate\u003c/field\u003e\u003cvalue name\u003d\"value\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"O0.:D;LNg|tE(bdnB42Y\"\u003e\u003cfield name\u003d\"TEXT\"\u003evalue\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\"r~-dghPl._,:$Z}}ZL81\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"text\" id\u003d\":p*4XOCeJ19#DU|qB$][\"\u003e\u003cfield name\u003d\"TEXT\"\u003eHello from Blockly! Open windows: \u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"3P?OC#_g_$l||b.hidKZ\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"8tr}7pyfVV[mU*KQ]iXD\" variabletype\u003d\"Number\"\u003eopenWindows\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"t#skW~OX4(Yh7|+fUzWS\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_item\" id\u003d\":lVTGQ|rDYFwga9A:W:R\"\u003e\u003cmutation itemName\u003d\"ScriptDemo\" itemLabel\u003d\"undefined\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eScriptDemo\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/xml\u003e",
+            "script": "var openWindows, window2;\n\n\nopenWindows \u003d 0;\nvar window2_list \u003d items.getItem(\u0027gWindows\u0027).members;\nfor (var window2_index in window2_list) {\n  window2 \u003d window2_list[window2_index];\n  if (window2.state \u003d\u003d \u0027OPEN\u0027) {\n    openWindows \u003d openWindows + 1;\n  }\n}\nitems.getItem(\u0027ScriptDemo\u0027).postUpdate((\u0027Hello from Blockly! Open windows: \u0027 + String(openWindows)));\n",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "blockly_example",
+      "name": "Blockly Example",
+      "tags": [
+        "Script"
+      ],
+      "visibility": "VISIBLE",
+      "description": ""
+    }
+  },
+  "climate_control": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [
+        {
+          "id": "2",
+          "configuration": {
+            "cronExpression": "0 0/5 * * * ? *"
+          },
+          "type": "timer.GenericCronTrigger"
+        }
+      ],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "1",
+          "configuration": {
+            "blockSource": "\u003cxml xmlns\u003d\"https://developers.google.com/blockly/xml\"\u003e\u003cvariables\u003e\u003cvariable id\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003eroom\u003c/variable\u003e\u003cvariable id\u003d\"uqdIpqni]Kh1h3s5Q0Zf\"\u003eitemName\u003c/variable\u003e\u003cvariable type\u003d\"oh_itemtype\" id\u003d\"@12lX$cX5#U`rY,QNRD^\"\u003egroupMember\u003c/variable\u003e\u003cvariable type\u003d\"String\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\"\u003eroomName\u003c/variable\u003e\u003cvariable type\u003d\"oh_itemtype\" id\u003d\"L:ggz4y#a`hHt/0qi:.a\"\u003ecurrentTemperature\u003c/variable\u003e\u003cvariable type\u003d\"oh_itemtype\" id\u003d\".yGQp}C@PR[YwR!X]BC2\"\u003etemperatureSetpoint\u003c/variable\u003e\u003c/variables\u003e\u003cblock type\u003d\"procedures_defreturn\" id\u003d\"@LZp}}0lWAb9ttx!sV}\u003d\" x\u003d\"-370\" y\u003d\"-516\"\u003e\u003cmutation\u003e\u003carg name\u003d\"room\" varid\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003e\u003c/arg\u003e\u003c/mutation\u003e\u003cfield name\u003d\"NAME\"\u003ehas window\u003c/field\u003e\u003ccomment pinned\u003d\"false\" h\u003d\"80\" w\u003d\"160\"\u003eDescribe this function...\u003c/comment\u003e\u003cstatement name\u003d\"STACK\"\u003e\u003cblock type\u003d\"procedures_ifreturn\" id\u003d\"u@dt(az_}]7Jt.4X?U_t\"\u003e\u003cmutation value\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"CONDITION\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"wJM9dZP5ipd-h0;|k`xe\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"\u003dKjAI]98b@]U{,PljvgW\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003eroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"B;)EBiBOym[q{J/GL/Js\"\u003e\u003cfield name\u003d\"TEXT\"\u003eChild1\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"logic_boolean\" id\u003d\"1VSN03Kg~ws#Z|;OR$DK\"\u003e\u003cfield name\u003d\"BOOL\"\u003eTRUE\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"procedures_ifreturn\" id\u003d\"wNqk2yB_GtQ)$@Exh)I@\"\u003e\u003cmutation value\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"CONDITION\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"e,MI|V{$W$raaspyv~uI\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\":hOHIgENCBQ3vQleBC.@\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003eroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"KKSKIEA)XRk[lvf!mhQK\"\u003e\u003cfield name\u003d\"TEXT\"\u003eChild2\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"logic_boolean\" id\u003d\"(\u003dotAWAyrvkg|(Mo6TT$\"\u003e\u003cfield name\u003d\"BOOL\"\u003eTRUE\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"procedures_ifreturn\" id\u003d\"@jye!IsX~e9^80np{#b6\"\u003e\u003cmutation value\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"CONDITION\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"TgT4W4-.1^0w^.6Iiv(J\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"B8VV3-_qDqH|^u:l~mv4\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003eroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"RX2aKFHSI6t_;,Etjw+e\"\u003e\u003cfield name\u003d\"TEXT\"\u003eGuestroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"logic_boolean\" id\u003d\"c:!E[JO(RP]p2n/q2{Z;\"\u003e\u003cfield name\u003d\"BOOL\"\u003eTRUE\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"procedures_ifreturn\" id\u003d\"I7Hf/fHed;2g$w\u003dm$g}t\"\u003e\u003cmutation value\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"CONDITION\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"TLD8g1Rdz-#~}Ob:QfPL\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"oy1MW\u003dvD~yn`}G:(,jP8\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003eroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"AlUN*JE5#.3o(U`J`ku`\"\u003e\u003cfield name\u003d\"TEXT\"\u003eKitchen\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"logic_boolean\" id\u003d\"L\u003d;4|ek#T7;nJExJ7l_k\"\u003e\u003cfield name\u003d\"BOOL\"\u003eTRUE\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"procedures_ifreturn\" id\u003d\"rzl/0*-bcaveRX%%#}yE\"\u003e\u003cmutation value\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"CONDITION\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"6~bLOoqK+xOE4fFIEYPS\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"ZGonJDv+l/|.7J}u[6FN\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003eroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"d@9.4^3bYInws^uqFshe\"\u003e\u003cfield name\u003d\"TEXT\"\u003eLivingRoom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"logic_boolean\" id\u003d\"$6DVHV,r/zf8\u003d_U^A:yx\"\u003e\u003cfield name\u003d\"BOOL\"\u003eTRUE\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"procedures_ifreturn\" id\u003d\"n|8fikz#i!V6*?xgIr3+\"\u003e\u003cmutation value\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"CONDITION\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"5{#}s-\u003d|n}sz\u003d37p}F)j\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"T0O7Fg!YyaS7Ac^gQGAz\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003eroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"c|7cW#(#$~pX7@8F(eX%\"\u003e\u003cfield name\u003d\"TEXT\"\u003eBedroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"logic_boolean\" id\u003d\"4f8Tj^kmC//-S$An8UOt\"\u003e\u003cfield name\u003d\"BOOL\"\u003eTRUE\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"procedures_ifreturn\" id\u003d\"A;@HCsHqzIHa?_!upmUq\"\u003e\u003cmutation value\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"CONDITION\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"iJ~3KzybeWc4w7l[w13g\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"t~hZ:vkxSsz82H#Q]h!c\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"eT{!QdDit.L7bsrT(!xb\"\u003eroom\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"?sx/)kfWkGi@J:Z3A_+C\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOffice\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"logic_boolean\" id\u003d\"6o#U}d]XO1i8P3/VLO7V\"\u003e\u003cfield name\u003d\"BOOL\"\u003eTRUE\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003cvalue name\u003d\"RETURN\"\u003e\u003cblock type\u003d\"logic_boolean\" id\u003d\"fa})!9(y%4rw+_c{Db(P\"\u003e\u003cfield name\u003d\"BOOL\"\u003eFALSE\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003cblock type\u003d\"procedures_defreturn\" id\u003d\"4{Uz[E#c$2Dw.]p~Se5f\" x\u003d\"-365\" y\u003d\"-78\"\u003e\u003cmutation\u003e\u003carg name\u003d\"itemName\" varid\u003d\"uqdIpqni]Kh1h3s5Q0Zf\"\u003e\u003c/arg\u003e\u003c/mutation\u003e\u003cfield name\u003d\"NAME\"\u003eget room name\u003c/field\u003e\u003ccomment pinned\u003d\"false\" h\u003d\"80\" w\u003d\"160\"\u003eDescribe this function...\u003c/comment\u003e\u003cvalue name\u003d\"RETURN\"\u003e\u003cblock type\u003d\"text_getSubstring\" id\u003d\".BO,kOq5z{)@tAz3\u003d#y\u003d\" inline\u003d\"false\"\u003e\u003cmutation at1\u003d\"false\" at2\u003d\"true\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"WHERE1\"\u003eFIRST\u003c/field\u003e\u003cfield name\u003d\"WHERE2\"\u003eFROM_START\u003c/field\u003e\u003cvalue name\u003d\"STRING\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"1e3|s[bj_@[PpKr?`n9k\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"uqdIpqni]Kh1h3s5Q0Zf\"\u003eitemName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"AT2\"\u003e\u003cblock type\u003d\"math_arithmetic\" id\u003d\"*|pgyse.Ok7YT;YF)?A5\"\u003e\u003cfield name\u003d\"OP\"\u003eMINUS\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cshadow type\u003d\"math_number\" id\u003d\"E.\u003dee$K;Y[Ke@UL842!5\"\u003e\u003cfield name\u003d\"NUM\"\u003e1\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_indexOf\" id\u003d\"o\u003dru#bQ]A]44nv+R%@hr\"\u003e\u003cfield name\u003d\"END\"\u003eFIRST\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"`gWN#`:LT#+r;zfxiBCN\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"uqdIpqni]Kh1h3s5Q0Zf\"\u003eitemName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"FIND\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"McRNYoyE6mS]1MBnWA2W\"\u003e\u003cfield name\u003d\"TEXT\"\u003eabc\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"ft(+*XEs~+WI}i6UulyA\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cshadow type\u003d\"math_number\" id\u003d\"Us]|bN0NFXkFVDxT-}/@\"\u003e\u003cfield name\u003d\"NUM\"\u003e1\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003cblock type\u003d\"controls_forEach\" id\u003d\"/0ik$Ve7;_J70?jxOL[!\" x\u003d\"-366\" y\u003d\"123\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003cvalue name\u003d\"LIST\"\u003e\u003cblock type\u003d\"oh_groupmembers\" id\u003d\"f/oQ}kVWrdI[3*6gj`C4\"\u003e\u003cvalue name\u003d\"groupName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"6\u003d550)rCRm]]2Y5G^q`h\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_item\" id\u003d\"Vm#M%*_KpmkftQW3]r$%\"\u003e\u003cmutation itemName\u003d\"gHeating\" itemLabel\u003d\"Heating\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003egHeating\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO\"\u003e\u003cblock type\u003d\"variables_set_dynamic\" id\u003d\"7l\u003dO86+s_YzdcS:cwdF4\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"procedures_callreturn\" id\u003d\"(RG.aA|W|lVzyF;cE@\u003dz\"\u003e\u003cmutation name\u003d\"get room name\"\u003e\u003carg name\u003d\"itemName\"\u003e\u003c/arg\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ARG0\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"FHIyL+pRE`Hj9`0/K+@4\"\u003e\u003cmutation attributeName\u003d\"Name\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eName\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"Q,+ldnXICJf3]eP8y3oP\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"[a#/}RZ-P:CGsL0bSOc{\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"7?Dg0X[0R-p{tOb+W~i0\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"variables_set_dynamic\" id\u003d\"KQ394[MN\u003dA3!liz`X$w3\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"L:ggz4y#a`hHt/0qi:.a\" variabletype\u003d\"oh_itemtype\"\u003ecurrentTemperature\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"oh_getitem\" id\u003d\"5zk#?e:BBGq7VTxSVx|A\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\".hsHb19nXG6G~D6xR|Kt\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_text_replace\" id\u003d\"F{U6yb!cuRw1gORdwXO;\"\u003e\u003cvalue name\u003d\"pattern\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"k?s2Gmy+~avEYh.8rW#z\"\u003e\u003cfield name\u003d\"TEXT\"\u003epattern\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"CC#d(3[)LI)/0nuxhG1@\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_Heating\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"replacement\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"r}nDi0{_mkLsX%ew^Gk)\"\u003e\u003cfield name\u003d\"TEXT\"\u003ereplacement\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"-3dJ:DRsS%8m4bHe1Y:0\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_Temperature\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"origin\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{ivR;qd\u003dsrklPkv{G90*\"\u003e\u003cfield name\u003d\"TEXT\"\u003eorigin\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"8+8q@H1Fa56Z6wvE)WyC\"\u003e\u003cmutation attributeName\u003d\"Name\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eName\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"Q,+ldnXICJf3]eP8y3oP\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"[a#/}RZ-P:CGsL0bSOc{\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"}9Y.S,39OB`XpaE`ih$@\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"variables_set_dynamic\" id\u003d\"[](zbU#Q5:.jvicFp+d:\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\".yGQp}C@PR[YwR!X]BC2\" variabletype\u003d\"oh_itemtype\"\u003etemperatureSetpoint\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"oh_getitem\" id\u003d\"oI7E:XcdxeCsb^95R~vz\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\".hsHb19nXG6G~D6xR|Kt\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_text_replace\" id\u003d\"#`*rzrgTMr\u003d,q_8nojd:\"\u003e\u003cvalue name\u003d\"pattern\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"k?s2Gmy+~avEYh.8rW#z\"\u003e\u003cfield name\u003d\"TEXT\"\u003epattern\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"`+v*eL/lGuNW^i*Lt_0]\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_Heating\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"replacement\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"r}nDi0{_mkLsX%ew^Gk)\"\u003e\u003cfield name\u003d\"TEXT\"\u003ereplacement\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"Fe,:F!dskBy[,:jZ`-9\u003d\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_TemperatureSet\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"origin\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{ivR;qd\u003dsrklPkv{G90*\"\u003e\u003cfield name\u003d\"TEXT\"\u003eorigin\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"QjA5YyopNH#ls.]qp!t)\"\u003e\u003cmutation attributeName\u003d\"Name\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eName\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"Q,+ldnXICJf3]eP8y3oP\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"[a#/}RZ-P:CGsL0bSOc{\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"/5frTKBf#~;hSbYbAfdx\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"g]k7bk4P_gxUr#{!?mWD\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"procedures_callreturn\" id\u003d\"),%Cr{5j.BT]@P@Z~\u003d6t\"\u003e\u003cmutation name\u003d\"has window\"\u003e\u003carg name\u003d\"room\"\u003e\u003c/arg\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ARG0\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"%jr}R*YAa0m:E50e;\u003dua\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"j|ZE\u003dm}A5-PU+zgC~[-j\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"x((]CzKt4!:{309D{AgW\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"0qOz1jSJ*CO$c3yMj{LR\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"ukK(/JUI!b,[r3BQ]ss*\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"yMr}R$e]iMUA8fIs,rL.\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem\" id\u003d\"6rWh^^nHNvg(fE(C5\u003dRX\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"8$Qrj,,;T^,TTb]$aJz9\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\";ASGY+O8^\u003d^c[_IFHqo(\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"xo5{d^_A+W2Z;chK`7q{\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"text\" id\u003d\"l]%\u003dnIho|;zjr82~A~lk\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_Window_Contact\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"2`HKVb}H9G%qZDx)F@lf\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOPEN\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"nUZTU0,VHvRYiwcN|17A\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\";+z84SYl[+0oCBDny54o\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"(eGHNAht.$:_4J.4fj!B\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"%8SZtoDp}dR{#]-),@$z\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"G9@Tb-F#.?C#:06]q(g(\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"J^ou{tI).b#5G0oj%nGm\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"uAJ!O|+!1gxq}a~,:O.C\"\u003e\u003cfield name\u003d\"TEXT\"\u003eON\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"oh_log\" id\u003d\"TTJMd[Ce3MUlkO,e!qPa\"\u003e\u003cfield name\u003d\"severity\"\u003einfo\u003c/field\u003e\u003cvalue name\u003d\"message\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{h)W_,KmEoLMNPcspycd\"\u003e\u003cfield name\u003d\"TEXT\"\u003eabc\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\"r#^\u003dT~C0%P1{Tzoh\u003di)V\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"text\" id\u003d\"0(j^\u003dXM}w9x!(_XWsr87\"\u003e\u003cfield name\u003d\"TEXT\"\u003eWindow open, stop heating: \u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"gr$dPW$wGt\u003d%!D_MrkR`\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"oh_event\" id\u003d\"wmPOb|JG_d)+LfoPhjfY\"\u003e\u003cfield name\u003d\"eventType\"\u003esendCommand\u003c/field\u003e\u003cvalue name\u003d\"value\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"F+Lins}F4z/~;{bev7r4\"\u003e\u003cfield name\u003d\"TEXT\"\u003evalue\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"3ym9K}]\u003dSUoG*@Dt2E2_\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOFF\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"9(s9!Oa0}3}I5OVN|f-q\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"A{tQ(gdacTKABr*?wm2/\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003cnext\u003e\u003cblock type\u003d\"controls_flow_statements\" id\u003d\"781txdkcx#814#)B;^,I\"\u003e\u003cfield name\u003d\"FLOW\"\u003eCONTINUE\u003c/field\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/statement\u003e\u003cnext\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"*8}O:Re3!Yp6W%8sH*yw\"\u003e\u003cmutation else\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"oh_quantity_compare\" id\u003d\"F@[L_{QjQQ104(th}($b\"\u003e\u003cfield name\u003d\"operand\"\u003elessThan\u003c/field\u003e\u003cvalue name\u003d\"first\"\u003e\u003cshadow type\u003d\"oh_quantity\" id\u003d\"(vd![we2l3n\u003dg;?LsD@m\"\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"\u003d_EygO4u--xe*#5B7U0#\"\u003e\u003cmutation attributeName\u003d\"QuantityState\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eQuantityState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"`GE$t{n!R~0wg/lsMJ}!\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"CFPPOSBhBU;\u003dLjH2rM)!\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"Anj;HDp[c]kPq/Ef8[io\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"L:ggz4y#a`hHt/0qi:.a\" variabletype\u003d\"oh_itemtype\"\u003ecurrentTemperature\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"second\"\u003e\u003cshadow type\u003d\"oh_quantity\" id\u003d\"_2*yGsV`6ivZ#:WL.[W}\"\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"hAW4H7W:XpHqB)rj!\u003du%\"\u003e\u003cmutation attributeName\u003d\"QuantityState\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eQuantityState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"c*XIl/WjfMaP^j-XR)gn\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"sr(ozucr.fl,v5ae,h^e\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"/ta|$U[gRo;VAi020~w|\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\".yGQp}C@PR[YwR!X]BC2\" variabletype\u003d\"oh_itemtype\"\u003etemperatureSetpoint\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"az1EX0wQgn2+tjq_u_.O\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"j!Ux%Hu[GRGx6BD4i8MV\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"s|Y9-~#)i*|[*{r,L3#V\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"%8SZtoDp}dR{#]-),@$z\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"G9@Tb-F#.?C#:06]q(g(\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"Q[(pBvBE$/2GugM7UR0{\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"1|[qpX`acrCTlJc@x:7N\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOFF\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"oh_log\" id\u003d\"[f\u003ds(cl,@.4vcJ~qw%zd\"\u003e\u003cfield name\u003d\"severity\"\u003einfo\u003c/field\u003e\u003cvalue name\u003d\"message\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{h)W_,KmEoLMNPcspycd\"\u003e\u003cfield name\u003d\"TEXT\"\u003eabc\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\"jC*QM#n3?sR*a]NXbi%k\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"text\" id\u003d\"2cl5R]N}W/o9aX6F-dk#\"\u003e\u003cfield name\u003d\"TEXT\"\u003eTemperature too low, start heating: \u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"Z]G.c]4}{6E7T3,h0|n/\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"oh_event\" id\u003d\"{.TGWigK$7|(ZM1Nex}h\"\u003e\u003cfield name\u003d\"eventType\"\u003esendCommand\u003c/field\u003e\u003cvalue name\u003d\"value\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"F+Lins}F4z/~;{bev7r4\"\u003e\u003cfield name\u003d\"TEXT\"\u003evalue\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"-M+j!|dY2E_p{[thW.7k\"\u003e\u003cfield name\u003d\"TEXT\"\u003eON\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"D3zp/?tq0ykjDMih5m3F\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\",^Mn~wv;i-2l-CNm:Lky\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/statement\u003e\u003cstatement name\u003d\"ELSE\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"e{9DJ;u`*gy_w+b7aeY\u003d\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"zQHWJI8zcZuA:$}3abUI\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"fW;wO@Jg4gwsvfk{lQ[5\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"%8SZtoDp}dR{#]-),@$z\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"G9@Tb-F#.?C#:06]q(g(\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"5h\u003d6rfG,CTB_rq:UKVkx\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"_+j+_aJ6vKRyIj+dw/A;\"\u003e\u003cfield name\u003d\"TEXT\"\u003eON\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"oh_log\" id\u003d\"GLs6cKw:kx40Zfy6X+Z-\"\u003e\u003cfield name\u003d\"severity\"\u003einfo\u003c/field\u003e\u003cvalue name\u003d\"message\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{h)W_,KmEoLMNPcspycd\"\u003e\u003cfield name\u003d\"TEXT\"\u003eabc\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\"+NUo8Ce#[6(#yn:d?6P/\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"text\" id\u003d\"Wa@u{e*?I\u003d^~3M{z1.g-\"\u003e\u003cfield name\u003d\"TEXT\"\u003eTemperature too high, stop heating: \u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"D889vH{Weka:?tjd;6kV\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"oh_event\" id\u003d\"_(n{$50a$%.zxVw%2?cR\"\u003e\u003cfield name\u003d\"eventType\"\u003esendCommand\u003c/field\u003e\u003cvalue name\u003d\"value\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"F+Lins}F4z/~;{bev7r4\"\u003e\u003cfield name\u003d\"TEXT\"\u003evalue\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"{N}(NSQax86O)Vbhjip*\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOFF\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"D3zp/?tq0ykjDMih5m3F\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"\u003dK4^O${#j]Q}@^5#htMB\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003cnext\u003e\u003cblock type\u003d\"controls_forEach\" id\u003d\"iM2okn}b)+l[C%hkt7PW\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003cvalue name\u003d\"LIST\"\u003e\u003cblock type\u003d\"oh_groupmembers\" id\u003d\"-kt[(xGh~a00^zIr9j^M\"\u003e\u003cvalue name\u003d\"groupName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"6\u003d550)rCRm]]2Y5G^q`h\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_item\" id\u003d\";{aP63OrF^i$!|,IaCx`\"\u003e\u003cmutation itemName\u003d\"gAC\" itemLabel\u003d\"Air Conditioning\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003egAC\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO\"\u003e\u003cblock type\u003d\"variables_set_dynamic\" id\u003d\"|S,%dhmjMrVbBGOT)e9I\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"procedures_callreturn\" id\u003d\"pU54EYb2di:Wk1]*N9(-\"\u003e\u003cmutation name\u003d\"get room name\"\u003e\u003carg name\u003d\"itemName\"\u003e\u003c/arg\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ARG0\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"b)KAdF9;AWYU/xrg#DHc\"\u003e\u003cmutation attributeName\u003d\"Name\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eName\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"Q,+ldnXICJf3]eP8y3oP\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"[a#/}RZ-P:CGsL0bSOc{\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"v7zCRj@WsUDtFFrw`2bh\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"variables_set_dynamic\" id\u003d\"P@S;jCznW5OPKF+3R]24\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"L:ggz4y#a`hHt/0qi:.a\" variabletype\u003d\"oh_itemtype\"\u003ecurrentTemperature\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"oh_getitem\" id\u003d\".Hcj9S`0tf.Ql$gXQ.tQ\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\".hsHb19nXG6G~D6xR|Kt\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_text_replace\" id\u003d\"hF|A246+IrMGI^sx!_v_\"\u003e\u003cvalue name\u003d\"pattern\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"k?s2Gmy+~avEYh.8rW#z\"\u003e\u003cfield name\u003d\"TEXT\"\u003epattern\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"?P!ucZi*64BJ!-G\u003dyv8[\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_AC\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"replacement\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"r}nDi0{_mkLsX%ew^Gk)\"\u003e\u003cfield name\u003d\"TEXT\"\u003ereplacement\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"_8HJYd|xC|@x5w!,@[JI\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_Temperature\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"origin\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{ivR;qd\u003dsrklPkv{G90*\"\u003e\u003cfield name\u003d\"TEXT\"\u003eorigin\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"h`UQu$~g(6bWjgvCNW!`\"\u003e\u003cmutation attributeName\u003d\"Name\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eName\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"Q,+ldnXICJf3]eP8y3oP\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"[a#/}RZ-P:CGsL0bSOc{\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"vwAPx-~WBuK`~j?4UY7n\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"variables_set_dynamic\" id\u003d\"QM^u$t-IL_i^jtoMkGid\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\".yGQp}C@PR[YwR!X]BC2\" variabletype\u003d\"oh_itemtype\"\u003etemperatureSetpoint\u003c/field\u003e\u003cvalue name\u003d\"VALUE\"\u003e\u003cblock type\u003d\"oh_getitem\" id\u003d\"qoN5zv`r(,TtGOt]FrXW\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\".hsHb19nXG6G~D6xR|Kt\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_text_replace\" id\u003d\"RTk\u003dr_/s@LTgT}((JOga\"\u003e\u003cvalue name\u003d\"pattern\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"k?s2Gmy+~avEYh.8rW#z\"\u003e\u003cfield name\u003d\"TEXT\"\u003epattern\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"8S#ybb@_,oSdkQB8QZrk\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_AC\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"replacement\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"r}nDi0{_mkLsX%ew^Gk)\"\u003e\u003cfield name\u003d\"TEXT\"\u003ereplacement\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"c@Ib~0p`07Y2c;Luw[!Z\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_TemperatureSet\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"origin\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{ivR;qd\u003dsrklPkv{G90*\"\u003e\u003cfield name\u003d\"TEXT\"\u003eorigin\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"QVo|q_{:b6zaY0[tgJ9D\"\u003e\u003cmutation attributeName\u003d\"Name\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eName\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"Q,+ldnXICJf3]eP8y3oP\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"[a#/}RZ-P:CGsL0bSOc{\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"NZAOd]OyAiX(|k[dq7Bh\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"c;HP%v*p|0fJ5X*$Nrc3\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"procedures_callreturn\" id\u003d\"m+5/D[t^Z4JlK%fNk],j\"\u003e\u003cmutation name\u003d\"has window\"\u003e\u003carg name\u003d\"room\"\u003e\u003c/arg\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ARG0\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"qXbN5%0hce`$Q0@_}B67\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"J`}E|Gg!?3}O*`Qu![T7\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"i:{WI(NsM^Kgc6?2$rwz\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"J#MCq#yZ^6fbFH).`ef.\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"ukK(/JUI!b,[r3BQ]ss*\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"yMr}R$e]iMUA8fIs,rL.\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem\" id\u003d\"(8?t7*z!_`ZJL^G)+mLW\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"8$Qrj,,;T^,TTb]$aJz9\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\"Qj;5hmYZ;p*AQ@vfAuld\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"]l{RC#R9Up,O%I@LoQ*)\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"text\" id\u003d\"@lQGh\u003d+F*lVU?FCnJ[wJ\"\u003e\u003cfield name\u003d\"TEXT\"\u003e_Window_Contact\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"{X?g+C(CmfN}`pn80};.\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOPEN\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"Mak%y9!!#3P$%bS(nuH`\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"mV(W(xEuuz?-V+w,1.9o\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"7K(\u003dME!nt?ZWEi2chZlZ\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"%8SZtoDp}dR{#]-),@$z\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"G9@Tb-F#.?C#:06]q(g(\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"w,I1[]l8yWOQy~n!-I*;\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\":Pz\u003dT!W[!p1B:o8Pz|G}\"\u003e\u003cfield name\u003d\"TEXT\"\u003eON\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"oh_log\" id\u003d\"g9S`Mt!ObN95e@!@nf!0\"\u003e\u003cfield name\u003d\"severity\"\u003einfo\u003c/field\u003e\u003cvalue name\u003d\"message\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{h)W_,KmEoLMNPcspycd\"\u003e\u003cfield name\u003d\"TEXT\"\u003eabc\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\"uLM}I2ZA9FzbJ[_!~s.;\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"text\" id\u003d\"!cC@P?D8JzI5+n0`1lE;\"\u003e\u003cfield name\u003d\"TEXT\"\u003eWindow open, stop air conditioning: \u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"B+8_QF,JjvTjrMflldF}\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"oh_event\" id\u003d\"xm}O!]MPv[SuJq+?;@a1\"\u003e\u003cfield name\u003d\"eventType\"\u003esendCommand\u003c/field\u003e\u003cvalue name\u003d\"value\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"F+Lins}F4z/~;{bev7r4\"\u003e\u003cfield name\u003d\"TEXT\"\u003evalue\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"XM2~d:rCJtvbmHV7:L12\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOFF\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"9(s9!Oa0}3}I5OVN|f-q\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"Z/o~D{N2!oFm1yE13!cz\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003cnext\u003e\u003cblock type\u003d\"controls_flow_statements\" id\u003d\"r#c|[:*4p?)XheH`zok:\"\u003e\u003cfield name\u003d\"FLOW\"\u003eCONTINUE\u003c/field\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/statement\u003e\u003cnext\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"g-C0:$W$w.C4XY?N(|..\"\u003e\u003cmutation else\u003d\"1\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"oh_quantity_compare\" id\u003d\"VP`o8[$s#{eQ|gmz0S.Z\"\u003e\u003cfield name\u003d\"operand\"\u003egreaterThan\u003c/field\u003e\u003cvalue name\u003d\"first\"\u003e\u003cshadow type\u003d\"oh_quantity\" id\u003d\"(vd![we2l3n\u003dg;?LsD@m\"\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"U0^o`C\u003dM\u003d8#otWj!oy,B\"\u003e\u003cmutation attributeName\u003d\"QuantityState\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eQuantityState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"`GE$t{n!R~0wg/lsMJ}!\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"CFPPOSBhBU;\u003dLjH2rM)!\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"h_0,t{WsYA\u003d(GwKt[*`x\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"L:ggz4y#a`hHt/0qi:.a\" variabletype\u003d\"oh_itemtype\"\u003ecurrentTemperature\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"second\"\u003e\u003cshadow type\u003d\"oh_quantity\" id\u003d\"_2*yGsV`6ivZ#:WL.[W}\"\u003e\u003c/shadow\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"_0*X[Oa~3Uv9WTJQzx6$\"\u003e\u003cmutation attributeName\u003d\"QuantityState\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eQuantityState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"c*XIl/WjfMaP^j-XR)gn\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"sr(ozucr.fl,v5ae,h^e\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"[F;#rVwm:Hm~5^|5$Gig\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\".yGQp}C@PR[YwR!X]BC2\" variabletype\u003d\"oh_itemtype\"\u003etemperatureSetpoint\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"X6rgRxHGRJ(502g$#_J%\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"|[NeJVWa#D/q1$0OA5)R\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"9m]^8nnOd?tf$@TEJp4y\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"%8SZtoDp}dR{#]-),@$z\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"G9@Tb-F#.?C#:06]q(g(\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"uA[)t[A*2[IIaR\u003dXOx+h\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"3,x-T~{yNgcHkM]F0^`n\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOFF\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"oh_log\" id\u003d\"DSS%~KSf.!,`6qlQg@Z,\"\u003e\u003cfield name\u003d\"severity\"\u003einfo\u003c/field\u003e\u003cvalue name\u003d\"message\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{h)W_,KmEoLMNPcspycd\"\u003e\u003cfield name\u003d\"TEXT\"\u003eabc\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\"^|`M-a\u003dNL/aoZp[($A.w\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"text\" id\u003d\"OMI6nIMyi%;j~cQQjkJj\"\u003e\u003cfield name\u003d\"TEXT\"\u003eTemperature too high, start air conditioning: \u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"s[-}L|u$BG!QaM}uF%57\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"oh_event\" id\u003d\"d?^-;]u14S]B#Yzlv}[b\"\u003e\u003cfield name\u003d\"eventType\"\u003esendCommand\u003c/field\u003e\u003cvalue name\u003d\"value\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"F+Lins}F4z/~;{bev7r4\"\u003e\u003cfield name\u003d\"TEXT\"\u003evalue\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"_6b(E^3/T$uQN\u003d?m]-S#\"\u003e\u003cfield name\u003d\"TEXT\"\u003eON\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"D3zp/?tq0ykjDMih5m3F\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"uw7]1*VYyr[:i(/%9H7.\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/statement\u003e\u003cstatement name\u003d\"ELSE\"\u003e\u003cblock type\u003d\"controls_if\" id\u003d\"`u.4v+-ozTBEAn.b%/|l\"\u003e\u003cvalue name\u003d\"IF0\"\u003e\u003cblock type\u003d\"logic_compare\" id\u003d\"-E6H@3NK.|Hfp~u{\u003dZ@p\"\u003e\u003cfield name\u003d\"OP\"\u003eEQ\u003c/field\u003e\u003cvalue name\u003d\"A\"\u003e\u003cblock type\u003d\"oh_getitem_attribute\" id\u003d\"*Wi1fLwl#t9HA0M_bOxg\"\u003e\u003cmutation attributeName\u003d\"State\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"attributeName\"\u003eState\u003c/field\u003e\u003cvalue name\u003d\"item\"\u003e\u003cshadow type\u003d\"oh_getitem\" id\u003d\"%8SZtoDp}dR{#]-),@$z\"\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"G9@Tb-F#.?C#:06]q(g(\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003c/value\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"!3%Xv_$1120-OB:rFQ.M\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"B\"\u003e\u003cblock type\u003d\"text\" id\u003d\"sTD;wu[(tvYcmxmCsfcJ\"\u003e\u003cfield name\u003d\"TEXT\"\u003eON\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cstatement name\u003d\"DO0\"\u003e\u003cblock type\u003d\"oh_log\" id\u003d\"w(WQQ]FI!y_ux\u003d-/-n^y\"\u003e\u003cfield name\u003d\"severity\"\u003einfo\u003c/field\u003e\u003cvalue name\u003d\"message\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"{h)W_,KmEoLMNPcspycd\"\u003e\u003cfield name\u003d\"TEXT\"\u003eabc\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text_join\" id\u003d\"KoDXs6*V`rO_e|;8:D6Y\"\u003e\u003cmutation items\u003d\"2\"\u003e\u003c/mutation\u003e\u003cvalue name\u003d\"ADD0\"\u003e\u003cblock type\u003d\"text\" id\u003d\"R{g.mr_Nr|Z)WXxtxxm)\"\u003e\u003cfield name\u003d\"TEXT\"\u003eTemperature too low, stop air conditioning: \u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"ADD1\"\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"-Y8VCAy!-G{A6dK,#YdD\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"$Mxe1?k,oowK}4T8C;*~\" variabletype\u003d\"String\"\u003eroomName\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/value\u003e\u003cnext\u003e\u003cblock type\u003d\"oh_event\" id\u003d\"cj*vF.#h:-y^:zSo$q4K\"\u003e\u003cfield name\u003d\"eventType\"\u003esendCommand\u003c/field\u003e\u003cvalue name\u003d\"value\"\u003e\u003cshadow type\u003d\"text\" id\u003d\"F+Lins}F4z/~;{bev7r4\"\u003e\u003cfield name\u003d\"TEXT\"\u003evalue\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"text\" id\u003d\"Mao.;Z701$!tX*_r.%(4\"\u003e\u003cfield name\u003d\"TEXT\"\u003eOFF\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003cvalue name\u003d\"itemName\"\u003e\u003cshadow type\u003d\"oh_item\" id\u003d\"VQr1l#$6fuina?}ogYfM\"\u003e\u003cmutation itemName\u003d\"MyItem\" itemLabel\u003d\"MyItem\"\u003e\u003c/mutation\u003e\u003cfield name\u003d\"itemName\"\u003eMyItem\u003c/field\u003e\u003c/shadow\u003e\u003cblock type\u003d\"variables_get_dynamic\" id\u003d\"._kOSh.[qQK~W0VZ$_!t\"\u003e\u003cfield name\u003d\"VAR\" id\u003d\"@12lX$cX5#U`rY,QNRD^\" variabletype\u003d\"oh_itemtype\"\u003egroupMember\u003c/field\u003e\u003c/block\u003e\u003c/value\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/statement\u003e\u003c/block\u003e\u003c/next\u003e\u003c/block\u003e\u003c/xml\u003e",
+            "script": "var room, itemName, groupMember, roomName, currentTemperature, temperatureSetpoint;\n\n// Describe this function...\nfunction has_window(room) {\n  if (room \u003d\u003d \u0027Child1\u0027) {\n    return true;\n  }\n  if (room \u003d\u003d \u0027Child2\u0027) {\n    return true;\n  }\n  if (room \u003d\u003d \u0027Guestroom\u0027) {\n    return true;\n  }\n  if (room \u003d\u003d \u0027Kitchen\u0027) {\n    return true;\n  }\n  if (room \u003d\u003d \u0027LivingRoom\u0027) {\n    return true;\n  }\n  if (room \u003d\u003d \u0027Bedroom\u0027) {\n    return true;\n  }\n  if (room \u003d\u003d \u0027Office\u0027) {\n    return true;\n  }\n  return false;\n}\n\n// Describe this function...\nfunction get_room_name(itemName) {\n  return itemName.slice(0, (itemName.indexOf(\u0027_\u0027) + 1) - 1);\n}\n\n\nvar groupMember_list \u003d items.getItem(\u0027gHeating\u0027).members;\nfor (var groupMember_index in groupMember_list) {\n  groupMember \u003d groupMember_list[groupMember_index];\n  roomName \u003d get_room_name(groupMember.name);\n  currentTemperature \u003d items.getItem(groupMember.name.replaceAll(\u0027_Heating\u0027,\u0027_Temperature\u0027));\n  temperatureSetpoint \u003d items.getItem(groupMember.name.replaceAll(\u0027_Heating\u0027,\u0027_TemperatureSet\u0027));\n  if (has_window(roomName)) {\n    if (items.getItem((String(roomName) + \u0027_Window_Contact\u0027)).state \u003d\u003d \u0027OPEN\u0027) {\n      if (groupMember.state \u003d\u003d \u0027ON\u0027) {\n        console.info((\u0027Window open, stop heating: \u0027 + String(roomName)));\n        groupMember.sendCommand(\u0027OFF\u0027);\n      }\n      continue;\n    }\n  }\n  if (currentTemperature.quantityState.lessThan(temperatureSetpoint.quantityState)) {\n    if (groupMember.state \u003d\u003d \u0027OFF\u0027) {\n      console.info((\u0027Temperature too low, start heating: \u0027 + String(roomName)));\n      groupMember.sendCommand(\u0027ON\u0027);\n    }\n  } else {\n    if (groupMember.state \u003d\u003d \u0027ON\u0027) {\n      console.info((\u0027Temperature too high, stop heating: \u0027 + String(roomName)));\n      groupMember.sendCommand(\u0027OFF\u0027);\n    }\n  }\n}\nvar groupMember_list2 \u003d items.getItem(\u0027gAC\u0027).members;\nfor (var groupMember_index2 in groupMember_list2) {\n  groupMember \u003d groupMember_list2[groupMember_index2];\n  roomName \u003d get_room_name(groupMember.name);\n  currentTemperature \u003d items.getItem(groupMember.name.replaceAll(\u0027_AC\u0027,\u0027_Temperature\u0027));\n  temperatureSetpoint \u003d items.getItem(groupMember.name.replaceAll(\u0027_AC\u0027,\u0027_TemperatureSet\u0027));\n  if (has_window(roomName)) {\n    if (items.getItem((String(roomName) + \u0027_Window_Contact\u0027)).state \u003d\u003d \u0027OPEN\u0027) {\n      if (groupMember.state \u003d\u003d \u0027ON\u0027) {\n        console.info((\u0027Window open, stop air conditioning: \u0027 + String(roomName)));\n        groupMember.sendCommand(\u0027OFF\u0027);\n      }\n      continue;\n    }\n  }\n  if (currentTemperature.quantityState.greaterThan(temperatureSetpoint.quantityState)) {\n    if (groupMember.state \u003d\u003d \u0027OFF\u0027) {\n      console.info((\u0027Temperature too high, start air conditioning: \u0027 + String(roomName)));\n      groupMember.sendCommand(\u0027ON\u0027);\n    }\n  } else {\n    if (groupMember.state \u003d\u003d \u0027ON\u0027) {\n      console.info((\u0027Temperature too low, stop air conditioning: \u0027 + String(roomName)));\n      groupMember.sendCommand(\u0027OFF\u0027);\n    }\n  }\n}\n",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "climate_control",
+      "name": "Per-Room Climate Control",
+      "tags": [
+        "Blockly"
+      ],
+      "visibility": "VISIBLE"
+    }
+  },
+  "dsl_example": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "script",
+          "configuration": {
+            "script": "val open_windows \u003d gWindows.members.filter[item | item.state \u003d\u003d OPEN]\npostUpdate(\"ScriptDemo\", \"Hello from the Rule DSL! Open windows: \" + open_windows.size())\n",
+            "type": "application/vnd.openhab.dsl.rule"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "dsl_example",
+      "name": "Rule DSL Example",
+      "tags": [
+        "Script"
+      ],
+      "visibility": "VISIBLE",
+      "description": ""
+    }
+  },
+  "groovy_example": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "script",
+          "configuration": {
+            "script": "def open_windows \u003d ir.getItem(\"gWindows\").members.findAll{item -\u003e item.state \u003d\u003d\u003d OPEN}\nevents.postUpdate(\"ScriptDemo\", \"Hello from Groovy! Open windows: \" + open_windows.size())\n",
+            "type": "application/x-groovy"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "groovy_example",
+      "name": "Groovy Example",
+      "tags": [
+        "Script"
+      ],
+      "visibility": "VISIBLE",
+      "description": ""
+    }
+  },
+  "javascript_example": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "script",
+          "configuration": {
+            "script": "var openWindows \u003d items.getItem(\u0027gWindows\u0027).members.filter(m \u003d\u003e m.state \u003d\u003d\u003d \u0027OPEN\u0027).length\nitems.getItem(\u0027ScriptDemo\u0027).postUpdate(`Hello from JavaScript! Open windows: ${openWindows}`)\n",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "javascript_example",
+      "name": "JavaScript Example",
+      "tags": [
+        "Script"
+      ],
+      "visibility": "VISIBLE",
+      "description": ""
+    }
+  },
+  "python_example": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "script",
+          "configuration": {
+            "script": "openWindows \u003d len(list(filter(lambda x: x.getState() \u003d\u003d scope.OPEN, Registry.getItem(\u0027gWindows\u0027).getMembers())))\nRegistry.getItem(\u0027ScriptDemo\u0027).postUpdate(f\"Hello from Python! Open windows: {openWindows}\")\n",
+            "type": "application/x-python3"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "python_example",
+      "name": "Python Example",
+      "tags": [
+        "Script"
+      ],
+      "visibility": "VISIBLE",
+      "description": ""
+    }
+  },
+  "ruby_example": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "script",
+          "configuration": {
+            "script": "open_windows \u003d gWindows.members.select { |item| item.state \u003d\u003d \u0027OPEN\u0027 }\nScriptDemo.command \u0027Hello from Ruby! Open windows: \u0027 + open_windows.length.to_s\n",
+            "type": "application/x-ruby"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "ruby_example",
+      "name": "Ruby Example",
+      "tags": [
+        "Script"
+      ],
+      "visibility": "VISIBLE",
+      "description": ""
+    }
+  }
+}

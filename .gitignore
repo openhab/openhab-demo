@@ -12,4 +12,9 @@ influxb/
 */conf/automation/js/node_modules
 */conf/automation/python/lib
 */conf/automation/ruby/.gem
-*/userdata
+*/userdata/*
+!*/userdata/jsondb/
+*/userdata/jsondb/*
+!openhab_demo/userdata/jsondb/automation_rules.json
+!openhab_demo/userdata/jsondb/uicomponents_ui_page.json
+!openhab_demo/userdata/jsondb/uicomponents_ui_widget.json

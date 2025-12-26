@@ -1,0 +1,2722 @@
+{
+  "EMS": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "EMS",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 1:36:09 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "icon": "f7:bolt_circle",
+        "label": "EMS",
+        "order": "1",
+        "sidebar": true
+      },
+      "slots": {
+        "canvas": [],
+        "default": [
+          {
+            "component": "oh-block",
+            "config": {},
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-grid-row",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "medium": "50",
+                          "width": "100"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "widget:emsEnergyflow",
+                              "config": {
+                                "batterylevel": "EMS_Battery_SoC",
+                                "batterypower": "EMS_Battery_Power",
+                                "gridpower": "EMS_Grid_Power",
+                                "load_action": "navigate",
+                                "load_actionPage": "page:EMS_Analytics",
+                                "loadpower": "EMS_Load_Power",
+                                "solar_action": "navigate",
+                                "solar_actionPage": "page:Solar_Analytics",
+                                "solarpower": "EMS_Solar_Power"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "medium": "50",
+                          "width": "100"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "widget:emsPageVerticalWidgetArrangement",
+                              "config": {}
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "component": "oh-grid-row",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-grid-col",
+                        "config": {},
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "widget:widgetAttribution",
+                              "config": {
+                                "link": "https://github.com/florian-h05/openhab-conf/tree/main/UI/widgets/README.md#emsenergyflow",
+                                "text": "Widgets from florianh-widgetset, with credits to Sebastian Neu"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "grid": [],
+        "masonry": []
+      }
+    }
+  },
+  "EMS_Analytics": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "EMS_Analytics",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Sep 21, 2025, 2:58:38 PM",
+      "component": "oh-tabs-page",
+      "config": {
+        "label": "EMS Analytics"
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:bolt_circle",
+              "page": "EMS_Analytics_Power",
+              "title": "Power"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:calendar_today",
+              "page": "EMS_Analytics_Month",
+              "title": "Daily"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:calendar",
+              "page": "EMS_Analytics_Year",
+              "title": "Monthly"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:money_euro_circle",
+              "page": "page:EMS_Financial_Analytics_Year",
+              "title": "Financials"
+            },
+            "slots": {
+              "default": []
+            }
+          }
+        ]
+      }
+    }
+  },
+  "EMS_Analytics_Month": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "EMS_Analytics_Month",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Sep 8, 2025, 4:49:03 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "month",
+        "label": "EMS Analytics",
+        "sidebar": false
+      },
+      "slots": {
+        "calendar": [
+          {
+            "component": "oh-calendar-axis",
+            "config": {
+              "gridIndex": 0.0,
+              "monthLabel": {
+                "color": "#aaa",
+                "show": false
+              },
+              "orient": "horizontal",
+              "yearLabel": {
+                "show": false
+              }
+            }
+          }
+        ],
+        "grid": [],
+        "legend": [
+          {
+            "component": "oh-chart-legend",
+            "config": {
+              "left": "15px",
+              "orient": "vertical",
+              "selectedMode": "single",
+              "show": true,
+              "top": "25px"
+            }
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-calendar-series",
+            "config": {
+              "aggregationFunction": "last",
+              "calendarIndex": 0.0,
+              "color": "#00ff00",
+              "item": "EMS_FeedIn_Day",
+              "label": {
+                "color": "#000",
+                "formatter": "\u003d(params) \u003d\u003e dayjs(params.value[0]).format(\u0027DD.MM.,\u0027) + \u0027\\n\\n\u0027 + Math.round(params.value[1]) + \u0027 kWh\u0027",
+                "show": "true,"
+              },
+              "name": "Feed-In",
+              "service": "influxdb",
+              "type": "heatmap",
+              "z": 4.0
+            }
+          },
+          {
+            "component": "oh-calendar-series",
+            "config": {
+              "aggregationFunction": "last",
+              "calendarIndex": 0.0,
+              "color": "#00ff00",
+              "item": "EMS_SelfConsumption_Day",
+              "label": {
+                "color": "#000",
+                "formatter": "\u003d(params) \u003d\u003e dayjs(params.value[0]).format(\u0027DD.MM.,\u0027) + \u0027\\n\\n\u0027 + Math.round(params.value[1]) + \u0027 kWh\u0027",
+                "show": "true,"
+              },
+              "name": "Self-Consumption",
+              "service": "influxdb",
+              "type": "heatmap",
+              "z": 3.0
+            }
+          },
+          {
+            "component": "oh-calendar-series",
+            "config": {
+              "aggregationFunction": "last",
+              "calendarIndex": 0.0,
+              "color": "#00ff00",
+              "item": "EMS_GridConsumption_Day",
+              "label": {
+                "color": "#000",
+                "formatter": "\u003d(params) \u003d\u003e dayjs(params.value[0]).format(\u0027DD.MM.,\u0027) + \u0027\\n\\n\u0027 + Math.round(params.value[1]) + \u0027 kWh\u0027",
+                "show": "true,"
+              },
+              "name": "Grid Consumption",
+              "service": "influxdb",
+              "type": "heatmap",
+              "z": 2.0
+            }
+          }
+        ],
+        "toolbox": [],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "orient": "vertical",
+              "show": true,
+              "valueFormatter": "\u003d(value) \u003d\u003e Number(value).toFixed(2).replace(\u0027,\u0027, \u0027\u0027) + \u0027 kWh\u0027"
+            }
+          }
+        ],
+        "visualMap": [
+          {
+            "component": "oh-chart-visualmap",
+            "config": {
+              "calculable": true,
+              "height": "20%",
+              "left": "center",
+              "max": "30",
+              "min": "0",
+              "orient": "horizontal",
+              "presetPalette": "bluered",
+              "show": true,
+              "top": "bottom",
+              "type": "continuous"
+            }
+          }
+        ],
+        "xAxis": [],
+        "yAxis": []
+      }
+    }
+  },
+  "EMS_Analytics_Power": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "EMS_Analytics_Power",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Sep 8, 2025, 4:49:35 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "day",
+        "label": "EMS Analytics"
+      },
+      "slots": {
+        "dataZoom": [
+          {
+            "component": "oh-chart-datazoom",
+            "config": {
+              "type": "inside"
+            }
+          }
+        ],
+        "grid": [
+          {
+            "component": "oh-chart-grid",
+            "config": {}
+          }
+        ],
+        "legend": [
+          {
+            "component": "oh-chart-legend",
+            "config": {
+              "bottom": 3.0,
+              "type": "scroll"
+            }
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-time-series",
+            "config": {
+              "areaStyle": {
+                "opacity": 0.2
+              },
+              "color": "#91cc75",
+              "gridIndex": 0.0,
+              "item": "EMS_Battery_Power",
+              "lineStyle": {
+                "width": 2.0
+              },
+              "name": "Battery",
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-time-series",
+            "config": {
+              "areaStyle": {
+                "opacity": 0.4
+              },
+              "color": "#fac858",
+              "gridIndex": 0.0,
+              "item": "EMS_Solar_Power",
+              "lineStyle": {
+                "width": 0.0
+              },
+              "name": "Solar",
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-time-series",
+            "config": {
+              "areaStyle": {
+                "opacity": 0.4
+              },
+              "color": "#546fc6",
+              "gridIndex": 0.0,
+              "item": "EMS_Grid_Power",
+              "lineStyle": {
+                "width": 0.0
+              },
+              "name": "Grid",
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-time-series",
+            "config": {
+              "areaStyle": {
+                "opacity": 0.4
+              },
+              "color": "\u003d(themeOptions.dark \u003d\u003d\u003d \u0027dark\u0027 ? \u0027#bdbdbd\u0027 : \u0027#424242\u0027)",
+              "gridIndex": 0.0,
+              "item": "EMS_Load_Power",
+              "lineStyle": {
+                "width": 0.0
+              },
+              "name": "Loads",
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "orient": "vertical",
+              "valueFormatter": "\u003d(value) \u003d\u003e Number(value).toFixed(2).replace(\u0027,\u0027, \u0027\u0027) + \u0027 kW\u0027"
+            }
+          }
+        ],
+        "xAxis": [
+          {
+            "component": "oh-time-axis",
+            "config": {
+              "gridIndex": 0.0
+            }
+          }
+        ],
+        "yAxis": [
+          {
+            "component": "oh-value-axis",
+            "config": {
+              "gridIndex": 0.0,
+              "name": "kW",
+              "nameLocation": "end"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "EMS_Analytics_Year": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "EMS_Analytics_Year",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Sep 15, 2025, 11:33:39 AM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "year",
+        "label": "EMS Analytics"
+      },
+      "slots": {
+        "grid": [
+          {
+            "component": "oh-chart-grid",
+            "config": {}
+          }
+        ],
+        "legend": [
+          {
+            "component": "oh-chart-legend",
+            "config": {
+              "bottom": 3.0,
+              "type": "scroll"
+            }
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "aggregationFunction": "last",
+              "color": "#546fc6",
+              "dimension1": "month",
+              "gridIndex": 0.0,
+              "item": "EMS_FeedIn_Month",
+              "name": "Feed-In",
+              "service": "influxdb",
+              "type": "bar",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "aggregationFunction": "last",
+              "color": "#fac858",
+              "dimension1": "month",
+              "gridIndex": 0.0,
+              "item": "EMS_SelfConsumption_Month",
+              "name": "Self-Consumption",
+              "service": "influxdb",
+              "stack": "consumption",
+              "type": "bar",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "aggregationFunction": "last",
+              "color": "\u003d(themeOptions.dark \u003d\u003d\u003d \u0027dark\u0027 ? \u0027#bdbdbd\u0027 : \u0027#424242\u0027)",
+              "dimension1": "month",
+              "gridIndex": 0.0,
+              "item": "EMS_GridConsumption_Month",
+              "name": "Grid Consumption",
+              "service": "influxdb",
+              "stack": "consumption",
+              "type": "bar",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "valueFormatter": "\u003d(value) \u003d\u003e Number(value).toFixed(2).replace(\u0027,\u0027,\u0027\u0027) + \u0027 kWh\u0027"
+            }
+          }
+        ],
+        "xAxis": [
+          {
+            "component": "oh-category-axis",
+            "config": {
+              "categoryType": "year",
+              "gridIndex": 0.0,
+              "monthFormat": "short",
+              "weekdayFormat": "short"
+            }
+          }
+        ],
+        "yAxis": [
+          {
+            "component": "oh-value-axis",
+            "config": {
+              "axisLabel": {
+                "formatter": "\u003d(value, index) \u003d\u003e value.toString().replace(\u0027,\u0027, \u0027\u0027).replace(\u0027.\u0027, \u0027,\u0027)"
+              },
+              "gridIndex": 0.0,
+              "min": "0",
+              "name": "kWh"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "EMS_Financial_Analytics_Year": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "EMS_Financial_Analytics_Year",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Nov 11, 2025, 5:47:21 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "year",
+        "label": "EMS Analytics"
+      },
+      "slots": {
+        "grid": [
+          {
+            "component": "oh-chart-grid",
+            "config": {}
+          }
+        ],
+        "legend": [
+          {
+            "component": "oh-chart-legend",
+            "config": {
+              "bottom": 3.0,
+              "type": "scroll"
+            }
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "dimension1": "month",
+              "gridIndex": 0.0,
+              "item": "EMS_ElectricityCostSavings_Month",
+              "name": "Savings",
+              "service": "influxdb",
+              "stack": "plus",
+              "type": "bar",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "dimension1": "month",
+              "gridIndex": 0.0,
+              "item": "EMS_FeedInCompensation_Month",
+              "name": "Feed-In Compensation",
+              "service": "influxdb",
+              "stack": "plus",
+              "type": "bar",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "color": "#ee6666",
+              "dimension1": "month",
+              "gridIndex": 0.0,
+              "item": "EMS_ElectricityCost_Month",
+              "name": "Electricity Cost",
+              "service": "influxdb",
+              "type": "bar",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "valueFormatter": "\u003d(value) \u003d\u003e Number(value).toFixed(2).replace(\u0027,\u0027,\u0027\u0027) + \" €\""
+            }
+          }
+        ],
+        "xAxis": [
+          {
+            "component": "oh-category-axis",
+            "config": {
+              "categoryType": "year",
+              "gridIndex": 0.0,
+              "monthFormat": "short",
+              "weekdayFormat": "short"
+            }
+          }
+        ],
+        "yAxis": [
+          {
+            "component": "oh-value-axis",
+            "config": {
+              "axisLabel": {
+                "formatter": "\u003d(value, index) \u003d\u003e value.toString().replace(\u0027,\u0027, \u0027\u0027)"
+              },
+              "gridIndex": 0.0,
+              "min": 0.0,
+              "name": "€"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "House_Temperature": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "House_Temperature",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Oct 19, 2025, 10:03:55 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "isoWeek",
+        "label": "House Temp. Heatmap"
+      },
+      "slots": {
+        "grid": [
+          {
+            "component": "oh-chart-grid",
+            "config": {
+              "top": "120"
+            }
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "dimension1": "isoWeekday",
+              "dimension2": "hour",
+              "gridIndex": 0.0,
+              "item": "gTemperatures",
+              "name": "Avg. House Temperature",
+              "type": "heatmap",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          }
+        ],
+        "title": [
+          {
+            "component": "oh-chart-title",
+            "config": {
+              "left": "center",
+              "show": "\u003dscreen.appWidth \u003e\u003d 568 ? true : false",
+              "text": "Avg. House Temperature",
+              "top": 15.0
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true
+            }
+          }
+        ],
+        "visualMap": [
+          {
+            "component": "oh-chart-visualmap",
+            "config": {
+              "bottom": 0.0,
+              "calculable": true,
+              "left": "center",
+              "orient": "horizontal",
+              "presetPalette": "bluered",
+              "show": true,
+              "type": "continuous"
+            }
+          }
+        ],
+        "xAxis": [
+          {
+            "component": "oh-category-axis",
+            "config": {
+              "categoryType": "week",
+              "gridIndex": 0.0,
+              "monthFormat": "short",
+              "weekdayFormat": "short"
+            }
+          }
+        ],
+        "yAxis": [
+          {
+            "component": "oh-category-axis",
+            "config": {
+              "categoryType": "day",
+              "gridIndex": 0.0,
+              "monthFormat": "short",
+              "weekdayFormat": "short"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "LivingRoom_HVAC": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "LivingRoom_HVAC",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 12:29:12 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "label": "Living Room HVAC"
+      },
+      "slots": {
+        "grid": [
+          {
+            "component": "oh-chart-grid",
+            "config": {
+              "height": "60%",
+              "top": "60px"
+            }
+          },
+          {
+            "component": "oh-chart-grid",
+            "config": {
+              "bottom": "30px",
+              "height": "25%"
+            }
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-time-series",
+            "config": {
+              "gridIndex": 0.0,
+              "item": "LivingRoom_HVAC_Temperature",
+              "name": "Temperature",
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-state-series",
+            "config": {
+              "gridIndex": 1.0,
+              "item": "LivingRoom_HVAC_Heating",
+              "name": "Heating",
+              "stateColor": {
+                "OFF": "#808080",
+                "ON": "#FF0000"
+              },
+              "xAxisIndex": 1.0,
+              "yAxisIndex": 1.0,
+              "yValue": 1.0
+            }
+          },
+          {
+            "component": "oh-state-series",
+            "config": {
+              "gridIndex": 1.0,
+              "item": "LivingRoom_HVAC_AC",
+              "name": "AC",
+              "stateColor": {
+                "OFF": "#808080",
+                "ON": "#0000FF"
+              },
+              "xAxisIndex": 1.0,
+              "yAxisIndex": 1.0,
+              "yValue": 0.0
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "orient": "vertical",
+              "valueFormatter": "\u003d(value) \u003d\u003e Number(value).toFixed(2) + \u0027 °C\u0027"
+            }
+          }
+        ],
+        "xAxis": [
+          {
+            "component": "oh-time-axis",
+            "config": {
+              "gridIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-time-axis",
+            "config": {
+              "gridIndex": 1.0
+            }
+          }
+        ],
+        "yAxis": [
+          {
+            "component": "oh-value-axis",
+            "config": {
+              "gridIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-category-axis",
+            "config": {
+              "categoryType": "values",
+              "data": [
+                "Heating",
+                "AC"
+              ],
+              "gridIndex": 1.0,
+              "monthFormat": "default",
+              "weekdayFormat": "default"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "LivingRoom_Temperature": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "LivingRoom_Temperature",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Oct 19, 2025, 10:03:23 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "day",
+        "label": "Living Room Temp. Chart",
+        "order": "",
+        "sidebar": false
+      },
+      "slots": {
+        "grid": [
+          {
+            "component": "oh-chart-grid",
+            "config": {
+              "bottom": 80.0,
+              "top": 180.0
+            }
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "dimension1": "hour",
+              "gridIndex": 0.0,
+              "item": "LivingRoom_HVAC_Temperature",
+              "lineStyle": {
+                "opacity": 0.5,
+                "type": "dotted"
+              },
+              "name": "Yesterday",
+              "offsetAmount": 1.0,
+              "offsetUnit": "day",
+              "smooth": true,
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "areaStyle": {
+                "opacity": 0.2
+              },
+              "dimension1": "hour",
+              "gridIndex": 0.0,
+              "item": "LivingRoom_HVAC_Temperature",
+              "lineStyle": {
+                "width": 3.0
+              },
+              "markLine": {
+                "data": [
+                  {
+                    "type": "average"
+                  }
+                ]
+              },
+              "markPoint": {
+                "data": [
+                  {
+                    "name": "min",
+                    "type": "min"
+                  },
+                  {
+                    "name": "max",
+                    "type": "max"
+                  }
+                ]
+              },
+              "name": "Today",
+              "smooth": true,
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          }
+        ],
+        "title": [
+          {
+            "component": "oh-chart-title",
+            "config": {
+              "left": "center",
+              "show": "\u003dscreen.appWidth \u003e\u003d 568 ? true : false",
+              "text": "Living Room Temperature",
+              "top": 15.0
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "orient": "vertical",
+              "show": true
+            }
+          }
+        ],
+        "xAxis": [
+          {
+            "component": "oh-category-axis",
+            "config": {
+              "axisPointer": {
+                "handle": {
+                  "backgroundColor": "blue",
+                  "show": true
+                },
+                "label": {
+                  "backgroundColor": "#2196f3",
+                  "show": true
+                },
+                "snap": true
+              },
+              "categoryType": "day",
+              "gridIndex": 0.0,
+              "monthFormat": "default",
+              "weekdayFormat": "default"
+            }
+          }
+        ],
+        "yAxis": [
+          {
+            "component": "oh-value-axis",
+            "config": {
+              "gridIndex": 0.0,
+              "name": "°C"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Solar_Analytics": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "Solar_Analytics",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Sep 8, 2025, 4:57:02 PM",
+      "component": "oh-tabs-page",
+      "config": {
+        "label": "Solar Analytics"
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:calendar_today",
+              "page": "page:Solar_Analytics_Power",
+              "title": "Day"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:calendar",
+              "page": "page:Solar_Analytics_Month",
+              "title": "Month"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:calendar",
+              "page": "page:Solar_Analytics_Year",
+              "title": "Year"
+            },
+            "slots": {
+              "default": []
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Solar_Analytics_Month": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "Solar_Analytics_Month",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Sep 8, 2025, 5:04:25 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "month",
+        "label": "Solar Analytics",
+        "sidebar": false
+      },
+      "slots": {
+        "calendar": [
+          {
+            "component": "oh-calendar-axis",
+            "config": {
+              "gridIndex": 0.0,
+              "monthLabel": {
+                "color": "#aaa",
+                "show": false
+              },
+              "orient": "horizontal",
+              "yearLabel": {
+                "show": false
+              }
+            }
+          }
+        ],
+        "grid": [],
+        "series": [
+          {
+            "component": "oh-calendar-series",
+            "config": {
+              "aggregationFunction": "last",
+              "calendarIndex": 0.0,
+              "item": "Solar_Production_Day",
+              "label": {
+                "color": "#000",
+                "formatter": "\u003d(params) \u003d\u003e dayjs(params.value[0]).format(\u0027DD.MM.,\u0027) + \u0027\\n\\n\u0027 + Math.round(params.value[1]) + \u0027 kWh\u0027",
+                "show": "true,"
+              },
+              "name": "Production",
+              "service": "influxdb",
+              "type": "heatmap",
+              "z": 4.0
+            }
+          }
+        ],
+        "toolbox": [],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "orient": "vertical",
+              "show": true,
+              "valueFormatter": "\u003d(value) \u003d\u003e Number(value).toFixed(2).replace(\u0027,\u0027, \u0027\u0027) + \u0027 kWh\u0027"
+            }
+          }
+        ],
+        "visualMap": [
+          {
+            "component": "oh-chart-visualmap",
+            "config": {
+              "calculable": true,
+              "height": "20%",
+              "left": "center",
+              "max": "30",
+              "min": "0",
+              "orient": "horizontal",
+              "presetPalette": "bluered",
+              "show": true,
+              "top": "bottom",
+              "type": "continuous"
+            }
+          }
+        ],
+        "xAxis": [],
+        "yAxis": []
+      }
+    }
+  },
+  "Solar_Analytics_Power": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "Solar_Analytics_Power",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Sep 8, 2025, 4:54:55 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "day",
+        "label": "Solar Analytics"
+      },
+      "slots": {
+        "grid": [
+          {
+            "component": "oh-chart-grid",
+            "config": {}
+          }
+        ],
+        "legend": [
+          {
+            "component": "oh-chart-legend",
+            "config": {
+              "orient": "horizontal",
+              "show": true,
+              "top": "bottom"
+            }
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-time-series",
+            "config": {
+              "gridIndex": 0.0,
+              "item": "Solar_Forecast_Power_Estimate_Total",
+              "name": "Forecasted Power",
+              "service": "inmemory",
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          },
+          {
+            "component": "oh-time-series",
+            "config": {
+              "gridIndex": 0.0,
+              "item": "Solar_Power_Total",
+              "name": "Actual Power",
+              "type": "line",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "orient": "vertical",
+              "valueFormatter": "\u003d(value) \u003d\u003e Number(value).toFixed(2).replace(\u0027,\u0027, \u0027\u0027) + \u0027 kW\u0027"
+            }
+          }
+        ],
+        "xAxis": [
+          {
+            "component": "oh-time-axis",
+            "config": {
+              "gridIndex": 0.0
+            }
+          }
+        ],
+        "yAxis": [
+          {
+            "component": "oh-value-axis",
+            "config": {
+              "gridIndex": 0.0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Solar_Analytics_Year": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "Solar_Analytics_Year",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Sep 8, 2025, 5:04:13 PM",
+      "component": "oh-chart-page",
+      "config": {
+        "chartType": "year",
+        "label": "Solar Analytics"
+      },
+      "slots": {
+        "grid": [
+          {
+            "component": "oh-chart-grid",
+            "config": {}
+          }
+        ],
+        "series": [
+          {
+            "component": "oh-aggregate-series",
+            "config": {
+              "aggregationFunction": "last",
+              "dimension1": "month",
+              "gridIndex": 0.0,
+              "item": "Solar_Production_Month",
+              "name": "Production",
+              "service": "influxdb",
+              "type": "bar",
+              "xAxisIndex": 0.0,
+              "yAxisIndex": 0.0
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "confine": true,
+              "valueFormatter": "\u003d(value) \u003d\u003e Number(value).toFixed(2).replace(\u0027,\u0027,\u0027\u0027) + \u0027 kWh\u0027"
+            }
+          }
+        ],
+        "xAxis": [
+          {
+            "component": "oh-category-axis",
+            "config": {
+              "categoryType": "year",
+              "gridIndex": 0.0,
+              "monthFormat": "short",
+              "weekdayFormat": "short"
+            }
+          }
+        ],
+        "yAxis": [
+          {
+            "component": "oh-value-axis",
+            "config": {
+              "axisLabel": {
+                "formatter": "\u003d(value, index) \u003d\u003e value.toString().replace(\u0027,\u0027, \u0027\u0027).replace(\u0027.\u0027, \u0027,\u0027)"
+              },
+              "gridIndex": 0.0,
+              "min": "0",
+              "name": "kWh"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "chart_tabs": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "chart_tabs",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 1:03:56 PM",
+      "component": "oh-tabs-page",
+      "config": {
+        "icon": "f7:graph_circle",
+        "label": "Charts",
+        "order": "2",
+        "sidebar": true
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:graph_square",
+              "page": "page:EMS_Analytics_Power",
+              "title": "Line"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:chart_bar_square",
+              "page": "page:EMS_Analytics_Year",
+              "title": "Bars"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:calendar",
+              "page": "page:EMS_Analytics_Month",
+              "title": "Calendar"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:graph_square",
+              "page": "page:LivingRoom_Temperature",
+              "title": "Comparison"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:squares_below_rectangle",
+              "page": "page:LivingRoom_HVAC",
+              "title": "Combined"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:rectangle_split_3x3",
+              "page": "page:House_Temperature",
+              "title": "Heatmap"
+            },
+            "slots": {
+              "default": []
+            }
+          }
+        ]
+      }
+    }
+  },
+  "floorplan": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "floorplan",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 1:04:17 PM",
+      "component": "oh-tabs-page",
+      "config": {
+        "icon": "f7:square",
+        "label": "Floorplan",
+        "order": "4",
+        "sidebar": true
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:square_arrow_down",
+              "page": "page:floorplan_groundfloor",
+              "title": "Ground Floor"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-tab",
+            "config": {
+              "icon": "f7:square_arrow_up",
+              "page": "page:floorplan_firstfloor",
+              "title": "First Floor"
+            },
+            "slots": {
+              "default": []
+            }
+          }
+        ]
+      }
+    }
+  },
+  "floorplan_firstfloor": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "floorplan_firstfloor",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Oct 20, 2025, 12:27:46 AM",
+      "component": "oh-plan-page",
+      "config": {
+        "backgroundColor": "black",
+        "imageUrl": "/static/floorplan/firstfloor.jpg",
+        "label": "First Floor",
+        "noZoomOrDrag": false,
+        "tooltipColor": "white"
+      },
+      "slots": {
+        "default": []
+      }
+    }
+  },
+  "floorplan_groundfloor": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "floorplan_groundfloor",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 1:36:09 PM",
+      "component": "oh-plan-page",
+      "config": {
+        "backgroundColor": "black",
+        "imageUrl": "/static/floorplan/groundfloor.jpg",
+        "label": "Ground Floor",
+        "noZoomOrDrag": false,
+        "tooltipColor": "white"
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "884.5410987737355,353.3311353710581",
+              "icon": "oh:window",
+              "iconUseState": true,
+              "item": "Kitchen_Window_Contact",
+              "name": "Window"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "594.55136565799,720.4577287885912",
+              "icon": "oh:window",
+              "iconUseState": true,
+              "item": "LivingRoom_Window_Contact",
+              "name": "Window"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "action": "group",
+              "actionAnalyzerItems": [
+                "LivingRoom_HVAC_Temperature"
+              ],
+              "actionGroupPopupItem": "gLivingRoom_HVAC",
+              "coords": "451.60506883397136,493.8449804642721",
+              "icon": "oh:temperature",
+              "item": "LivingRoom_HVAC_Temperature",
+              "name": "Temperature",
+              "tooltipPermanent": true
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "action": "command",
+              "actionCommand": "\u003d#\u0027Kitchen_Shutter\u0027 \u003e 0 ? \u0027UP\u0027 : \u0027DOWN\u0027",
+              "actionItem": "Kitchen_Shutter",
+              "coords": "860.9908417467441,295.65121766771966",
+              "icon": "oh:rollershutter",
+              "iconUseState": true,
+              "item": "Kitchen_Shutter",
+              "name": "Shutter"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "action": "command",
+              "actionCommand": "\u003d#\u0027Kitchen_CeilingLight\u0027 \u003e 0 ? \u0027OFF\u0027 : \u002775\u0027",
+              "actionItem": "Kitchen_CeilingLight",
+              "coords": "695.2891518173157,338.71402423555713",
+              "icon": "oh:light",
+              "iconUseState": true,
+              "item": "Kitchen_CeilingLight",
+              "name": "Ceiling Light"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "action": "command",
+              "actionCommand": "\u003d#\u0027LivingRoom_Shutter\u0027 \u003e 0 ? \u0027UP\u0027 : \u0027DOWN\u0027",
+              "actionItem": "LivingRoom_Shutter",
+              "coords": "659.5489458412633,665.2366524412284",
+              "icon": "oh:rollershutter",
+              "iconUseState": true,
+              "item": "LivingRoom_Shutter",
+              "name": "Shutter"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "action": "group",
+              "actionAnalyzerItems": [
+                "Kitchen_HVAC_Temperature"
+              ],
+              "actionGroupPopupItem": "gKitchen_HVAC",
+              "coords": "752.2110908867347,456.48659283892414",
+              "icon": "oh:temperature",
+              "item": "Kitchen_HVAC_Temperature",
+              "name": "Temperature",
+              "tooltipPermanent": true
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "action": "command",
+              "actionCommand": "\u003d#\u0027LivingRoom_CeilingLight\u0027 \u003e 0 ? \u0027OFF\u0027 : \u002775\u0027",
+              "actionItem": "LivingRoom_CeilingLight",
+              "coords": "319.9257546030181,556.3529012558383",
+              "icon": "oh:light",
+              "iconUseState": true,
+              "item": "LivingRoom_CeilingLight",
+              "name": "Ceiling Light"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "action": "command",
+              "actionCommand": "\u003d#\u0027Toilet_CeilingLight\u0027 \u003e 0 ? \u0027OFF\u0027 : \u002775\u0027",
+              "actionItem": "Toilet_CeilingLight",
+              "coords": "702.5316661528228,134.1373643994593",
+              "icon": "oh:light",
+              "iconUseState": true,
+              "item": "Toilet_CeilingLight",
+              "name": "Ceiling Light"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "action": "toggle",
+              "actionCommand": "ON",
+              "actionCommandAlt": "OFF",
+              "actionItem": "Toilet_MirrorLight",
+              "coords": "696.2712614959576,222.00027655480693",
+              "icon": "oh:light",
+              "iconUseState": true,
+              "item": "Toilet_MirrorLight",
+              "name": "Mirror Light"
+            },
+            "slots": {
+              "default": []
+            }
+          }
+        ]
+      }
+    }
+  },
+  "home": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "home",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 12:01:28 PM",
+      "component": "oh-home-page",
+      "config": {
+        "label": "Home Page",
+        "simpleNavbarDesktopDefault": false,
+        "simpleNavbarMobileDefault": false,
+        "standardBackgroundDesktopDefault": false,
+        "standardBackgroundMobileDefault": false
+      },
+      "slots": {
+        "equipment": [
+          {
+            "component": "oh-equipment-tab",
+            "config": {
+              "cardOrder": [
+                "Downlight",
+                "Chandelier",
+                "AccentLight",
+                "LightStripe",
+                "Blinds",
+                "HVAC",
+                "Window",
+                "FrontDoor",
+                "BackDoor",
+                "Lock",
+                "Receiver",
+                "Speaker",
+                "WeatherService",
+                "EnergyManagementSystem",
+                "Inverter",
+                "Application",
+                "WebService"
+              ],
+              "equipmentPromoteSingle": false,
+              "excludedCards": [
+                "Application",
+                "WebService"
+              ]
+            },
+            "slots": {
+              "AccentLight": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "yellow",
+                    "invertText": true
+                  }
+                }
+              ],
+              "Application": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {}
+                }
+              ],
+              "BackDoor": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "blue"
+                  }
+                }
+              ],
+              "Blinds": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "gray"
+                  }
+                }
+              ],
+              "Chandelier": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "yellow",
+                    "invertText": true
+                  }
+                }
+              ],
+              "Downlight": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "yellow",
+                    "invertText": true
+                  }
+                }
+              ],
+              "EnergyManagementSystem": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {}
+                }
+              ],
+              "FrontDoor": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "blue"
+                  }
+                }
+              ],
+              "HVAC": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {}
+                }
+              ],
+              "Inverter": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {}
+                }
+              ],
+              "LightStripe": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "yellow",
+                    "invertText": true
+                  }
+                }
+              ],
+              "Lock": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "blue"
+                  }
+                }
+              ],
+              "Receiver": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "teal"
+                  }
+                }
+              ],
+              "Speaker": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "teal"
+                  }
+                }
+              ],
+              "WeatherService": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "invertText": false
+                  }
+                }
+              ],
+              "WebService": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {}
+                }
+              ],
+              "Window": [
+                {
+                  "component": "oh-equipment-card",
+                  "config": {
+                    "backgroundColor": "blue"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "locations": [
+          {
+            "component": "oh-locations-tab",
+            "config": {
+              "cardOrder": [
+                {
+                  "separator": "Ground Floor"
+                },
+                "gGroundFloor_Corridor",
+                "gLivingRoom",
+                "gKitchen",
+                "gToilet",
+                {
+                  "separator": "First Floor"
+                },
+                "gFirstFloor_Corridor",
+                "gBathroom",
+                "gBedroom",
+                "gGuestroom",
+                "gOffice",
+                {
+                  "separator": "Second Floor"
+                },
+                "gSecondFloor_Corridor",
+                "gChild1",
+                "gChild2",
+                {
+                  "separator": "Outside"
+                },
+                "gGarden",
+                "gGarage",
+                {
+                  "separator": "Basement"
+                },
+                "gBasement_Corridor",
+                "gCellar",
+                "gLaundryRoom",
+                "gUtilityRoom",
+                "gBasement",
+                "gFirstFloor",
+                "gGroundFloor",
+                "gSecondFloor"
+              ],
+              "equipmentNesting": "nested",
+              "equipmentPromoteSingle": true,
+              "excludedCards": [
+                "gHome",
+                "gFirstFloor",
+                "gGroundFloor",
+                "gSecondFloor",
+                "gLaundryRoom",
+                "gUtilityRoom",
+                "gBasement",
+                "gBasement_Corridor"
+              ]
+            },
+            "slots": {
+              "gBasement": [
+                {
+                  "component": "oh-location-card",
+                  "config": {}
+                }
+              ],
+              "gBathroom": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Bathroom.webp"
+                  }
+                }
+              ],
+              "gBedroom": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Bedroom.webp"
+                  }
+                }
+              ],
+              "gCellar": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Cellar.webp"
+                  }
+                }
+              ],
+              "gChild1": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Child1.webp"
+                  }
+                }
+              ],
+              "gChild2": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Child2.webp"
+                  }
+                }
+              ],
+              "gFirstFloor_Corridor": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/FirstFloor_Corridor.webp"
+                  }
+                }
+              ],
+              "gGarage": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Garage.webp"
+                  }
+                }
+              ],
+              "gGroundFloor": [
+                {
+                  "component": "oh-location-card",
+                  "config": {}
+                }
+              ],
+              "gGroundFloor_Corridor": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/GroundFloor_Corridor.webp"
+                  }
+                }
+              ],
+              "gGuestroom": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/GuestRoom.webp"
+                  }
+                }
+              ],
+              "gHome": [
+                {
+                  "component": "oh-location-card",
+                  "config": {}
+                }
+              ],
+              "gKitchen": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Kitchen.webp"
+                  }
+                }
+              ],
+              "gLivingRoom": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/LivingRoom.webp"
+                  }
+                }
+              ],
+              "gOffice": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Office.webp"
+                  }
+                }
+              ],
+              "gSecondFloor_Corridor": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/SecondFloor_Corridor.webp"
+                  }
+                }
+              ],
+              "gToilet": [
+                {
+                  "component": "oh-location-card",
+                  "config": {
+                    "backgroundImage": "/static/locations/Toilet.webp"
+                  }
+                }
+              ],
+              "gUtilityRoom": [
+                {
+                  "component": "oh-location-card",
+                  "config": {}
+                }
+              ]
+            }
+          }
+        ],
+        "properties": [
+          {
+            "component": "oh-properties-tab",
+            "config": {
+              "excludedCards": []
+            },
+            "slots": {}
+          }
+        ]
+      }
+    }
+  },
+  "languages": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "languages",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 12:58:24 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "icon": "f7:doc_circle",
+        "label": "Scripting Languages",
+        "order": "",
+        "sidebar": false
+      },
+      "slots": {
+        "canvas": [],
+        "default": [
+          {
+            "component": "oh-block",
+            "config": {
+              "title": "Scripting Languages Demo"
+            },
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-grid-row",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-grid-col",
+                        "config": {},
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "f7-block-header",
+                              "config": {},
+                              "slots": {
+                                "default": [
+                                  {
+                                    "component": "Label",
+                                    "config": {
+                                      "text": "openHAB supports several languages for scripts, and you can install more with automation add-ons. The buttons below performs the same logic, written in 6 different languages."
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "component": "oh-grid-row",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "medium": "33",
+                          "width": "50"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "rule",
+                                "actionRule": "blockly_example",
+                                "label": "Blockly"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "medium": "33",
+                          "width": "50"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "rule",
+                                "actionRule": "javascript_example",
+                                "label": "JavaScript"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "medium": "33",
+                          "width": "50"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "rule",
+                                "actionRule": "python_example",
+                                "label": "Python"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "medium": "33",
+                          "width": "50"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "rule",
+                                "actionRule": "ruby_example",
+                                "label": "Ruby"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "medium": "33",
+                          "width": "50"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "rule",
+                                "actionRule": "dsl_example",
+                                "label": "Rule DSL"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "medium": "33",
+                          "width": "50"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "rule",
+                                "actionRule": "groovy_example",
+                                "label": "Groovy"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {},
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "widget:internalLink",
+                              "config": {
+                                "link": "/settings/scripts/",
+                                "text": "Check out the code of these scripts on the Script Settings page."
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "component": "oh-block",
+            "config": {
+              "title": "Result"
+            },
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-grid-row",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-grid-col",
+                        "config": {},
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "fontSize": "16px",
+                                "fontWeight": "bold",
+                                "item": "ScriptDemo"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "grid": [],
+        "masonry": []
+      }
+    }
+  },
+  "overview": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "overview",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 1:36:09 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "label": "Overview"
+      },
+      "slots": {
+        "canvas": [],
+        "default": [
+          {
+            "component": "oh-block",
+            "config": {
+              "title": "Presence \u0026 Alarm"
+            },
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-grid-row",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-grid-col",
+                        "config": {},
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "popup",
+                                "actionModal": "widget:keypad",
+                                "actionModalConfig": {
+                                  "closePopup": true,
+                                  "hint": "The PIN code is 1234.",
+                                  "item": "Presence",
+                                  "mask": "*",
+                                  "rule": "disarm-alarmsystem-by-pin"
+                                },
+                                "background": "\u003d(items.Presence.state \u003d\u003d\u003d \u0027ON\u0027) ? \u0027#00cc00\u0027 : \u0027#007700aa\u0027",
+                                "class": [
+                                  "text-color-white"
+                                ],
+                                "label": "Home"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {},
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "command",
+                                "actionCommand": "OFF",
+                                "actionItem": "Presence",
+                                "background": "\u003d(items.Presence.state \u003d\u003d\u003d \u0027OFF\u0027) ? \u0027#cc0000\u0027 : \u0027#770000aa\u0027",
+                                "class": [
+                                  "text-color-white"
+                                ],
+                                "label": "Away"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "component": "oh-block",
+            "config": {
+              "title": "General Scenes"
+            },
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-grid-cells",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "action": "rule",
+                          "actionFeedback": "Scene activated!",
+                          "actionRule": "Morning",
+                          "color": "yellow",
+                          "header": "Activate scene",
+                          "icon": "f7:sunrise",
+                          "on": true,
+                          "title": "Morning"
+                        }
+                      },
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "action": "rule",
+                          "actionFeedback": "Scene activated!",
+                          "actionRule": "Work",
+                          "color": "lime",
+                          "header": "Activate scene",
+                          "icon": "f7:device_laptop",
+                          "on": true,
+                          "subtitle": "Office",
+                          "title": "Reading"
+                        }
+                      },
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "action": "rule",
+                          "actionFeedback": "Scene activated!",
+                          "actionRule": "TV",
+                          "color": "deeporange",
+                          "header": "Activate scene",
+                          "icon": "f7:tv",
+                          "on": true,
+                          "subtitle": "Living Room",
+                          "title": "TV"
+                        }
+                      },
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "action": "rule",
+                          "actionFeedback": "Scene activated!",
+                          "actionRule": "Diner",
+                          "color": "red",
+                          "header": "Activate scene",
+                          "icon": "f7:poultry_leg",
+                          "on": true,
+                          "subtitle": "Living Room",
+                          "title": "Dinner"
+                        }
+                      },
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "action": "rule",
+                          "actionFeedback": "Scene activated!",
+                          "actionRule": "Night",
+                          "color": "deeppurple",
+                          "header": "Activate scene",
+                          "icon": "f7:moon_zzz",
+                          "on": "true",
+                          "title": "Night"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "component": "oh-grid-row",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-grid-col",
+                        "config": {},
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "widget:internalLink",
+                              "config": {
+                                "link": "/settings/scenes/",
+                                "text": "Tip: You can check out the above scenes on the Scenes Settings page."
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "component": "oh-block",
+            "config": {
+              "title": "Other Pages"
+            },
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-grid-row",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "large": "25",
+                          "small": "50",
+                          "width": "100"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "navigate",
+                                "actionPage": "page:EMS",
+                                "actionPageTransition": "f7-dive",
+                                "footer": "A typical layout",
+                                "icon": "f7:bolt_circle",
+                                "label": "EMS",
+                                "vertical": true
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "large": "25",
+                          "small": "50",
+                          "width": "100"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "navigate",
+                                "actionPage": "page:chart_tabs",
+                                "actionPageTransition": "f7-dive",
+                                "footer": "6 types in tabs",
+                                "icon": "f7:graph_circle",
+                                "label": "Charts",
+                                "vertical": true
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "large": "25",
+                          "small": "50",
+                          "width": "100"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "navigate",
+                                "actionPage": "page:positions",
+                                "actionPageTransition": "f7-cover-v",
+                                "footer": "Where are the kids?",
+                                "icon": "f7:map",
+                                "label": "Map",
+                                "vertical": true
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "large": "25",
+                          "small": "50",
+                          "width": "100"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "popup",
+                                "actionModal": "page:languages",
+                                "actionPageTransition": "f7-circle",
+                                "footer": "Code in 6 languages",
+                                "icon": "f7:doc_circle",
+                                "label": "Scripts",
+                                "vertical": true
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "grid": [],
+        "masonry": []
+      }
+    }
+  },
+  "positions": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "positions",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 26, 2025, 1:04:07 PM",
+      "component": "oh-map-page",
+      "config": {
+        "initialCenter": "52.51627383079494,13.377696058023528",
+        "label": "Positions",
+        "order": "3",
+        "sidebar": true,
+        "tileLayerProvider": "CartoDB.Positron"
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-map-marker",
+            "config": {
+              "icon": "oh:house",
+              "label": "Home",
+              "location": "52.51627709532754,13.377712134156031"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-map-marker",
+            "config": {
+              "icon": "oh:girl_3",
+              "item": "Amelia_Position",
+              "label": "Amelia"
+            },
+            "slots": {
+              "default": []
+            }
+          },
+          {
+            "component": "oh-map-marker",
+            "config": {
+              "icon": "oh:boy_3",
+              "item": "Oliver_Position",
+              "label": "Oliver"
+            },
+            "slots": {
+              "default": []
+            }
+          }
+        ]
+      }
+    }
+  },
+  "svgcanvas_firstfloor": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "svgcanvas_firstfloor",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Oct 19, 2025, 11:32:49 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "embedSvg": true,
+        "embedSvgFlashing": false,
+        "embeddedSvgActions": {
+          "stehlampe-links": {
+            "action": "toggle",
+            "actionCommand": "ON",
+            "actionCommandAlt": "OFF",
+            "actionItem": "LivingRoom_FloorLamp",
+            "stateOffColor": "#ffffff",
+            "stateOnColor": "#ffff00",
+            "useProxyElementForState": true
+          },
+          "stehlampe-rechts": {
+            "action": "toggle",
+            "actionCommand": "ON",
+            "actionCommandAlt": "OFF",
+            "actionItem": "LivingRoom_FloorLamp"
+          }
+        },
+        "fixedType": "canvas",
+        "gridEnable": false,
+        "hideNavbar": false,
+        "imageUrl": "/static/floorplan/svgcanvas/firstfloor.svg",
+        "label": "Interactive SVG",
+        "layoutType": "fixed",
+        "scale": true,
+        "sidebar": false
+      },
+      "slots": {
+        "canvas": [],
+        "default": [],
+        "grid": [],
+        "masonry": []
+      }
+    }
+  }
+}
