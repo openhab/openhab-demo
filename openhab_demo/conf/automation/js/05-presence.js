@@ -6,8 +6,7 @@ const presenceItem = items.addItem({
   type: 'Switch',
   name: 'Presence',
   label: 'Presence',
-  category: 'presence',
-  tags: ['Status', 'Presence']
+  category: 'presence'
 })
 
 rules.JSRule({
