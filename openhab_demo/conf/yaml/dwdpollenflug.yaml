@@ -11,12 +11,12 @@ things:
 items:
   gPollen_Count:
     type: Group
-    label: DWD Pollen Count
+    label: Pollen Count
     tags:
       - WeatherService
   Pollen_Count_Birch:
     type: String
-    label: Birch Pollen
+    label: Birch
     icon: garden
     groups:
       - gPollen_Count
@@ -30,7 +30,7 @@ items:
           pattern: MAP(pollencount.map):%s
   Pollen_Count_Grasses:
     type: String
-    label: Grasses Pollen
+    label: Grasses
     icon: lawnmower
     groups:
       - gPollen_Count
