@@ -15,7 +15,7 @@ services:
       - ./openhab_demo/userdata:/openhab/userdata
       - ./openhab_demo/addons:/openhab/addons
     ports:
-      - 8080:8080
+      - 127.0.0.1:8080:8080
 
   openhab_private:
     image: openhab/openhab:5.0.1-debian
@@ -33,7 +33,7 @@ services:
       - ./openhab_private/userdata:/openhab/userdata
       - ./openhab_private/addons:/openhab/addons
     ports:
-      - 18080:8080
+      - 127.0.0.1:18080:8080
 
   influxdb:
     image: influxdb:2.7
@@ -54,7 +54,7 @@ services:
       - ./influxdb/data:/var/lib/influxdb2
       - ./influxdb/conf:/etc/influxdb2
     ports:
-      - 8086:8086
+      - 127.0.0.1:8086:8086
 
 secrets:
   influxdb2-admin-username:
