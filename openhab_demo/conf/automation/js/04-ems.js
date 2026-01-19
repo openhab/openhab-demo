@@ -52,7 +52,7 @@ rules.when()
   .or().cron(`*/${STEP_SECONDS} */1 * ? * * *`)
   .then(() => {
     const isDay = time.toZDT().isBetweenTimes(time.toZDT('07:00'), time.toZDT('22:00'))
-    const base = isDay && Math.random() < 0.15 ? -2000 : -400
+    const base = isDay && Math.random() < 0.2 ? -2000 : -500
     const random = (150 - Math.random() * 300)
     const lightsPower = lights().filter(m => m.state === 'ON' || m.numericState > 0).length * 25;
     const sum = base + lightsPower + random
