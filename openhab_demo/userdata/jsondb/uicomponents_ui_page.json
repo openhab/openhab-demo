@@ -2322,7 +2322,7 @@
         "parameters": [],
         "parameterGroups": []
       },
-      "timestamp": "Dec 26, 2025, 1:36:09 PM",
+      "timestamp": "Jan 19, 2026, 11:51:59 PM",
       "component": "oh-layout-page",
       "config": {
         "label": "Overview"
@@ -2583,6 +2583,30 @@
                                 "footer": "Where are the kids?",
                                 "icon": "f7:map",
                                 "label": "Map",
+                                "vertical": true
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "oh-grid-col",
+                        "config": {
+                          "large": "25",
+                          "small": "50",
+                          "width": "100"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "oh-label-card",
+                              "config": {
+                                "action": "navigate",
+                                "actionPage": "page:floorplan",
+                                "actionPageTransition": "f7-cover-v",
+                                "footer": "Visualise your home",
+                                "icon": "f7:square",
+                                "label": "Floorplan",
                                 "vertical": true
                               }
                             }
