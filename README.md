@@ -29,6 +29,14 @@ Run the following command to start the demo server:
 docker compose up -d
 ```
 
+### FAQ
+
+#### How can I access the console?
+
+```shell
+docker exec -it openhab_demo /openhab/runtime/bin/client
+```
+
 ## Configuration
 
 The openHAB servers used for the demo are configured through configuration files only.
