@@ -8,7 +8,7 @@ services:
       USER_ID: 1000
       GROUP_ID: 1000
       CRYPTO_POLICY: "unlimited"
-      EXTRA_JAVA_OPTS: "-XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/openhab/userdata"
+      EXTRA_JAVA_OPTS: "-XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/openhab/userdata -Duser.timezone=Europe/Berlin"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -27,6 +27,7 @@ services:
       USER_ID: 1000
       GROUP_ID: 1000
       CRYPTO_POLICY: "unlimited"
+      EXTRA_JAVA_OPTS: "-XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/openhab/userdata -Duser.timezone=Europe/Berlin"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
