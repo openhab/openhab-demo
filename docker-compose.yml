@@ -1,6 +1,6 @@
 services:
   openhab_demo:
-    image: openhab/openhab:5.1.1-debian
+    image: openhab/openhab:5.1.4-debian
     container_name: openhab_demo
     hostname: ohdemo
     restart: always
