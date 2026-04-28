@@ -84,7 +84,7 @@ rules.when()
 
     if (deltaP.greaterThan('0 W')) {
       // Surplus -> Charge battery
-      console.info(`Battery Simulation - Surplus, deltaP = ${roundToUnit(deltaP, 'W')} W`)
+      console.debug(`Battery Simulation - Surplus, deltaP = ${roundToUnit(deltaP, 'W')} W`)
       const potentialCharge = deltaP.multiply(Quantity(STEP_SECONDS + ' s')).toUnit('Wh')
       const availableCap = BATTERY_CAPACITY.subtract(socEnergy)
       const actualCharge = potentialCharge.lessThan(availableCap) ? potentialCharge : availableCap
@@ -96,7 +96,7 @@ rules.when()
       }
     } else if (deltaP.lessThan('0 W')) {
       // Deficit -> Discharge battery
-      console.info(`Battery Simulation - Deficit, deltaP = ${roundToUnit(deltaP, 'W')} W`)
+      console.debug(`Battery Simulation - Deficit, deltaP = ${roundToUnit(deltaP, 'W')} W`)
       const needed = deltaP.multiply('-1').multiply(Quantity(STEP_SECONDS + ' s')).toUnit('Wh')
       const actualDischarge = needed.lessThan(socEnergy) ? needed : socEnergy
       console.debug(`Battery Simulation - Discharging ${roundToUnit(actualDischarge, 'Wh', 3)} Wh <- Battery`)
