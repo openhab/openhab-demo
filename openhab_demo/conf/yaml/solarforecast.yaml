@@ -4,7 +4,7 @@ things:
     isBridge: true
     label: ForecastSolar Brandenburger Tor
     config:
-      location: "52.516283804703384,13.377661883415065"
+      location: "52.516283,13.377661"
       inverterKwp: 15
   solarforecast:fs-plane:local:east:
     bridge: solarforecast:fs-site:local
