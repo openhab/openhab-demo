@@ -8,7 +8,7 @@
         "parameters": [],
         "parameterGroups": []
       },
-      "timestamp": "Dec 26, 2025, 1:36:09 PM",
+      "timestamp": "Mar 4, 2026, 9:03:30 PM",
       "component": "oh-layout-page",
       "config": {
         "icon": "f7:bolt_circle",
@@ -40,15 +40,15 @@
                             {
                               "component": "widget:emsEnergyflow",
                               "config": {
-                                "batterylevel": "EMS_Battery_SoC",
-                                "batterypower": "EMS_Battery_Power",
-                                "gridpower": "EMS_Grid_Power",
+                                "batteryLevelItem": "EMS_Battery_SoC",
+                                "batteryPowerItem": "EMS_Battery_Power",
+                                "gridPowerItem": "EMS_Grid_Power",
+                                "loadPowerItem": "EMS_Load_Power",
                                 "load_action": "navigate",
                                 "load_actionPage": "page:EMS_Analytics",
-                                "loadpower": "EMS_Load_Power",
+                                "solarPowerItem": "EMS_Solar_Power",
                                 "solar_action": "navigate",
-                                "solar_actionPage": "page:Solar_Analytics",
-                                "solarpower": "EMS_Solar_Power"
+                                "solar_actionPage": "page:Solar_Analytics"
                               }
                             }
                           ]

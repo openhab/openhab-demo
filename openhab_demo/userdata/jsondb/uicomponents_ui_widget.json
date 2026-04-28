@@ -12,23 +12,15 @@
             "context": "item",
             "description": "Grid Power (+ from grid, - to grid)",
             "label": "Grid Power",
-            "name": "gridpower",
+            "name": "gridPowerItem",
             "required": true,
-            "type": "TEXT"
-          },
-          {
-            "context": "item",
-            "description": "Backup Power (OPEN/ON on backup power, CLOSED/OFF on grid)",
-            "label": "Backup Power",
-            "name": "backuppower",
-            "required": false,
             "type": "TEXT"
           },
           {
             "context": "item",
             "description": "Power from load (+ generator, - consumer)",
             "label": "Load Power",
-            "name": "loadpower",
+            "name": "loadPowerItem",
             "required": true,
             "type": "TEXT"
           },
@@ -36,7 +28,7 @@
             "context": "item",
             "description": "Power from solar plant",
             "label": "Solar Power",
-            "name": "solarpower",
+            "name": "solarPowerItem",
             "required": true,
             "type": "TEXT"
           },
@@ -44,7 +36,7 @@
             "context": "item",
             "description": "Power from battery (+ discharge, - charge)",
             "label": "Battery Power",
-            "name": "batterypower",
+            "name": "batteryPowerItem",
             "required": true,
             "type": "TEXT"
           },
@@ -52,7 +44,7 @@
             "context": "item",
             "description": "Current state of charge of the battery connected to the inverter in percent",
             "label": "Battery State of Charge",
-            "name": "batterylevel",
+            "name": "batteryLevelItem",
             "required": true,
             "type": "TEXT"
           },
@@ -60,12 +52,56 @@
             "context": "item",
             "description": "Charging power of EV charger",
             "label": "EV Charging Power",
-            "name": "evChargerPower",
+            "name": "evChargerPowerItem",
             "required": false,
             "type": "TEXT"
+          },
+          {
+            "default": "iconify:lucide:utility-pole",
+            "label": "Grid Icon",
+            "name": "gridIcon",
+            "required": false,
+            "type": "TEXT",
+            "groupName": "appearance"
+          },
+          {
+            "default": "iconify:lucide:house",
+            "label": "Load Icon",
+            "name": "loadIcon",
+            "required": false,
+            "type": "TEXT",
+            "groupName": "appearance"
+          },
+          {
+            "default": "iconify:material-symbols-light:solar-power-rounded",
+            "label": "Solar Icon",
+            "name": "solarIcon",
+            "required": false,
+            "type": "TEXT",
+            "groupName": "appearance"
+          },
+          {
+            "default": "iconify:lucide:battery-charging",
+            "label": "Battery Icon",
+            "name": "batteryIcon",
+            "required": false,
+            "type": "TEXT",
+            "groupName": "appearance"
+          },
+          {
+            "default": "iconify:ic:round-ev-station",
+            "label": "EV Charger Icon",
+            "name": "evChargerIcon",
+            "required": false,
+            "type": "TEXT",
+            "groupName": "appearance"
           }
         ],
         "parameterGroups": [
+          {
+            "name": "appearance",
+            "label": "Appearance"
+          },
           {
             "name": "solarAction",
             "context": "action",
@@ -86,15 +122,14 @@
           }
         ]
       },
-      "timestamp": "Sep 3, 2025, 11:04:00 AM",
+      "timestamp": "Mar 4, 2026, 9:02:30 PM",
       "component": "oh-context",
       "config": {
         "constants": {},
         "functions": {
           "flowsFrom": "\u003d(item) \u003d\u003e @item !\u003d\u003d undefined \u0026\u0026 Number((@item).split(\u0027 \u0027)[0].replace(\u0027,\u0027, \u0027.\u0027)) \u003e 0",
           "flowsTo": "\u003d(item) \u003d\u003e @item !\u003d\u003d undefined \u0026\u0026 Number((@item).split(\u0027 \u0027)[0].replace(\u0027,\u0027, \u0027.\u0027)) \u003c 0",
-          "getFormattedState": "\u003d(item) \u003d\u003e (@item).replace(\u0027-\u0027, \u0027\u0027).replace(\u0027kW\u0027, \u0027ᵏᵂ\u0027).replace(\u0027W\u0027, \u0027ᵂ\u0027)",
-          "isOnBackupPower": "\u003d() \u003d\u003e props.backuppower \u0026\u0026 (@@props.backuppower \u003d\u003d\u003d \u0027OPEN\u0027 || @@props.backuppower \u003d\u003d\u003d \u0027ON\u0027)"
+          "getFormattedState": "\u003d(item) \u003d\u003e (@item).replace(\u0027-\u0027, \u0027\u0027).replace(\u0027kW\u0027, \u0027ᵏᵂ\u0027).replace(\u0027W\u0027, \u0027ᵂ\u0027)"
         },
         "variable": {}
       },
@@ -107,14 +142,12 @@
                 "align-items": "center",
                 "border-radius": "var(--f7-card-expandable-border-radius)",
                 "box-shadow": "5px 5px 10px 1px rgba(0,0,0,0.1)",
+                "container-type": "inline-size",
                 "display": "flex",
-                "height": "350px",
                 "justify-content": "center",
                 "margin-left": "5px",
                 "margin-right": "5px",
-                "min-width": "350px",
-                "noShadow": false,
-                "padding": 0.0
+                "position": "relative"
               }
             },
             "slots": {
@@ -124,12 +157,13 @@
                   "config": {
                     "style": {
                       "--f7-theme-color": "var(--f7-text-color)",
+                      "--scale-factor": "min(1, calc(100cqw / 354px)",
                       "display": "grid",
                       "grid-template-columns": "repeat(3, 110px)",
                       "margin": 0.0,
                       "padding": "12px",
                       "place-items": "center",
-                      "width": "354px"
+                      "zoom": "var(--scale-factor)"
                     }
                   },
                   "slots": {
@@ -161,15 +195,15 @@
                               "component": "Label",
                               "config": {
                                 "style": {
-                                  "color": "\u003dfn.flowsFrom(props.solarpower) ? (themeOptions.dark \u003d\u003d\u003d \u0027dark\u0027 ? \u0027white\u0027 : \u0027black\u0027) : \u0027gray\u0027",
+                                  "color": "\u003dfn.flowsFrom(props.solarPowerItem) ? (themeOptions.dark \u003d\u003d\u003d \u0027dark\u0027 ? \u0027white\u0027 : \u0027black\u0027) : \u0027gray\u0027",
                                   "font-size": "25px",
                                   "font-weight": "bold",
                                   "margin-bottom": "-10px",
                                   "text-align": "center",
                                   "width": "100px"
                                 },
-                                "text": "\u003dfn.getFormattedState(props.solarpower)",
-                                "visible": "\u003dprops.solarpower ? true : false"
+                                "text": "\u003dfn.getFormattedState(props.solarPowerItem)",
+                                "visible": "\u003dprops.solarPowerItem ? true : false"
                               }
                             },
                             {
@@ -177,7 +211,7 @@
                               "config": {
                                 "actionPropsParameterGroup": "solarAction",
                                 "height": "85px",
-                                "icon": "iconify:material-symbols-light:solar-power-rounded",
+                                "icon": "\u003dprops.solarIcon",
                                 "style": {
                                   "margin-bottom": "10px"
                                 }
@@ -214,7 +248,7 @@
                               "component": "oh-icon",
                               "config": {
                                 "height": "85px",
-                                "icon": "iconify:lucide:utility-pole",
+                                "icon": "\u003dprops.gridIcon",
                                 "style": {
                                   "margin-bottom": "10px",
                                   "margin-top": "10px"
@@ -225,15 +259,15 @@
                               "component": "Label",
                               "config": {
                                 "style": {
-                                  "color": "\u003dfn.flowsTo(props.gridpower) ? \u0027green\u0027 : fn.flowsFrom(props.gridpower) ? \u0027red\u0027 : \u0027gray\u0027",
+                                  "color": "\u003dfn.flowsTo(props.gridPowerItem) ? \u0027green\u0027 : fn.flowsFrom(props.gridPowerItem) ? \u0027red\u0027 : \u0027gray\u0027",
                                   "font-size": "25px",
                                   "font-weight": "bold",
                                   "margin-top": "-10px",
                                   "text-align": "center",
                                   "width": "100px"
                                 },
-                                "text": "\u003dfn.getFormattedState(props.gridpower)",
-                                "visible": "\u003dprops.gridpower ? true : false"
+                                "text": "\u003dfn.getFormattedState(props.gridPowerItem)",
+                                "visible": "\u003dprops.gridPowerItem ? true : false"
                               }
                             }
                           ]
@@ -277,7 +311,7 @@
                                       "stroke-width": 2.0,
                                       "tag": "path",
                                       "vector-effect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.solarpower) \u0026\u0026 fn.flowsTo(props.batterypower)"
+                                      "visible": "\u003dfn.flowsFrom(props.solarPowerItem) \u0026\u0026 fn.flowsTo(props.batteryPowerItem)"
                                     }
                                   },
                                   {
@@ -290,7 +324,7 @@
                                       },
                                       "tag": "circle",
                                       "vector-effect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.solarpower) \u0026\u0026 fn.flowsTo(props.batterypower)"
+                                      "visible": "\u003dfn.flowsFrom(props.solarPowerItem) \u0026\u0026 fn.flowsTo(props.batteryPowerItem)"
                                     },
                                     "slots": {
                                       "default": [
@@ -327,7 +361,7 @@
                                       "stroke-width": 2.0,
                                       "tag": "path",
                                       "vector-effect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.solarpower) \u0026\u0026 fn.flowsTo(props.gridpower)"
+                                      "visible": "\u003dfn.flowsFrom(props.solarPowerItem) \u0026\u0026 fn.flowsTo(props.gridPowerItem)"
                                     }
                                   },
                                   {
@@ -338,7 +372,7 @@
                                       "strokeWidth": 10.0,
                                       "tag": "circle",
                                       "vectorEffect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.solarpower) \u0026\u0026 fn.flowsTo(props.gridpower)"
+                                      "visible": "\u003dfn.flowsFrom(props.solarPowerItem) \u0026\u0026 fn.flowsTo(props.gridPowerItem)"
                                     },
                                     "slots": {
                                       "default": [
@@ -375,7 +409,7 @@
                                       "stroke-width": 2.0,
                                       "tag": "path",
                                       "vector-effect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.solarpower)"
+                                      "visible": "\u003dfn.flowsFrom(props.solarPowerItem)"
                                     }
                                   },
                                   {
@@ -386,7 +420,7 @@
                                       "strokeWidth": 10.0,
                                       "tag": "circle",
                                       "vectorEffect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.solarpower)"
+                                      "visible": "\u003dfn.flowsFrom(props.solarPowerItem)"
                                     },
                                     "slots": {
                                       "default": [
@@ -423,7 +457,7 @@
                                       "stroke-width": 2.0,
                                       "tag": "path",
                                       "vector-effect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.gridpower)"
+                                      "visible": "\u003dfn.flowsFrom(props.gridPowerItem)"
                                     }
                                   },
                                   {
@@ -434,7 +468,7 @@
                                       "strokeWidth": 10.0,
                                       "tag": "circle",
                                       "vectorEffect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.gridpower)"
+                                      "visible": "\u003dfn.flowsFrom(props.gridPowerItem)"
                                     },
                                     "slots": {
                                       "default": [
@@ -471,7 +505,7 @@
                                       "stroke-width": 2.0,
                                       "tag": "path",
                                       "vector-effect": "non-scaling-stroke",
-                                      "visible": "\u003d#props.gridpower - #props.solarpower + #props.loadpower \u003e 0 \u0026\u0026 fn.flowsTo(props.batterypower)"
+                                      "visible": "\u003d#props.gridPowerItem - #props.solarPowerItem + #props.loadPowerItem \u003e 0 \u0026\u0026 fn.flowsTo(props.batteryPowerItem)"
                                     }
                                   },
                                   {
@@ -482,7 +516,7 @@
                                       "strokeWidth": 10.0,
                                       "tag": "circle",
                                       "vectorEffect": "non-scaling-stroke",
-                                      "visible": "\u003d#props.gridpower - #props.solarpower + #props.loadpower \u003e 0 \u0026\u0026 fn.flowsTo(props.batterypower)"
+                                      "visible": "\u003d#props.gridPowerItem - #props.solarPowerItem + #props.loadPowerItem \u003e 0 \u0026\u0026 fn.flowsTo(props.batteryPowerItem)"
                                     },
                                     "slots": {
                                       "default": [
@@ -519,7 +553,7 @@
                                       "stroke-width": 2.0,
                                       "tag": "path",
                                       "vector-effect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.batterypower)"
+                                      "visible": "\u003dfn.flowsFrom(props.batteryPowerItem)"
                                     }
                                   },
                                   {
@@ -530,7 +564,7 @@
                                       "strokeWidth": 10.0,
                                       "tag": "circle",
                                       "vectorEffect": "non-scaling-stroke",
-                                      "visible": "\u003dfn.flowsFrom(props.batterypower)"
+                                      "visible": "\u003dfn.flowsFrom(props.batteryPowerItem)"
                                     },
                                     "slots": {
                                       "default": [
@@ -567,7 +601,7 @@
                                       "stroke-width": 2.0,
                                       "tag": "path",
                                       "vector-effect": "non-scaling-stroke",
-                                      "visible": "\u003d#props.batterypower - #props.solarpower + #props.loadpower \u003e 0 \u0026\u0026 fn.flowsTo(props.gridpower)"
+                                      "visible": "\u003d#props.batteryPowerItem - #props.solarPowerItem + #props.loadPowerItem \u003e 0 \u0026\u0026 fn.flowsTo(props.gridPowerItem)"
                                     }
                                   },
                                   {
@@ -578,7 +612,7 @@
                                       "strokeWidth": 10.0,
                                       "tag": "circle",
                                       "vectorEffect": "non-scaling-stroke",
-                                      "visible": "\u003d#props.batterypower - #props.solarpower + #props.loadpower \u003e 0 \u0026\u0026 fn.flowsTo(props.gridpower)"
+                                      "visible": "\u003d#props.batteryPowerItem - #props.solarPowerItem + #props.loadPowerItem \u003e 0 \u0026\u0026 fn.flowsTo(props.gridPowerItem)"
                                     },
                                     "slots": {
                                       "default": [
@@ -631,9 +665,9 @@
                               "config": {
                                 "action": "analyzer",
                                 "actionAnalyzerCoordSystem": "time",
-                                "actionAnalyzerItems": "\u003d[props.batterylevel]",
-                                "iconColor": "\u003d#props.batterylevel \u003c 65 ? (#props.batterylevel \u003c 10 ? \u0027red\u0027 : \u0027orange\u0027) : \u0027green\u0027",
-                                "iconF7": "\u003d#props.batterylevel \u003c 65 ? (#props.batterylevel \u003c 10 ? \u0027battery_0\u0027 : \u0027battery_25\u0027) : \u0027battery_100\u0027",
+                                "actionAnalyzerItems": "\u003d[props.batteryLevelItem]",
+                                "iconColor": "\u003d#props.batteryLevelItem \u003c 65 ? (#props.batteryLevelItem \u003c 10 ? \u0027red\u0027 : \u0027orange\u0027) : \u0027green\u0027",
+                                "iconF7": "\u003d#props.batteryLevelItem \u003c 65 ? (#props.batteryLevelItem \u003c 10 ? \u0027battery_0\u0027 : \u0027battery_25\u0027) : \u0027battery_100\u0027",
                                 "iconSize": "30px",
                                 "style": {
                                   "font-size": "20px",
@@ -642,14 +676,14 @@
                                   "top": "-25px",
                                   "white-space": "nowrap"
                                 },
-                                "text": "\u003dMath.round(#props.batterylevel) + \u0027%\u0027"
+                                "text": "\u003dMath.round(#props.batteryLevelItem) + \u0027%\u0027"
                               }
                             },
                             {
                               "component": "oh-icon",
                               "config": {
                                 "height": "85px",
-                                "icon": "iconify:lucide:battery-charging",
+                                "icon": "\u003dprops.batteryIcon",
                                 "style": {
                                   "margin-bottom": "10px",
                                   "margin-top": "10px"
@@ -660,7 +694,7 @@
                               "component": "Label",
                               "config": {
                                 "style": {
-                                  "color": "\u003dfn.flowsTo(props.batterypower) ? \u0027green\u0027 : fn.flowsFrom(props.batterypower) ? \u0027red\u0027 : \u0027gray\u0027",
+                                  "color": "\u003dfn.flowsTo(props.batteryPowerItem) ? \u0027green\u0027 : fn.flowsFrom(props.batteryPowerItem) ? \u0027red\u0027 : \u0027gray\u0027",
                                   "font-size": "25px",
                                   "font-weight": "bold",
                                   "margin-top": "-10px",
@@ -668,8 +702,8 @@
                                   "white-space": "nowrap",
                                   "width": "100px"
                                 },
-                                "text": "\u003dfn.getFormattedState(props.batterypower)",
-                                "visible": "\u003dprops.batterypower ? true : false"
+                                "text": "\u003dfn.getFormattedState(props.batteryPowerItem)",
+                                "visible": "\u003dprops.batteryPowerItem ? true : false"
                               }
                             }
                           ]
@@ -703,8 +737,8 @@
                               "component": "oh-icon",
                               "config": {
                                 "actionPropsParameterGroup": "loadAction",
-                                "height": "75px",
-                                "icon": "iconify:lucide:house",
+                                "height": "85px",
+                                "icon": "\u003dprops.loadIcon",
                                 "style": {
                                   "margin-top": "20px"
                                 }
@@ -720,8 +754,8 @@
                                   "text-align": "center",
                                   "width": "100px"
                                 },
-                                "text": "\u003dfn.getFormattedState(props.loadpower)",
-                                "visible": "\u003dprops.loadpower ? true : false"
+                                "text": "\u003dfn.getFormattedState(props.loadPowerItem)",
+                                "visible": "\u003dprops.loadPowerItem ? true : false"
                               }
                             }
                           ]
@@ -751,7 +785,7 @@
                                 },
                                 "tag": "svg",
                                 "viewBox": "0 0 30 100",
-                                "visible": "\u003dfn.flowsFrom(props.evChargerPower)",
+                                "visible": "\u003dfn.flowsFrom(props.evChargerPowerItem)",
                                 "xmlns": "http://www.w3.org/2000/svg"
                               },
                               "slots": {
@@ -819,7 +853,7 @@
                                   "transform": "scale(0.7)",
                                   "width": "80px"
                                 },
-                                "visible": "\u003dprops.evChargerPower ? true : false"
+                                "visible": "\u003dprops.evChargerPowerItem ? true : false"
                               },
                               "slots": {
                                 "default": [
@@ -828,7 +862,7 @@
                                     "config": {
                                       "actionPropsParameterGroup": "evChargerAction",
                                       "height": "85px",
-                                      "icon": "iconify:ic:round-ev-station",
+                                      "icon": "\u003dprops.evChargerIcon",
                                       "style": {
                                         "margin-top": "20px"
                                       }
@@ -844,7 +878,7 @@
                                         "text-align": "center",
                                         "width": "100px"
                                       },
-                                      "text": "\u003dfn.getFormattedState(props.evChargerPower)"
+                                      "text": "\u003dfn.getFormattedState(props.evChargerPowerItem)"
                                     }
                                   }
                                 ]
@@ -881,18 +915,9 @@
             "groupName": "appearance"
           },
           {
-            "default": "270px",
-            "description": "The height of the card",
-            "label": "Height",
-            "name": "height",
-            "required": false,
-            "type": "TEXT",
-            "groupName": "appearance"
-          },
-          {
             "default": "Eigenverbrauch (D | M)",
             "label": "Electricity Self-Consumption Label",
-            "name": "label_electricity_selfconsumption",
+            "name": "selfConsumptionLabel",
             "required": false,
             "type": "TEXT",
             "groupName": "labeling"
@@ -900,7 +925,7 @@
           {
             "default": "Einspeisung (D | M)",
             "label": "Electricity Feed-In Label",
-            "name": "label_electricity_feedin",
+            "name": "feedInLabel",
             "required": false,
             "type": "TEXT",
             "groupName": "labeling"
@@ -908,7 +933,7 @@
           {
             "default": "Netzbezug (D | M)",
             "label": "Electricity Feed-In Label",
-            "name": "label_electricity_supply",
+            "name": "supplyLabel",
             "required": false,
             "type": "TEXT",
             "groupName": "labeling"
@@ -916,7 +941,7 @@
           {
             "default": "Stromkosten (M | T)",
             "label": "Electricity Cost Label",
-            "name": "label_electricity_cost",
+            "name": "costLabel",
             "required": false,
             "type": "TEXT",
             "groupName": "labeling"
@@ -924,7 +949,7 @@
           {
             "default": "Einsparungen (M | T)",
             "label": "Electricity Cost Savings Label",
-            "name": "label_electricity_savings",
+            "name": "savingLabel",
             "required": false,
             "type": "TEXT",
             "groupName": "labeling"
@@ -932,7 +957,7 @@
           {
             "default": "Einspeisung (M | T)",
             "label": "Electricity Feed-In Earnings Label",
-            "name": "label_electricity_feedin_earnings",
+            "name": "earningsLabel",
             "required": false,
             "type": "TEXT",
             "groupName": "labeling"
@@ -940,84 +965,84 @@
           {
             "context": "item",
             "label": "Electricity Self-Consumption Day",
-            "name": "item_electricity_selfconsumption_day",
+            "name": "selfConsumptionItemDay",
             "required": true,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Self-Consumption Month",
-            "name": "item_electricity_selfconsumption_month",
+            "name": "selfConsumptionItemMonth",
             "required": true,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Feed-In Day",
-            "name": "item_electricity_feedin_day",
+            "name": "feedInItemDay",
             "required": true,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Feed-In Month",
-            "name": "item_electricity_feedin_month",
+            "name": "feedInItemMonth",
             "required": true,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Supply Day",
-            "name": "item_electricity_supply_day",
+            "name": "supplyItemDay",
             "required": true,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Supply Month",
-            "name": "item_electricity_supply_month",
+            "name": "supplyItemMonth",
             "required": true,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Cost Month",
-            "name": "item_electricity_cost_month",
+            "name": "costItemMonth",
             "required": false,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Cost Total",
-            "name": "item_electricity_cost_total",
+            "name": "costItemTotal",
             "required": false,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Savings Month",
-            "name": "item_electricity_savings_month",
+            "name": "savingsItemMonth",
             "required": false,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Savings Total",
-            "name": "item_electricity_savings_total",
+            "name": "savingsItemTotal",
             "required": false,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Feed-In Earnings Month",
-            "name": "item_electricity_feedin_earnings_month",
+            "name": "earningsItemMonth",
             "required": false,
             "type": "TEXT"
           },
           {
             "context": "item",
             "label": "Electricity Feed-In Earnings Total",
-            "name": "item_electricity_feedin_earnings_total",
+            "name": "earningsItemTotal",
             "required": false,
             "type": "TEXT"
           }
@@ -1039,7 +1064,7 @@
           }
         ]
       },
-      "timestamp": "Sep 21, 2025, 2:41:12 PM",
+      "timestamp": "Mar 4, 2026, 9:07:03 PM",
       "component": "oh-context",
       "config": {
         "constants": {},
@@ -1059,15 +1084,10 @@
                 "--f7-chip-height": "28px",
                 "border-radius": "var(--f7-card-expandable-border-radius)",
                 "box-shadow": "5px 5px 10px 1px rgba(0,0,0,0.1)",
-                "class": [
-                  {
-                    "padding": "0px"
-                  }
-                ],
-                "height": "\u003dprops.height",
+                "container-type": "inline-size",
                 "margin-left": "5px",
                 "margin-right": "5px",
-                "noShadow": false
+                "position": "relative"
               }
             },
             "slots": {
@@ -1078,9 +1098,8 @@
                     "style": {
                       "display": "flex",
                       "flex-direction": "row",
-                      "left": "16px",
-                      "position": "absolute",
-                      "top": "-5px",
+                      "margin": "-5px 0 10px 0",
+                      "padding": 0.0,
                       "width": "100%"
                     }
                   },
@@ -1101,7 +1120,7 @@
                         "config": {
                           "style": {
                             "font-size": "12px",
-                            "margin-top": "0px"
+                            "margin-top": 0.0
                           },
                           "text": "\u003dprops.title ? props.title : \u0027EMS\u0027"
                         }
@@ -1113,10 +1132,10 @@
                   "component": "f7-block",
                   "config": {
                     "style": {
-                      "left": "12px",
-                      "position": "absolute",
-                      "top": "55px",
-                      "width": "100%"
+                      "--scale-factor": "min(1, calc(100cqw / 360px)",
+                      "margin": "0 0 0 -4px",
+                      "padding": 0.0,
+                      "zoom": "var(--scale-factor)"
                     }
                   },
                   "slots": {
@@ -1129,10 +1148,10 @@
                           "iconSize": 20.0,
                           "style": {
                             "font-size": "16px",
-                            "margin-bottom": "10px",
+                            "margin-bottom": 0.0,
                             "margin-top": 0.0
                           },
-                          "text": "\u003dfn.formatEnergy(props.label_electricity_supply, props.item_electricity_supply_day, props.item_electricity_supply_month)"
+                          "text": "\u003dfn.formatEnergy(props.supplyLabel, props.supplyItemDay, props.supplyItemMonth)"
                         }
                       },
                       {
@@ -1143,10 +1162,10 @@
                           "iconSize": 20.0,
                           "style": {
                             "font-size": "16px",
-                            "margin-bottom": "10px",
-                            "margin-top": 0.0
+                            "margin-bottom": 0.0,
+                            "margin-top": "10px"
                           },
-                          "text": "\u003dfn.formatEnergy(props.label_electricity_selfconsumption, props.item_electricity_selfconsumption_day, props.item_electricity_selfconsumption_month)"
+                          "text": "\u003dfn.formatEnergy(props.selfConsumptionLabel, props.selfConsumptionItemDay, props.selfConsumptionItemMonth)"
                         }
                       },
                       {
@@ -1157,10 +1176,10 @@
                           "iconSize": 20.0,
                           "style": {
                             "font-size": "16px",
-                            "margin-bottom": "10px",
-                            "margin-top": 0.0
+                            "margin-bottom": 0.0,
+                            "margin-top": "10px"
                           },
-                          "text": "\u003dfn.formatEnergy(props.label_electricity_feedin, props.item_electricity_feedin_day, props.item_electricity_feedin_month)"
+                          "text": "\u003dfn.formatEnergy(props.feedInLabel, props.feedInItemDay, props.feedInItemMonth)"
                         }
                       },
                       {
@@ -1171,11 +1190,11 @@
                           "iconSize": 20.0,
                           "style": {
                             "font-size": "16px",
-                            "margin-bottom": "10px",
-                            "margin-top": 0.0
+                            "margin-bottom": 0.0,
+                            "margin-top": "10px"
                           },
-                          "text": "\u003dfn.formatCurrency(props.label_electricity_cost, props.item_electricity_cost_month, props.item_electricity_cost_total)",
-                          "visible": "\u003dprops.item_electricity_cost_month ? true : false"
+                          "text": "\u003dfn.formatCurrency(props.costLabel, props.costItemMonth, props.costItemTotal)",
+                          "visible": "\u003dprops.costItemMonth ? true : false"
                         }
                       },
                       {
@@ -1186,11 +1205,11 @@
                           "iconSize": 20.0,
                           "style": {
                             "font-size": "16px",
-                            "margin-bottom": "10px",
-                            "margin-top": 0.0
+                            "margin-bottom": 0.0,
+                            "margin-top": "10px"
                           },
-                          "text": "\u003dfn.formatCurrency(props.label_electricity_savings, props.item_electricity_savings_month, props.item_electricity_savings_total)",
-                          "visible": "\u003dprops.item_electricity_savings_month ? true : false"
+                          "text": "\u003dfn.formatCurrency(props.savingLabel, props.savingsItemMonth, props.savingsItemTotal)",
+                          "visible": "\u003dprops.savingsItemMonth ? true : false"
                         }
                       },
                       {
@@ -1201,11 +1220,11 @@
                           "iconSize": 20.0,
                           "style": {
                             "font-size": "16px",
-                            "margin-bottom": "10px",
-                            "margin-top": 0.0
+                            "margin-bottom": 0.0,
+                            "margin-top": "10px"
                           },
-                          "text": "\u003dfn.formatCurrency(props.label_electricity_feedin_earnings, props.item_electricity_feedin_earnings_month, props.item_electricity_feedin_earnings_total)",
-                          "visible": "\u003dprops.item_electricity_feedin_earnings_month ? true : false"
+                          "text": "\u003dfn.formatCurrency(props.earningsLabel, props.earningsItemMonth, props.earningsItemTotal)",
+                          "visible": "\u003dprops.earningsItemMonth ? true : false"
                         }
                       }
                     ]
@@ -1217,11 +1236,11 @@
                     "actionFeedback": "Erledigt!",
                     "actionPropsParameterGroup": "widgetAction",
                     "style": {
-                      "height": "290px",
-                      "left": "0px",
+                      "bottom": 0.0,
+                      "left": 0.0,
                       "position": "absolute",
-                      "top": "0px",
-                      "width": "100%"
+                      "right": 0.0,
+                      "top": 0.0
                     },
                     "visible": "\u003dprops.widget_action ? true : false"
                   }
@@ -1244,7 +1263,7 @@
         "parameters": [],
         "parameterGroups": []
       },
-      "timestamp": "Sep 23, 2025, 5:39:46 PM",
+      "timestamp": "Mar 4, 2026, 9:05:51 PM",
       "component": "div",
       "config": {
         "style": {
@@ -1257,22 +1276,21 @@
           {
             "component": "widget:emsOverview",
             "config": {
-              "height": "265px",
-              "item_electricity_cost_month": "EMS_ElectricityCost_Month",
-              "item_electricity_feedin_day": "EMS_FeedIn_Day",
-              "item_electricity_feedin_earnings_month": "EMS_FeedInCompensation_Month",
-              "item_electricity_feedin_month": "EMS_FeedIn_Month",
-              "item_electricity_savings_month": "EMS_ElectricityCostSavings_Month",
-              "item_electricity_selfconsumption_day": "EMS_SelfConsumption_Day",
-              "item_electricity_selfconsumption_month": "EMS_SelfConsumption_Month",
-              "item_electricity_supply_day": "EMS_GridConsumption_Day",
-              "item_electricity_supply_month": "EMS_GridConsumption_Month",
-              "label_electricity_cost": "Cost (M)",
-              "label_electricity_feedin": "Feed-In (D | M)",
-              "label_electricity_feedin_earnings": "Feed-In (M)",
-              "label_electricity_savings": "Savings (M)",
-              "label_electricity_selfconsumption": "Self-Consum. (D | M)",
-              "label_electricity_supply": "Grid-Consum. (D | M)",
+              "costItemMonth": "EMS_ElectricityCost_Month",
+              "costLabel": "Cost (M)",
+              "earningsItemMonth": "EMS_FeedInCompensation_Month",
+              "earningsLabel": "Feed-In (M)",
+              "feedInItemDay": "EMS_FeedIn_Day",
+              "feedInItemMonth": "EMS_FeedIn_Month",
+              "feedInLabel": "Feed-In (D | M)",
+              "savingsItemMonth": "EMS_ElectricityCostSavings_Month",
+              "savingsLabel": "Savings (M)",
+              "selfConsumptionItemDay": "EMS_SelfConsumption_Day",
+              "selfConsumptionItemMonth": "EMS_SelfConsumption_Month",
+              "selfConsumptionLabel": "Self-Consum. (D | M)",
+              "supplyItemDay": "EMS_GridConsumption_Day",
+              "supplyItemMonth": "EMS_GridConsumption_Month",
+              "supplyLabel": "Grid-Consum. (D | M)",
               "widget_action": "navigate",
               "widget_actionPage": "page:EMS_Analytics"
             }
