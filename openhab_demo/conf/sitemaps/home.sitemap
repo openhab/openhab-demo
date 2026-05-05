@@ -37,6 +37,9 @@ sitemap home label="Smart Home" {
                 Text item=LivingRoom_Receiver_Album label="Album [%s]"
                 Image item=LivingRoom_Receiver_Cover label="Cover"
             }
+            Frame label="TV" {
+                Buttongrid label="Remote Control" staticIcon=screen buttons=[1:1:POWER="Power"=switch-off, 1:2:MENU="Menu", 1:3:EXIT="Exit", 2:2:UP="Up"=f7:arrowtriangle_up, 4:2:DOWN="Down"=f7:arrowtriangle_down, 3:1:LEFT="Left"=f7:arrowtriangle_left, 3:3:RIGHT="Right"=f7:arrowtriangle_right, 3:2:OK="Ok", 2:4:VOL_PLUS="Volume +", 4:4:VOL_MINUS="Volume -", 3:4:MUTE="Mute"=soundvolume_mute]
+            }
         }
 
         Text label="Kitchen" icon="kitchen" {
@@ -287,7 +290,8 @@ sitemap home label="Smart Home" {
     Frame label="Energy" {
         Text label="Energy Management" icon="energy" {
             Frame label="Current Power" {
-                Text item=EMS_Solar_Power label="Solar Production [%.0f W]"
+                Text item=EMS_Solar_Power label="Solar Power [%.0f W]"
+                Chart item=EMS_Solar_Power refresh=60000 period=1W-h legend=true
                 Text item=EMS_Load_Power label="Home Consumption [%.0f W]"
                 Text item=EMS_Grid_Power label="Grid Power [%.0f W]"
                 Text item=EMS_Battery_Power label="Battery Power [%.0f W]"
@@ -414,6 +418,12 @@ sitemap home label="Smart Home" {
             Text item=gLocks label="Unlocked [%d]" icon=[gLocks == 0 = lock-closed, lock-open]
             Switch item=GroundFloor_Corridor_FrontDoor_Lock label="Front Door Lock"
             Switch item=Garage_BackDoor_Lock label="Garage Door Lock"
+        }
+
+        Text label="openHAB Website" icon="iconify:simple-icons:openhab" {
+            Frame label="Webview" {
+                Webview url="https://www.openhab.org" height=20
+            }
         }
     }
 }
