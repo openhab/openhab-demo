@@ -519,6 +519,22 @@ provideWindow(livingRoom)
 provideShutter(livingRoom)
 provideLight(livingRoom, 'LightStripe', 'LivingRoom_CeilingLight', 'Living Room Ceiling Light')
 provideLight(livingRoom, 'AccentLight', 'LivingRoom_FloorLamp', 'Living Room Floor Lamp', 'Color')
+items.addItem({
+  type: 'Number:Temperature',
+  name: 'LivingRoom_FloorLamp_ColorTemperature',
+  label: 'Living Room Floor Lamp',
+  category: 'colorwheel',
+  groups: [livingRoom.name, lights.name],
+  unit: 'K',
+  metadata: {
+    stateDescription: {
+      value: '',
+      config: {
+        pattern: '%d K'
+      }
+    }
+  }
+})
 
 const kitchen = items.addItem({
   type: 'Group',

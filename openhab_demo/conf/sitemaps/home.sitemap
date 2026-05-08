@@ -14,6 +14,7 @@ sitemap home label="Smart Home" {
             Frame label="Lights" {
                 Slider item=LivingRoom_CeilingLight label="Ceiling Light [%d %%]"
                 Colorpicker item=LivingRoom_FloorLamp label="Floor Lamp"
+                Colortemperaturepicker item=LivingRoom_FloorLamp_ColorTemperature label="Floor Lamp"
             }
             Frame label="Shutter" {
                 Slider item=LivingRoom_Shutter label="Shutter [%d %%]"
