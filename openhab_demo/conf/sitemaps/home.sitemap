@@ -286,6 +286,13 @@ sitemap home label="Smart Home" {
                 Switch item=Garage_BackDoor_Lock label="Door Lock"
             }
         }
+
+        Text label="Garden" icon="garden" {
+            Frame label="Boat Dock" {
+                // Lake Constance - Nonnenhorn View (Germany)
+                Video url="https://cdn.livespotting.com/vpu/vignjhn1/r6dzr0zt_hub.m3u8" encoding="hls"
+            }
+        }
     }
 
     Frame label="Energy" {
