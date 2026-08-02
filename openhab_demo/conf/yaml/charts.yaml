@@ -1,0 +1,287 @@
+version: 1
+pages:
+  chart_tabs:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-tabs-page
+    config:
+      icon: f7:graph_circle
+      label: Charts
+      order: "2"
+      sidebar: true
+    slots:
+      default:
+        - component: oh-tab
+          config:
+            icon: f7:graph_square
+            page: page:EMS_Analytics_Power
+            title: Line
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:chart_bar_square
+            page: page:EMS_Analytics_Year
+            title: Bars
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:calendar
+            page: page:EMS_Analytics_Month
+            title: Calendar
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:graph_square
+            page: page:LivingRoom_Temperature
+            title: Comparison
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:squares_below_rectangle
+            page: page:LivingRoom_HVAC
+            title: Combined
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:rectangle_split_3x3
+            page: page:House_Temperature
+            title: Heatmap
+          slots:
+            default: []
+  House_Temperature:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: isoWeek
+      label: House Temp. Heatmap
+    slots:
+      grid:
+        - component: oh-chart-grid
+          config:
+            top: 80
+      series:
+        - component: oh-aggregate-series
+          config:
+            dimension1: isoWeekday
+            dimension2: hour
+            gridIndex: 0
+            item: gTemperatures
+            name: Avg. House Temperature
+            type: heatmap
+            xAxisIndex: 0
+            yAxisIndex: 0
+      title:
+        - component: oh-chart-title
+          config:
+            left: center
+            show: "=screen.appWidth >= 568 ? true : false"
+            text: Avg. House Temperature
+            top: 15
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+      visualMap:
+        - component: oh-chart-visualmap
+          config:
+            bottom: 0
+            calculable: true
+            left: center
+            orient: horizontal
+            presetPalette: bluered
+            show: true
+            type: continuous
+      xAxis:
+        - component: oh-category-axis
+          config:
+            categoryType: week
+            gridIndex: 0
+            monthFormat: short
+            weekdayFormat: short
+      yAxis:
+        - component: oh-category-axis
+          config:
+            categoryType: day
+            gridIndex: 0
+            monthFormat: short
+            weekdayFormat: short
+  LivingRoom_HVAC:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      label: Living Room HVAC
+    slots:
+      grid:
+        - component: oh-chart-grid
+          config:
+            height: 55%
+            top: 80
+        - component: oh-chart-grid
+          config:
+            bottom: 50
+            height: 20%
+      series:
+        - component: oh-time-series
+          config:
+            gridIndex: 0
+            item: LivingRoom_HVAC_Temperature
+            name: Temperature
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-state-series
+          config:
+            gridIndex: 1
+            item: LivingRoom_HVAC_Heating
+            name: Heating
+            stateColor:
+              OFF: "#808080"
+              ON: "#FF0000"
+            xAxisIndex: 1
+            yAxisIndex: 1
+            yValue: 1
+        - component: oh-state-series
+          config:
+            gridIndex: 1
+            item: LivingRoom_HVAC_AC
+            name: AC
+            stateColor:
+              OFF: "#808080"
+              ON: "#0000FF"
+            xAxisIndex: 1
+            yAxisIndex: 1
+            yValue: 0
+      title:
+        - component: oh-chart-title
+          config:
+            left: center
+            show: "=screen.appWidth >= 568 ? true : false"
+            text: Living Room HVAC
+            top: 15
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+            orient: vertical
+      xAxis:
+        - component: oh-time-axis
+          config:
+            gridIndex: 0
+        - component: oh-time-axis
+          config:
+            gridIndex: 1
+      yAxis:
+        - component: oh-value-axis
+          config:
+            gridIndex: 0
+        - component: oh-category-axis
+          config:
+            categoryType: values
+            data:
+              - Heating
+              - AC
+            gridIndex: 1
+            monthFormat: default
+            weekdayFormat: default
+  LivingRoom_Temperature:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: day
+      label: Living Room Temp. Chart
+      order: ""
+      sidebar: false
+    slots:
+      grid:
+        - component: oh-chart-grid
+          config:
+            bottom: 80
+            top: 80
+      series:
+        - component: oh-aggregate-series
+          config:
+            dimension1: hour
+            gridIndex: 0
+            item: LivingRoom_HVAC_Temperature
+            lineStyle:
+              opacity: 0.5
+              type: dotted
+            name: Yesterday
+            offsetAmount: 1
+            offsetUnit: day
+            smooth: true
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-aggregate-series
+          config:
+            areaStyle:
+              opacity: 0.2
+            dimension1: hour
+            gridIndex: 0
+            item: LivingRoom_HVAC_Temperature
+            lineStyle:
+              width: 3
+            markLine:
+              data:
+                - type: average
+            markPoint:
+              data:
+                - name: min
+                  type: min
+                - name: max
+                  type: max
+            name: Today
+            smooth: true
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+      title:
+        - component: oh-chart-title
+          config:
+            left: center
+            show: "=screen.appWidth >= 568 ? true : false"
+            text: Living Room Temperature
+            top: 15
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+            orient: vertical
+            show: true
+      xAxis:
+        - component: oh-category-axis
+          config:
+            axisPointer:
+              handle:
+                backgroundColor: blue
+                show: true
+              label:
+                backgroundColor: "#2196f3"
+                show: true
+              snap: true
+            categoryType: day
+            gridIndex: 0
+            monthFormat: default
+            weekdayFormat: default
+      yAxis:
+        - component: oh-value-axis
+          config:
+            gridIndex: 0
+            name: °C
