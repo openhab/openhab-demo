@@ -1,0 +1,201 @@
+version: 1
+rules:
+  groovy_example:
+    label: Groovy Example
+    tags:
+      - Script
+    description: ""
+    actions:
+      - id: script
+        config:
+          type: Groovy
+          script: |
+            def open_windows = ir.getItem("gWindows").members.findAll{item -> item.state === OPEN}
+            events.postUpdate("ScriptDemo", "Hello from Groovy! Open windows: " + open_windows.size())
+        type: Script
+  javascript_example:
+    label: JavaScript Example
+    tags:
+      - Script
+    description: ""
+    actions:
+      - id: script
+        config:
+          type: JavaScript
+          script: |
+            var openWindows = items.getItem('gWindows').members.filter(m => m.state === 'OPEN').length
+            items.getItem('ScriptDemo').postUpdate(`Hello from JavaScript! Open windows: ${openWindows}`)
+        type: Script
+  python_example:
+    label: Python Example
+    tags:
+      - Script
+    description: ""
+    actions:
+      - id: script
+        config:
+          type: application/x-python3
+          script: |
+            openWindows = len(list(filter(lambda x: x.getState() == scope.OPEN, Registry.getItem('gWindows').getMembers())))
+            Registry.getItem('ScriptDemo').postUpdate(f"Hello from Python! Open windows: {openWindows}")
+        type: Script
+  ruby_example:
+    label: Ruby Example
+    tags:
+      - Script
+    description: ""
+    actions:
+      - id: script
+        config:
+          type: Ruby
+          script: |
+            open_windows = gWindows.members.select { |item| item.state == 'OPEN' }
+            ScriptDemo.command 'Hello from Ruby! Open windows: ' + open_windows.length.to_s
+        type: Script
+  dsl_example:
+    label: Rule DSL Example
+    tags:
+      - Script
+    description: ""
+    actions:
+      - id: script
+        config:
+          type: DSL
+          script: |
+            val open_windows = gWindows.members.filter[item | item.state == OPEN]
+            postUpdate("ScriptDemo", "Hello from the Rule DSL! Open windows: " + open_windows.size())
+        type: Script
+
+pages:
+  languages:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-layout-page
+    config:
+      icon: f7:doc_circle
+      label: Scripting Languages
+      order: ""
+      sidebar: false
+    slots:
+      canvas: []
+      default:
+        - component: oh-block
+          config:
+            title: Scripting Languages Demo
+          slots:
+            default:
+              - component: oh-grid-row
+                config: {}
+                slots:
+                  default:
+                    - component: oh-grid-col
+                      config: {}
+                      slots:
+                        default:
+                          - component: f7-block-header
+                            config: {}
+                            slots:
+                              default:
+                                - component: Label
+                                  config:
+                                    text: openHAB supports several languages for scripts, and you can install more with automation add-ons. The buttons below performs the same logic, written in 6 different languages.
+              - component: oh-grid-row
+                config: {}
+                slots:
+                  default:
+                    - component: oh-grid-col
+                      config:
+                        medium: "33"
+                        width: "50"
+                      slots:
+                        default:
+                          - component: oh-label-card
+                            config:
+                              action: rule
+                              actionRule: blockly_example
+                              label: Blockly
+                    - component: oh-grid-col
+                      config:
+                        medium: "33"
+                        width: "50"
+                      slots:
+                        default:
+                          - component: oh-label-card
+                            config:
+                              action: rule
+                              actionRule: javascript_example
+                              label: JavaScript
+                    - component: oh-grid-col
+                      config:
+                        medium: "33"
+                        width: "50"
+                      slots:
+                        default:
+                          - component: oh-label-card
+                            config:
+                              action: rule
+                              actionRule: python_example
+                              label: Python
+                    - component: oh-grid-col
+                      config:
+                        medium: "33"
+                        width: "50"
+                      slots:
+                        default:
+                          - component: oh-label-card
+                            config:
+                              action: rule
+                              actionRule: ruby_example
+                              label: Ruby
+                    - component: oh-grid-col
+                      config:
+                        medium: "33"
+                        width: "50"
+                      slots:
+                        default:
+                          - component: oh-label-card
+                            config:
+                              action: rule
+                              actionRule: dsl_example
+                              label: Rule DSL
+                    - component: oh-grid-col
+                      config:
+                        medium: "33"
+                        width: "50"
+                      slots:
+                        default:
+                          - component: oh-label-card
+                            config:
+                              action: rule
+                              actionRule: groovy_example
+                              label: Groovy
+                    - component: oh-grid-col
+                      config: {}
+                      slots:
+                        default:
+                          - component: widget:internalLink
+                            config:
+                              link: /settings/scripts/
+                              text: Check out the code of these scripts on the Script Settings page.
+        - component: oh-block
+          config:
+            title: Result
+          slots:
+            default:
+              - component: oh-grid-row
+                config: {}
+                slots:
+                  default:
+                    - component: oh-grid-col
+                      config: {}
+                      slots:
+                        default:
+                          - component: oh-label-card
+                            config:
+                              fontSize: 16px
+                              fontWeight: bold
+                              item: ScriptDemo
+      grid: []
+      masonry: []
