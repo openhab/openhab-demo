@@ -241,3 +241,434 @@ items:
     unit: EUR
     groups:
       - gEMS
+
+pages:
+  # EMS Overview Page:
+  EMS:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-layout-page
+    config:
+      icon: f7:bolt_circle
+      label: EMS
+      order: "1"
+      sidebar: true
+    slots:
+      canvas: []
+      default:
+        - component: oh-block
+          config: {}
+          slots:
+            default:
+              - component: oh-grid-row
+                config: {}
+                slots:
+                  default:
+                    - component: oh-grid-col
+                      config:
+                        medium: "50"
+                        width: "100"
+                      slots:
+                        default:
+                          - component: widget:emsEnergyflow
+                            config:
+                              batteryLevelItem: EMS_Battery_SoC
+                              batteryPowerItem: EMS_Battery_Power
+                              gridPowerItem: EMS_Grid_Power
+                              loadPowerItem: EMS_Load_Power
+                              load_action: navigate
+                              load_actionPage: page:EMS_Analytics
+                              solarPowerItem: EMS_Solar_Power
+                              solar_action: navigate
+                              solar_actionPage: page:Solar_Analytics
+                    - component: oh-grid-col
+                      config:
+                        medium: "50"
+                        width: "100"
+                      slots:
+                        default:
+                          - component: widget:emsPageVerticalWidgetArrangement
+                            config: {}
+              - component: oh-grid-row
+                config: {}
+                slots:
+                  default:
+                    - component: oh-grid-col
+                      config: {}
+                      slots:
+                        default:
+                          - component: widget:widgetAttribution
+                            config:
+                              link: https://github.com/florian-h05/openhab-conf/tree/main/UI/widgets/README.md#emsenergyflow
+                              text: Widgets from florianh-widgetset, with credits to Sebastian Neu
+      grid: []
+      masonry: []
+  # Analytics Pages:
+  EMS_Analytics_Power:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: day
+      label: EMS Analytics
+    slots:
+      dataZoom:
+        - component: oh-chart-datazoom
+          config:
+            type: inside
+      grid:
+        - component: oh-chart-grid
+          config: {}
+      legend:
+        - component: oh-chart-legend
+          config:
+            bottom: 3
+            type: scroll
+      series:
+        - component: oh-time-series
+          config:
+            areaStyle:
+              opacity: 0.2
+            color: "#91cc75"
+            gridIndex: 0
+            item: EMS_Battery_Power
+            lineStyle:
+              width: 2
+            name: Battery
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-time-series
+          config:
+            areaStyle:
+              opacity: 0.4
+            color: "#fac858"
+            gridIndex: 0
+            item: EMS_Solar_Power
+            lineStyle:
+              width: 0
+            name: Solar
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-time-series
+          config:
+            areaStyle:
+              opacity: 0.4
+            color: "#546fc6"
+            gridIndex: 0
+            item: EMS_Grid_Power
+            lineStyle:
+              width: 0
+            name: Grid
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-time-series
+          config:
+            areaStyle:
+              opacity: 0.4
+            color: "=(themeOptions.dark === 'dark' ? '#bdbdbd' : '#424242')"
+            gridIndex: 0
+            item: EMS_Load_Power
+            lineStyle:
+              width: 0
+            name: Loads
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+            orient: vertical
+      xAxis:
+        - component: oh-time-axis
+          config:
+            gridIndex: 0
+      yAxis:
+        - component: oh-value-axis
+          config:
+            gridIndex: 0
+            name: kW
+            nameLocation: end
+  EMS_Analytics_Month:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: month
+      label: EMS Analytics
+      sidebar: false
+    slots:
+      calendar:
+        - component: oh-calendar-axis
+          config:
+            gridIndex: 0
+            monthLabel:
+              color: "#aaa"
+              show: false
+            orient: horizontal
+            yearLabel:
+              show: false
+      grid: []
+      legend:
+        - component: oh-chart-legend
+          config:
+            left: 15px
+            orient: vertical
+            selectedMode: single
+            show: true
+            top: 25px
+      series:
+        - component: oh-calendar-series
+          config:
+            aggregationFunction: last
+            calendarIndex: 0
+            color: "#00ff00"
+            item: EMS_FeedIn_Day
+            label:
+              color: "#000"
+              formatter: =(params) => dayjs(params.value[0]).format('DD.MM.,') + '\n\n' + Math.round(params.value[1]) + ' kWh'
+              show: true,
+            name: Feed-In
+            service: influxdb
+            type: heatmap
+            z: 4
+        - component: oh-calendar-series
+          config:
+            aggregationFunction: last
+            calendarIndex: 0
+            color: "#00ff00"
+            item: EMS_SelfConsumption_Day
+            label:
+              color: "#000"
+              formatter: =(params) => dayjs(params.value[0]).format('DD.MM.,') + '\n\n' + Math.round(params.value[1]) + ' kWh'
+              show: true,
+            name: Self-Consumption
+            service: influxdb
+            type: heatmap
+            z: 3
+        - component: oh-calendar-series
+          config:
+            aggregationFunction: last
+            calendarIndex: 0
+            color: "#00ff00"
+            item: EMS_GridConsumption_Day
+            label:
+              color: "#000"
+              formatter: =(params) => dayjs(params.value[0]).format('DD.MM.,') + '\n\n' + Math.round(params.value[1]) + ' kWh'
+              show: true,
+            name: Grid Consumption
+            service: influxdb
+            type: heatmap
+            z: 2
+      toolbox: []
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+            orient: vertical
+            show: true
+      visualMap:
+        - component: oh-chart-visualmap
+          config:
+            calculable: true
+            height: 20%
+            left: center
+            max: "30"
+            min: "0"
+            orient: horizontal
+            presetPalette: bluered
+            show: true
+            top: bottom
+            type: continuous
+      xAxis: []
+      yAxis: []
+  EMS_Analytics_Year:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: year
+      label: EMS Analytics
+    slots:
+      grid:
+        - component: oh-chart-grid
+          config: {}
+      legend:
+        - component: oh-chart-legend
+          config:
+            bottom: 3
+            type: scroll
+      series:
+        - component: oh-aggregate-series
+          config:
+            aggregationFunction: last
+            color: "#546fc6"
+            dimension1: month
+            gridIndex: 0
+            item: EMS_FeedIn_Month
+            name: Feed-In
+            service: influxdb
+            type: bar
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-aggregate-series
+          config:
+            aggregationFunction: last
+            color: "#fac858"
+            dimension1: month
+            gridIndex: 0
+            item: EMS_SelfConsumption_Month
+            name: Self-Consumption
+            service: influxdb
+            stack: consumption
+            type: bar
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-aggregate-series
+          config:
+            aggregationFunction: last
+            color: "=(themeOptions.dark === 'dark' ? '#bdbdbd' : '#424242')"
+            dimension1: month
+            gridIndex: 0
+            item: EMS_GridConsumption_Month
+            name: Grid Consumption
+            service: influxdb
+            stack: consumption
+            type: bar
+            xAxisIndex: 0
+            yAxisIndex: 0
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+      xAxis:
+        - component: oh-category-axis
+          config:
+            categoryType: year
+            gridIndex: 0
+            monthFormat: short
+            weekdayFormat: short
+      yAxis:
+        - component: oh-value-axis
+          config:
+            gridIndex: 0
+            min: "0"
+            name: kWh
+  EMS_Financial_Analytics_Year:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: year
+      label: EMS Analytics
+    slots:
+      grid:
+        - component: oh-chart-grid
+          config: {}
+      legend:
+        - component: oh-chart-legend
+          config:
+            bottom: 3
+            type: scroll
+      series:
+        - component: oh-aggregate-series
+          config:
+            dimension1: month
+            gridIndex: 0
+            item: EMS_ElectricityCostSavings_Month
+            name: Savings
+            service: influxdb
+            stack: plus
+            type: bar
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-aggregate-series
+          config:
+            dimension1: month
+            gridIndex: 0
+            item: EMS_FeedInCompensation_Month
+            name: Feed-In Compensation
+            service: influxdb
+            stack: plus
+            type: bar
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-aggregate-series
+          config:
+            color: "#ee6666"
+            dimension1: month
+            gridIndex: 0
+            item: EMS_ElectricityCost_Month
+            name: Electricity Cost
+            service: influxdb
+            type: bar
+            xAxisIndex: 0
+            yAxisIndex: 0
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+      xAxis:
+        - component: oh-category-axis
+          config:
+            categoryType: year
+            gridIndex: 0
+            monthFormat: short
+            weekdayFormat: short
+      yAxis:
+        - component: oh-value-axis
+          config:
+            gridIndex: 0
+            min: 0
+            name: €
+  EMS_Analytics:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-tabs-page
+    config:
+      label: EMS Analytics
+    slots:
+      default:
+        - component: oh-tab
+          config:
+            icon: f7:bolt_circle
+            page: EMS_Analytics_Power
+            title: Power
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:calendar_today
+            page: EMS_Analytics_Month
+            title: Daily
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:calendar
+            page: EMS_Analytics_Year
+            title: Monthly
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:money_euro_circle
+            page: page:EMS_Financial_Analytics_Year
+            title: Financials
+          slots:
+            default: []
