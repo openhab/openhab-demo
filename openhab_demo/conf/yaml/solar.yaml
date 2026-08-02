@@ -82,3 +82,186 @@ items:
     tags:
       - Measurement
       - Energy
+
+pages:
+  Solar_Analytics_Power:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: day
+      label: Solar Analytics
+    slots:
+      grid:
+        - component: oh-chart-grid
+          config: {}
+      legend:
+        - component: oh-chart-legend
+          config:
+            orient: horizontal
+            show: true
+            top: bottom
+      series:
+        - component: oh-time-series
+          config:
+            gridIndex: 0
+            item: Solar_Forecast_Power_Estimate_Total
+            name: Forecasted Power
+            service: inmemory
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+        - component: oh-time-series
+          config:
+            gridIndex: 0
+            item: Solar_Power_Total
+            name: Actual Power
+            type: line
+            xAxisIndex: 0
+            yAxisIndex: 0
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+            orient: vertical
+      xAxis:
+        - component: oh-time-axis
+          config:
+            gridIndex: 0
+      yAxis:
+        - component: oh-value-axis
+          config:
+            gridIndex: 0
+  Solar_Analytics_Month:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: month
+      label: Solar Analytics
+      sidebar: false
+    slots:
+      calendar:
+        - component: oh-calendar-axis
+          config:
+            gridIndex: 0
+            monthLabel:
+              color: "#aaa"
+              show: false
+            orient: horizontal
+            yearLabel:
+              show: false
+      grid: []
+      series:
+        - component: oh-calendar-series
+          config:
+            aggregationFunction: last
+            calendarIndex: 0
+            item: Solar_Production_Day
+            label:
+              color: "#000"
+              formatter: =(params) => dayjs(params.value[0]).format('DD.MM.,') + '\n\n' + Math.round(params.value[1]) + ' kWh'
+              show: true,
+            name: Production
+            service: influxdb
+            type: heatmap
+            z: 4
+      toolbox: []
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+            orient: vertical
+            show: true
+      visualMap:
+        - component: oh-chart-visualmap
+          config:
+            calculable: true
+            height: 20%
+            left: center
+            max: "30"
+            min: "0"
+            orient: horizontal
+            presetPalette: bluered
+            show: true
+            top: bottom
+            type: continuous
+      xAxis: []
+      yAxis: []
+  Solar_Analytics_Year:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-chart-page
+    config:
+      chartType: year
+      label: Solar Analytics
+    slots:
+      grid:
+        - component: oh-chart-grid
+          config: {}
+      series:
+        - component: oh-aggregate-series
+          config:
+            aggregationFunction: last
+            dimension1: month
+            gridIndex: 0
+            item: Solar_Production_Month
+            name: Production
+            service: influxdb
+            type: bar
+            xAxisIndex: 0
+            yAxisIndex: 0
+      tooltip:
+        - component: oh-chart-tooltip
+          config:
+            confine: true
+      xAxis:
+        - component: oh-category-axis
+          config:
+            categoryType: year
+            gridIndex: 0
+            monthFormat: short
+            weekdayFormat: short
+      yAxis:
+        - component: oh-value-axis
+          config:
+            gridIndex: 0
+            min: "0"
+            name: kWh
+  Solar_Analytics:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-tabs-page
+    config:
+      label: Solar Analytics
+    slots:
+      default:
+        - component: oh-tab
+          config:
+            icon: f7:calendar_today
+            page: page:Solar_Analytics_Power
+            title: Day
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:calendar
+            page: page:Solar_Analytics_Month
+            title: Month
+          slots:
+            default: []
+        - component: oh-tab
+          config:
+            icon: f7:calendar
+            page: page:Solar_Analytics_Year
+            title: Year
+          slots:
+            default: []
