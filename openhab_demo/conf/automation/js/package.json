@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "openhab": "^5.17.1"
+    "openhab": "^5.21.0"
   }
 }
