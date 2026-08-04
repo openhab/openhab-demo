@@ -1,0 +1,38 @@
+### Map Page
+
+version: 1
+pages:
+  positions:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-map-page
+    config:
+      initialCenter: 52.51627383079494,13.377696058023528
+      label: Positions
+      order: "3"
+      sidebar: true
+    slots:
+      default:
+        - component: oh-map-marker
+          config:
+            icon: oh:house
+            label: Home
+            location: 52.51627709532754,13.377712134156031
+          slots:
+            default: []
+        - component: oh-map-marker
+          config:
+            icon: oh:girl_3
+            item: Amelia_Position
+            label: Amelia
+          slots:
+            default: []
+        - component: oh-map-marker
+          config:
+            icon: oh:boy_3
+            item: Oliver_Position
+            label: Oliver
+          slots:
+            default: []

@@ -640,63 +640,6 @@
       }
     }
   },
-  "positions": {
-    "class": "org.openhab.core.ui.components.RootUIComponent",
-    "value": {
-      "uid": "positions",
-      "tags": [],
-      "props": {
-        "parameters": [],
-        "parameterGroups": []
-      },
-      "timestamp": "Dec 26, 2025, 1:04:07 PM",
-      "component": "oh-map-page",
-      "config": {
-        "initialCenter": "52.51627383079494,13.377696058023528",
-        "label": "Positions",
-        "order": "3",
-        "sidebar": true,
-        "tileLayerProvider": "CartoDB.Positron"
-      },
-      "slots": {
-        "default": [
-          {
-            "component": "oh-map-marker",
-            "config": {
-              "icon": "oh:house",
-              "label": "Home",
-              "location": "52.51627709532754,13.377712134156031"
-            },
-            "slots": {
-              "default": []
-            }
-          },
-          {
-            "component": "oh-map-marker",
-            "config": {
-              "icon": "oh:girl_3",
-              "item": "Amelia_Position",
-              "label": "Amelia"
-            },
-            "slots": {
-              "default": []
-            }
-          },
-          {
-            "component": "oh-map-marker",
-            "config": {
-              "icon": "oh:boy_3",
-              "item": "Oliver_Position",
-              "label": "Oliver"
-            },
-            "slots": {
-              "default": []
-            }
-          }
-        ]
-      }
-    }
-  },
   "svgcanvas_firstfloor": {
     "class": "org.openhab.core.ui.components.RootUIComponent",
     "value": {
