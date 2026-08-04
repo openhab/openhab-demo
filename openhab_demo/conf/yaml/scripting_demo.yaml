@@ -1,4 +1,11 @@
+### Scripting Demo
+# 
+# Consists of:
+# - Scripts in all supported languages, except for Blockly
+# - A Main UI page to execute the demo scripts
+
 version: 1
+
 rules:
   groovy_example:
     label: Groovy Example

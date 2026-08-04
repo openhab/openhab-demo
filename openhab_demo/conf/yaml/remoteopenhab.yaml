@@ -1,3 +1,7 @@
+### Remote openHAB
+#
+# Connects to the private openHAB server providing additional data to be used in the demo server.
+
 version: 1
 things:
   remoteopenhab:server:mock:

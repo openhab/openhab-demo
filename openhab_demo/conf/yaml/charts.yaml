@@ -1,3 +1,7 @@
+### Chart Pages
+#
+# Demonstrates Main UI's charting capabilities.
+
 version: 1
 pages:
   chart_tabs:

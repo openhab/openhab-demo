@@ -1,3 +1,7 @@
+### OpenWeatherMap Weather Forecast
+#
+# Provides access to the current forecast values and the aggregated forecast JSON provided by the private openHAB server.
+
 version: 1
 items:
   # Group Items:

@@ -1,3 +1,11 @@
+### Energy Management System
+#
+# Consists of:
+# - A custom semantic tag
+# - Items
+# - A layout page for an overview of the EMS state
+# - Chart pages for EMS analytics over day, month & year 
+
 version: 1
 
 tags:

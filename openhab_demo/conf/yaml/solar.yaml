@@ -1,4 +1,13 @@
+### Solar Plant
+#
+# Consists of:
+# - Related Items
+# - Chart pages solar power and production over day, month & year
+#
+# Note: Item state is based on the solar forecast from solarforecast.yaml Things 
+
 version: 1
+
 items:
   gSolar:
     type: Group

@@ -1,4 +1,11 @@
+### Astro
+#
+# Consists of:
+# - Astro Sun & Moon Things
+# - Items
+
 version: 1
+
 things:
   astro:sun:berlin:
     label: Sun Berlin

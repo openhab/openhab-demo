@@ -1,4 +1,11 @@
+### Solar Forecast
+#
+# Consists of:
+# - Forecast.Solar Things
+# - Items
+
 version: 1
+
 things:
   solarforecast:fs-site:local:
     isBridge: true
