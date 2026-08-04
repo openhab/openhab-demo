@@ -1,0 +1,228 @@
+### Main UI Home Page
+#
+# Defines the contents of the Locations, Equipment & Properties tabs
+
+version: 1
+pages:
+  home:
+    tags: []
+    props:
+      parameters: []
+      parameterGroups: []
+    component: oh-home-page
+    config:
+      label: Home Page
+      simpleNavbarDesktopDefault: false
+      simpleNavbarMobileDefault: false
+      standardBackgroundDesktopDefault: false
+      standardBackgroundMobileDefault: false
+    slots:
+      equipment:
+        - component: oh-equipment-tab
+          config:
+            cardOrder:
+              - Downlight
+              - Chandelier
+              - AccentLight
+              - LightStripe
+              - Blinds
+              - HVAC
+              - Window
+              - FrontDoor
+              - BackDoor
+              - Lock
+              - Receiver
+              - Speaker
+              - WeatherService
+              - EnergyManagementSystem
+              - Inverter
+              - Application
+              - WebService
+            equipmentPromoteSingle: false
+            excludedCards:
+              - Application
+              - WebService
+          slots:
+            AccentLight:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: yellow
+                  invertText: true
+            Application:
+              - component: oh-equipment-card
+                config: {}
+            BackDoor:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: blue
+            Blinds:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: gray
+            Chandelier:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: yellow
+                  invertText: true
+            Downlight:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: yellow
+                  invertText: true
+            EnergyManagementSystem:
+              - component: oh-equipment-card
+                config: {}
+            FrontDoor:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: blue
+            HVAC:
+              - component: oh-equipment-card
+                config: {}
+            Inverter:
+              - component: oh-equipment-card
+                config: {}
+            LightStripe:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: yellow
+                  invertText: true
+            Lock:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: blue
+            Receiver:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: teal
+            Speaker:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: teal
+            WeatherService:
+              - component: oh-equipment-card
+                config:
+                  invertText: false
+            WebService:
+              - component: oh-equipment-card
+                config: {}
+            Window:
+              - component: oh-equipment-card
+                config:
+                  backgroundColor: blue
+      locations:
+        - component: oh-locations-tab
+          config:
+            cardOrder:
+              - separator: Ground Floor
+              - gGroundFloor_Corridor
+              - gLivingRoom
+              - gKitchen
+              - gToilet
+              - separator: First Floor
+              - gFirstFloor_Corridor
+              - gBathroom
+              - gBedroom
+              - gGuestroom
+              - gOffice
+              - separator: Second Floor
+              - gSecondFloor_Corridor
+              - gChild1
+              - gChild2
+              - separator: Outside
+              - gGarden
+              - gGarage
+              - separator: Basement
+              - gBasement_Corridor
+              - gCellar
+              - gLaundryRoom
+              - gUtilityRoom
+              - gBasement
+              - gFirstFloor
+              - gGroundFloor
+              - gSecondFloor
+            equipmentNesting: nested
+            equipmentPromoteSingle: true
+            excludedCards:
+              - gHome
+              - gFirstFloor
+              - gGroundFloor
+              - gSecondFloor
+              - gLaundryRoom
+              - gUtilityRoom
+              - gBasement
+              - gBasement_Corridor
+          slots:
+            gBasement:
+              - component: oh-location-card
+                config: {}
+            gBathroom:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Bathroom.webp
+            gBedroom:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Bedroom.webp
+            gCellar:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Cellar.webp
+            gChild1:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Child1.webp
+            gChild2:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Child2.webp
+            gFirstFloor_Corridor:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/FirstFloor_Corridor.webp
+            gGarage:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Garage.webp
+            gGroundFloor:
+              - component: oh-location-card
+                config: {}
+            gGroundFloor_Corridor:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/GroundFloor_Corridor.webp
+            gGuestroom:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/GuestRoom.webp
+            gHome:
+              - component: oh-location-card
+                config: {}
+            gKitchen:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Kitchen.webp
+            gLivingRoom:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/LivingRoom.webp
+            gOffice:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Office.webp
+            gSecondFloor_Corridor:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/SecondFloor_Corridor.webp
+            gToilet:
+              - component: oh-location-card
+                config:
+                  backgroundImage: /static/locations/Toilet.webp
+            gUtilityRoom:
+              - component: oh-location-card
+                config: {}
+      properties:
+        - component: oh-properties-tab
+          config:
+            excludedCards: []
+          slots: {}
