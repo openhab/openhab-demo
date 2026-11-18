@@ -9,7 +9,7 @@ pages:
       parameterGroups: []
     component: oh-map-page
     config:
-      initialCenter: 52.51627383079494,13.377696058023528
+      initialCenter: 52.516273,13.377696
       label: Positions
       order: "3"
       sidebar: true
